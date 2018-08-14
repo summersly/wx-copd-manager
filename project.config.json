@@ -1,0 +1,76 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.2",
+	"appid": "wxfbc0924cff131b85",
+	"projectname": "wx-copd-manager",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": -1,
+					"name": "scale",
+					"pathName": "pages/function/scale/scale-index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "scale-cat",
+					"pathName": "pages/function/scale/scale-cat/scale-cat",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "scale-phq",
+					"pathName": "pages/function/scale/scale-phq/scale-phq",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "scale-gad",
+					"pathName": "pages/function/scale/scale-gad/scale-gad",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "uncomfort",
+					"pathName": "pages/function/uncomfort/uncomfort",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "drug-his",
+					"pathName": "pages/function/drug/drug-history/drug-history"
+				}
+			]
+		}
+	}
+}

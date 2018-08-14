@@ -1,0 +1,51 @@
+/* components/scale-card-select/scale-card-select.wxss */
+.basic-card {
+    width: 92vw;
+    margin-top: 20rpx;
+    padding-left: 20rpx;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 1px #ccc;
+}
+.basic-card > view {
+    font-weight: 600;
+    font-size: 20px;
+    margin: 15rpx 5rpx 20rpx 5rpx;
+    align-self: flex-start;
+}
+.basic-card > radio-group {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.select-option{
+    width: 80%;    
+    height: 100rpx;
+    line-height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10rpx 0 20rpx 0;
+    color: #33ccff;
+}
+.select-option:last-child{
+    margin-bottom: 40rpx;
+}
+.select-option label {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #33ccff;
+    color: #33ccff;
+
+}
+.select-option label.active{
+    color:white;   
+    background-color: #33ccff; 
+}

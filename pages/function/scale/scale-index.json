@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "scale-card-navi":"../../../components/scale-card-navi/scale-card-navi"
+      }
+}

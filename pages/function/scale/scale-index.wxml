@@ -1,0 +1,4 @@
+<!--pages/function/scale/scale-index.wxml-->
+<view class='main-container'>
+  <scale-card-navi wx:for="{{scaleCardData}}" wx:key="{{item.name}}" model="{{item}}" />
+</view>

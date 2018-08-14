@@ -1,0 +1,21 @@
+<!-- pages/function/uncomfort/uncomfort.wxml -->
+<view class="main-container">
+    <view class="basic-card">
+        <view class="select-group">
+            <view>{{state.name}}</view>
+            <radio-group class="flex" bindchange="stateRadioChange">
+                <view class="flex-item {{state.defaultIndex == index?'active':''}}" wx:for="{{state.options}}" wx:key="index" data-index="{{index}}">
+                    <label>
+                        {{item}}
+                        <radio value="{{index}}" hidden="true" />
+                    </label>
+                </view>
+            </radio-group>
+        </view>
+        <view wx:for="{{uncomfData}}" wx:key="index" wx:if="{{state.defaultIndex == 1}}">
+            <uncomf-select uncomfSelectData="{{item}}" bindselectChange="selectRecord" data-type="{{index}}"></uncomf-select>
+        </view>
+        <textarea wx:if="{{state.defaultIndex == 1}}" placeholder="备注" value="{{memo}}" bindinput="memoInput"></textarea>
+        <button bindtap="submitRecord">保存</button>
+    </view>
+</view>

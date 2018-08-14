@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "uncomf-select": "../../../components/uncomf-select/uncomf-select"
+    }
+}

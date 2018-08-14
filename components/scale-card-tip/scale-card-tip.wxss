@@ -1,0 +1,59 @@
+/* components/scale-card-tip/scale-card-tip.wxss */
+.basic-card {
+    width: 92vw;
+    height: 40px;
+    margin-top: 24rpx;
+    padding-left: 20rpx;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 1px #ccc;
+  }
+  .basic-card > text{
+    padding-left: 8px;
+    font-size:16px;
+    color: #33ccff;
+    line-height: 16px;
+  }
+  .scale-footer{
+    width: 99vw;
+    position: fixed;
+    bottom: 10rpx;
+    left: 0px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+  }
+  .footer-left{
+    width: 40%;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    margin-left: 10rpx;
+  }
+  .hidden{
+    visibility: hidden;
+  }
+  .footer-right{
+    width: 40%;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 10rpx;
+  }
+  image{
+    width: 60rpx;
+    height: 50rpx;
+  }
+  button{
+    width: 250rpx;
+    height: 90rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #33ccff;
+    color: white;
+  }

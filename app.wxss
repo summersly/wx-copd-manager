@@ -1,0 +1,9 @@
+/**app.wxss**/
+.main-container {
+    width: 96vw;
+    margin-left: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+  }

@@ -1,0 +1,9 @@
+/* pages/function/drug/drug-history/drug-history.wxss */
+.drug-container{
+    width: 96vw;
+    margin-left: 2vw;
+    padding-top: 20rpx;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    /* box-shadow: 0px 0px 4px 1px #ccc; */
+}

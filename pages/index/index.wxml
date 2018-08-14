@@ -1,0 +1,32 @@
+<!-- index.wxml -->
+<view class='main-container'>
+  <view class="evaluation-card">
+    <view class="evaluation-card-circle">
+      <canvas canvas-id="canvasCircle"></canvas>
+      <canvas canvas-id="canvasArcCir"></canvas>
+      <view>
+        <text class='evaluation-score'>80</text>
+        <text class='evaluation-state'>良好</text>
+      </view>
+    </view>
+    <view class="evaluation-card-text">
+      <text>整体评估</text>
+      <text decode="{{true}}">请继续保持!记得要按时完成任务哦</text>
+    </view>
+  </view>
+  <navigator class="scale-card-navi" url="../function/scale/scale-index">
+    <view>
+      <view class="scale-card-text">
+        <text>量表填写</text>
+        <text>1/3</text>
+      </view>
+      <progress percent="33" stroke-width="6" activeColor="rgba(80, 94, 131, 1)" backgroundColor="white" active="{{true}}" />
+    </view>
+    <view>
+      <image src="../../image/scale.png" mode='aspectFit' class="scale-icon" />
+    </view>
+  </navigator>
+  <home-card-navi wx:for="{{functionCardData}}" wx:key="{{item.name}}" model="{{item}}" />
+</view>
+<!-- class="evaluation-canvas"
+class="evaluation-content" -->

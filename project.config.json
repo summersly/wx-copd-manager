@@ -43,24 +43,6 @@
 				},
 				{
 					"id": -1,
-					"name": "scale-cat",
-					"pathName": "pages/function/scale/scale-cat/scale-cat",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "scale-phq",
-					"pathName": "pages/function/scale/scale-phq/scale-phq",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "scale-gad",
-					"pathName": "pages/function/scale/scale-gad/scale-gad",
-					"query": ""
-				},
-				{
-					"id": -1,
 					"name": "uncomfort",
 					"pathName": "pages/function/uncomfort/uncomfort",
 					"query": ""
@@ -68,7 +50,26 @@
 				{
 					"id": -1,
 					"name": "drug-his",
-					"pathName": "pages/function/drug/drug-history/drug-history"
+					"pathName": "pages/function/drug/drug-history/drug-history",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "drug-index",
+					"pathName": "pages/function/drug/drug-index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "class",
+					"pathName": "pages/class/class",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "drug-add",
+					"pathName": "pages/function/drug/drug-add/drug-add",
+					"query": ""
 				}
 			]
 		}

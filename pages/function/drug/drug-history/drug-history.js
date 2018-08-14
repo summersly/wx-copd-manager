@@ -5,15 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dayscolor:[{
-      month:'current',
-      day:14,
-      color:'white',
-      background:'#33ccff'
+    dayscolor:[],
+    drugHisData:[{
+      time:'14:30',
+      name:'信必可都宝'
+    },{
+      time:'14:56',
+      name:'噻托溴铵分吸入剂'
     }]
   },
   dayClick:function(e){
     console.log(e.detail);
+    this.setData({
+      dayscolor:[{
+        month:'current',
+        day:e.detail.day,
+        color:'white',
+        background:'#33ccff'
+      }]
+    })
+  },
+  dateChange:function(e){
+    this.setData({
+      dayscolor:[]
+    })
   },
   /**
    * 生命周期函数--监听页面加载

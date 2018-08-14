@@ -1,1 +1,5 @@
-{}
+{
+    "usingComponents": {
+        "drug-his-list": "../../../../components/drug-his-list/drug-his-list"
+      }
+}

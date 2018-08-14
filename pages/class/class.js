@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    tabbarData: {
+      navbarWidth: 25,
+      tabs: ['专家讲堂', '用药教程','健康知识','推送消息'],
+    }
   },
 
   /**

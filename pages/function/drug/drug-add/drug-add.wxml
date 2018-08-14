@@ -1,2 +1,18 @@
 <!--pages/function/drug/drug-add/drug-add.wxml-->
-<text>pages/function/drug/drug-add/drug-add.wxml</text>
+<view class="main-container">
+    <view class="drug-add-title">
+        <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/drugblue.png" 
+        mode="aspectFit" style="height:80rpx" />
+        <view class="title">药品名称</view>
+    </view>
+    <view class="drug-add-list" wx:for="{{drugList}}" wx:key="index">
+        <image mode="aspectFit" src="{{item.route}}" />
+        <view class="content">
+            <text>{{item.name}}</text>
+            <text>{{item.memo}}</text>
+        </view>
+        <button>
+            <text>添加</text>
+        </button>
+    </view>
+</view>

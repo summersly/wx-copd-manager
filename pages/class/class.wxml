@@ -1,2 +1,7 @@
 <!--pages/class/class.wxml-->
-<text>pages/class/class.wxml</text>
+<top-tbbar tabbarData="{{tabbarData}}"> 
+    <view slot="toptab0">1</view>
+    <view slot="toptab1">2</view>
+    <view slot="toptab2">3</view>
+    <view slot="toptab3">4</view>
+</top-tbbar>

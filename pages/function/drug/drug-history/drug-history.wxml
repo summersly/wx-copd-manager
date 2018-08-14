@@ -1,5 +1,13 @@
 <!--pages/function/drug/drug-history/drug-history.wxml-->
 <view class='drug-container'>
-    <calendar binddayClick="dayClick" weeks-type="cn" days-color="{{dayscolor}}" cell-size="42"/>
-
+    <calendar 
+    binddayClick="dayClick" 
+    weeks-type="cn" 
+    days-color="{{dayscolor}}" 
+    cell-size="42"
+    bindnextMonth="dateChange"
+    bindprevMonth="dateChange"
+    binddateChange="dateChange"/>
 </view>
+
+<drug-his-list drugHisData="{{drugHisData}}"/>

@@ -1,2 +1,16 @@
-<!--pages/function/drug/drug-index.wxml-->
-<text>pages/function/drug/drug-index.wxml</text>
+<!-- pages/function/drug/drug-index.wxml -->
+<view class="drug-list">
+    <view class="drug-navi">
+        <view></view>
+        <view class="context">
+            <text>添加新纪录</text>
+        </view>
+    </view>
+    <drug-his-list drugHisData="{{drugHisData}}" />
+    <view class="drug-navi">
+        <view></view>
+        <view class="context">
+            <text>更多历史记录</text>
+        </view>
+    </view>
+</view>

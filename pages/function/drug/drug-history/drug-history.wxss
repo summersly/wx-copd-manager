@@ -2,6 +2,7 @@
 .drug-container{
     width: 96vw;
     margin-left: 2vw;
+    margin-bottom: 30rpx;
     padding-top: 20rpx;
     border: 1px solid #cccccc;
     border-radius: 5px;

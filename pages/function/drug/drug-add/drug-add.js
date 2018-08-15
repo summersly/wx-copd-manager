@@ -1,4 +1,5 @@
 // pages/function/drug/drug-add/drug-add.js
+// const drugNameList = ['舒利迭','噻托溴铵粉吸入剂','信必可都保','舒瑞灵','氨茶碱片','']
 Page({
 
   /**
@@ -30,10 +31,27 @@ Page({
         name:'自定义药物',
         memo:'请在这里添加自定义药物',
         route:'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/pic_amidi.png'
-      },
-    ]
+      }
+    ],
+    showModal:false,
+    nameIndex:0,
+    drugNameList: ['舒利迭','噻托溴铵粉吸入剂','信必可都保','舒瑞灵','氨茶碱片','']
   },
+  showM:function(e){
+    console.log(e)
+    this.setData({
+      nameIndex:e.target.dataset.index,
+      showModal:true
+    })
+  },
+  hideM:function(){
+      this.setData({
+        showModal:false
+      })
+  },
+  onDrugAdd:function(e){
 
+  },
   /**
    * 生命周期函数--监听页面加载
    */

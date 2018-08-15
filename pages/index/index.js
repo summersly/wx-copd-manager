@@ -23,8 +23,8 @@ Page({
       }, {
         name: '步行测试',
         icon: '../../image/walk.png',
-        route: '../function/drug/drug',
-        memo: '2222'
+        route: '',
+        memo: ''
       }
     ]
   },

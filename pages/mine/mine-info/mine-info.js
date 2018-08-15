@@ -1,16 +1,21 @@
-// pages/mine/mine.js
+// pages/mine/mine-info/mine-info.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgSrc:'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/arrowgray.png'
+     mineInfo:{
+       name:'测试A',
+       sex:'男',
+       birthData:'1996-08-05',
+       age:'-1',
+       height:'-11',
+       weight:'00',
+       phoneNumber:'11011011010'
+     }
   },
 
-  quit:function(){
-    
-  },
   /**
    * 生命周期函数--监听页面加载
    */

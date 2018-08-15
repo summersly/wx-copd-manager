@@ -19,9 +19,11 @@ Component({
    */
   methods: {
     gotoRoute:function(){
-      wx.navigateTo({
-        url: this.data.model.route,
-      })
+      if(this.data.model.route){
+        wx.navigateTo({
+          url: this.data.model.route,
+        })
+      }
     }
   }
 })

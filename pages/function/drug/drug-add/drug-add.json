@@ -1,1 +1,5 @@
-{}
+{
+    "usingComponents": {
+        "drug-add-modal": "../../../../../components/drug-add-modal/drug-add-modal"
+      }
+}

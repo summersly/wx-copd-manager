@@ -1,16 +1,13 @@
-// pages/mine/mine.js
+// pages/register/register.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgSrc:'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/arrowgray.png'
+  
   },
 
-  quit:function(){
-    
-  },
   /**
    * 生命周期函数--监听页面加载
    */

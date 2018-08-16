@@ -1,1 +1,4 @@
 /* pages/class/class.wxss */
+video{
+    width: 100%;
+}

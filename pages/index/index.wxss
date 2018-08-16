@@ -1,3 +1,4 @@
+
 /**index.wxss**/
 .evaluation-card{
     width: 91vw;
@@ -52,7 +53,7 @@
 .evaluation-card-text > text:first-child{
     font-weight: bolder;
     font-size: 22px;
-    margin-bottom: 5px;
+    margin-bottom: 15rpx;
 }
 .scale-card-navi{
     width: 91vw;
@@ -69,11 +70,11 @@
 }
 .scale-card-navi > view:first-child {
     width:76%;
-    height: 80%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding:0 0 8px 5px;
+    padding:0 0 25rpx 5px;
 }
 .scale-card-navi > view:last-child {
     width:24%;

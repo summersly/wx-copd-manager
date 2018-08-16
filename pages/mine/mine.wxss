@@ -1,7 +1,7 @@
 /* pages/mine/mine.wxss */
 .blueback{
     background-color: #33ccff;
-    width: 750rpx;
+    width: 749rpx;
     height: 100vh;
     display: flex;
     flex-direction: column;

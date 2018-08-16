@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/class/class",
     "pages/mine/mine",
@@ -12,7 +13,6 @@
     "pages/function/drug/drug-index",
     "pages/function/drug/drug-add/drug-add",
     "pages/function/drug/drug-history/drug-history",
-    "pages/login/login",
     "pages/register/register",
     "pages/mine/mine-info/mine-info"
   ],

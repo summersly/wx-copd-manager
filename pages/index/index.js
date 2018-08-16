@@ -1,5 +1,5 @@
 //index.js
-//获取应用实例
+import indexRequest from "indexRequest"
 const app = getApp()
 
 Page({
@@ -7,26 +7,30 @@ Page({
     functionCardData: [
       {
         name: '不适记录',
-        icon: '../../image/uncomfort.png',
+        icon: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/uncomfort.png',
         route: '../function/uncomfort/uncomfort',
-        memo: '11111'
+        memo: ''
       }, {
         name: '用药记录',
-        icon: '../../image/drug.png',
+        icon: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/drugblue.png',
         route: '../function/drug/drug-index',
-        memo: '1111'
+        memo: ''
       }, {
         name: 'PEF监测',
-        icon: '../../image/pef.png',
+        icon: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/pef.png',
         route: '../function/pef/pef-index',
-        memo: '2222'
+        memo: ''
       }, {
         name: '步行测试',
-        icon: '../../image/walk.png',
+        icon: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/walk.png',
         route: '',
         memo: ''
       }
-    ]
+    ],
+    evaluationScore:0,
+    evaluationState:'未测评',
+    evaluationTip:'请继续保持!记得要按时完成任务哦',
+    scaleFinish:1,
   },
   //事件处理函数
   drawCircle: function (score) {
@@ -47,6 +51,17 @@ Page({
   },
   onLoad: function () {
     this.drawCircle(80)
+    let PEFScore = indexRequest.requestLastPEF()
+    let CATScore = indexRequest.requestLastCAT()
+    let age = indexRequest.calculateAge(app.globalData.loginUserInfo.birthDate)
+    let sex = app.globalData.loginUserInfo.sexCode
+    let height = app.globalData.loginUserInfo.newestHeight
+    let evaluation = indexRequest.evaluateWithPEF(age, sex, height, PEFScore, CATScore)
+    this.setData({
+      evaluationScore: evaluation.score,
+      evaluationState: evaluation.evaluationState,
+      evaluationTip: evaluation.evaluationTip,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

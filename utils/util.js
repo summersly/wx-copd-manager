@@ -20,6 +20,7 @@ const formatTime1 = date => {
   return [hour, minute].map(formatNumber).join(':')
 }
 
+
 module.exports = {
   formatTime: formatTime,
   formatTime1: formatTime1

@@ -1,7 +1,11 @@
 <!--pages/class/class.wxml-->
 <top-tbbar tabbarData="{{tabbarData}}"> 
-    <view slot="toptab0">1</view>
+    <view slot="toptab0">
+        <video src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/test.mp4"></video>
+
+    </view>
     <view slot="toptab1">2</view>
     <view slot="toptab2">3</view>
     <view slot="toptab3">4</view>
 </top-tbbar>
+

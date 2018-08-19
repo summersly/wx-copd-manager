@@ -31,7 +31,14 @@
   font-weight: bold;
   /* text-align: center; */
 }
-
+.memo{
+  font-size: 28rpx;
+  color: red;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
 .disable{
   background-color: #ddd;
   box-shadow:none;

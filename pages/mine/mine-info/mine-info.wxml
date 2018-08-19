@@ -10,7 +10,7 @@
     </view>
     <view class="item">
         <text>出生日期</text>
-        <view>{{mineInfo.birthData}}</view>
+        <view>{{mineInfo.birthDate}}</view>
     </view>
     <view class="item">
         <text>年龄</text>

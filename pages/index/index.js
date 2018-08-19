@@ -1,5 +1,6 @@
 //index.js
-import indexRequest from "indexRequest"
+import indexRequest from "../../utils/Request"
+var util = require('../../utils/util.js');
 const app = getApp()
 
 Page({
@@ -27,10 +28,10 @@ Page({
         memo: ''
       }
     ],
-    evaluationScore:0,
-    evaluationState:'未测评',
-    evaluationTip:'请继续保持!记得要按时完成任务哦',
-    scaleFinish:1,
+    evaluationScore: 0,
+    evaluationState: '未测评',
+    evaluationTip: '请继续保持!记得要按时完成任务哦',
+    scaleFinish: [0, 0, 0],
   },
   //事件处理函数
   drawCircle: function (score) {
@@ -50,18 +51,25 @@ Page({
 
   },
   onLoad: function () {
-    this.drawCircle(80)
-    let PEFScore = indexRequest.requestLastPEF()
-    let CATScore = indexRequest.requestLastCAT()
-    let age = indexRequest.calculateAge(app.globalData.loginUserInfo.birthDate)
-    let sex = app.globalData.loginUserInfo.sexCode
-    let height = app.globalData.loginUserInfo.newestHeight
-    let evaluation = indexRequest.evaluateWithPEF(age, sex, height, PEFScore, CATScore)
-    this.setData({
-      evaluationScore: evaluation.score,
-      evaluationState: evaluation.evaluationState,
-      evaluationTip: evaluation.evaluationTip,
+    var that = this
+    indexRequest.Loadrequest().then((res) => {
+      // console.log(res)
+      let count = [(res[0].length > 0 ? 1 : 0), (res[1].length > 0 ? 1 : 0), (res[2].length > 0 ? 1 : 0)]
+      let memo = indexRequest.uncomfortString(res[5][0])
+      this.drawCircle(res[6][0].value)
+      that.setData({
+        evaluationScore: res[6][0].value,
+        evaluationState: indexRequest.evaluationStateList[res[6][0].value / 20],
+        evaluationTip: indexRequest.evaluationTipList[[res[6][0].value / 20]],
+        scaleFinish: count,
+        'functionCardData[1].memo': '上次记录:' + res[4][0].medicineName,
+        'functionCardData[2].memo': '上次记录:' + res[3][0].value + ' L/Min',
+        'functionCardData[0].memo': '上次记录:' + memo,
+      })
     })
+    // indexRequest.evaluateWithPEF().then((res) => {
+    //   console.log(res)
+    // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

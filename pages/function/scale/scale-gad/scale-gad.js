@@ -1,5 +1,8 @@
 // pages/function/scale/scale-gad/scale-gad.js
 const option = ["完全不会","偶尔几天","一半以上的日子","几乎每天"]
+import scaleRequest from "../../../../utils/Request"
+var util = require('../../../../utils/util.js');
+
 Page({
 
   /**
@@ -35,16 +38,16 @@ Page({
       optionNames:option,
       defaultIndex:0,
     }],
-    catAnswerIndex:[0,0,0,0,0,0,0],
+    gadAnswerIndex:['','','','','','',''],
     currentIndex:0  
   },
   qselectChange:function(e){
     let defaultIndex = 'questionData['+ e.target.dataset.index + '].defaultIndex'
-    let answer = 'catAnswerIndex[' + e.target.dataset.index + ']'
+    let answer = 'gadAnswerIndex[' + e.target.dataset.index + ']'
     let currentindex = this.data.currentIndex != 6? ++this.data.currentIndex:this.data.currentIndex
     this.setData({
-      [defaultIndex]: e.detail,
-      [answer]: e.detail,
+      [defaultIndex]: parseInt(e.detail),
+      [answer]: parseInt(e.detail),
       currentIndex: currentindex
     })
   },
@@ -64,7 +67,31 @@ Page({
     })   
   },
   submitAnswer: function(){
-    console.log(this.data.catAnswerIndex)
+    let score = scaleRequest.scaleScore(this.data.gadAnswerIndex)
+    if (score < 0) {
+      return false
+    }
+    let measureTime = util.formatTime(new Date())
+    let gadData = {
+      id: 0,
+      score: score,
+      duration:0,
+      answer: this.data.gadAnswerIndex.toString(),
+      measureTime: measureTime,
+    }
+    var dataSring = JSON.stringify(gadData);
+    console.log(dataSring)
+    scaleRequest.CommitRequest(dataSring, 2).then(res => {
+      console.log(res)
+      wx.showToast({
+        title:'上传成功',
+        duration:1500
+      })
+      setTimeout(() => {
+        wx.navigateBack()
+      }, 1500)
+
+    })
   },
   /**
    * 生命周期函数--监听页面加载

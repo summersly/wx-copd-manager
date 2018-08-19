@@ -1,4 +1,7 @@
 // pages/mine/mine-info/mine-info.js
+import indexRequest from "../../../utils/Request"
+const app = getApp()
+
 Page({
 
   /**
@@ -6,13 +9,13 @@ Page({
    */
   data: {
      mineInfo:{
-       name:'测试A',
-       sex:'男',
-       birthData:'1996-08-05',
-       age:'-1',
-       height:'-11',
-       weight:'00',
-       phoneNumber:'11011011010'
+       name:'',
+       sex:'',
+       birthDate:'',
+       age:'',
+       height:'',
+       weight:'',
+       phoneNumber:''
      }
   },
 
@@ -20,7 +23,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let age = indexRequest.calculateAge()
+    let birthDate = app.globalData.loginUserInfo.birthDate
+    birthDate = birthDate.split(' ')
+    this.setData({
+      'mineInfo.name':app.globalData.loginUserInfo.patientName,
+      'mineInfo.sex':app.globalData.loginUserInfo.sexCode == 'M'?'男':'女',
+      'mineInfo.birthDate':birthDate[0],
+      'mineInfo.age':age,
+      'mineInfo.height':app.globalData.loginUserInfo.newestHeight,
+      'mineInfo.weight':app.globalData.loginUserInfo.newestWeight,
+      'mineInfo.phoneNumber':app.globalData.loginUserInfo.phoneNumber,
+    })
   },
 
   /**

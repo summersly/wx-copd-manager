@@ -14,13 +14,13 @@
       <text>{{evaluationTip}}</text>
     </view>
   </view>
-  <navigator class="scale-card-navi" url="../function/scale/scale-index">
+  <navigator class="scale-card-navi" url="../function/scale/scale-index?scale={{scaleFinish}}">
     <view>
       <view class="scale-card-text">
         <text>量表填写</text>
-        <text>{{scaleFinish}}/3</text>
+        <text>{{scaleFinish[0]+scaleFinish[1]+scaleFinish[2]}}/3</text>
       </view>
-      <progress percent="{{scaleFinish / 3 * 100}}" stroke-width="6" activeColor="rgba(80, 94, 131, 1)" backgroundColor="white" active="{{true}}" />
+      <progress percent="{{(scaleFinish[0]+scaleFinish[1]+scaleFinish[2]) / 3 * 100}}" stroke-width="6" activeColor="rgba(80, 94, 131, 1)" backgroundColor="white" active="{{true}}" />
     </view>
     <view>
       <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/scale.png" mode='aspectFit' class="scale-icon" />

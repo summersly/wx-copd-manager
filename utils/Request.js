@@ -292,6 +292,7 @@ export default {
     evaluationTipList:evaluationTipList,
     evaluationStateList:evaluationStateList,
     CommitRequest:CommitRequest,
+    DateRequest:DateRequest,
     Loadrequest: Loadrequest,
     calculateAge:calculateAge,
     evaluateWithPEF: evaluateWithPEF,

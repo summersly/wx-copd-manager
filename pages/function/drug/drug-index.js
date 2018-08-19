@@ -1,4 +1,6 @@
 // pages/function/drug/drug-index.js
+import drugRequest from "../../../utils/Request"
+
 Page({
 
   /**
@@ -6,19 +8,41 @@ Page({
    */
   data: {
     drugHisData:[{
-      time:'14:30',
-      name:'信必可都宝'
-    },{
-      time:'14:56',
-      name:'噻托溴铵分吸入剂'
+      name:"111",
+      time:"11:11"
     }]
   },
-
+  addNew:function(){
+    wx.navigateTo({
+      url:"drug-add/drug-add"
+    })
+  },
+  reviewHistory:function(){
+    let data = JSON.stringify(this.data.drugHisData)
+    wx.navigateTo({
+      url:"drug-history/drug-history?data=" + data
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    drugRequest.DateRequest(5,0).then(res => {
+      // console.log(res)
+      let drugHisList = []
+      for (let item of res){
+        drugHisList = drugHisList.concat({
+          time: item.measureTime.slice(11,16),
+          name: item.medicineName
+        })
+      }
+      // console.log(drugHisList)
+      this.setData({
+        drugHisData:drugHisList
+      })
+    }).catch((err) => {
+
+    })
   },
 
   /**

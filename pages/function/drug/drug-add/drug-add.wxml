@@ -15,7 +15,4 @@
         </button>
     </view>
 </view>
-<drug-add-modal wx:if="{{showModal}}" 
-bindhideShowModal="hideM" 
-defaultName="{{drugNameList[nameIndex]}}"
-drugAdd="onDrugAdd"></drug-add-modal>
+<drug-add-modal wx:if="{{showModal}}" bindhideShowModal="hideM" defaultName="{{drugNameList[nameIndex]}}" binddrugAdd="onDrugAdd"></drug-add-modal>

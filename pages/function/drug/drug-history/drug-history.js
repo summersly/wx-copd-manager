@@ -24,17 +24,89 @@ Page({
         background:'#33ccff'
       }]
     })
+    let dateString = e.detail.year.toString().concat('-',e.detail.month,'-',e.detail.day)
+    console.log(dateString)
+    this.drugDateRequest(dateString).then(res => {
+      this.setData({
+        drugHisData:res
+      })
+    })
   },
   dateChange:function(e){
     this.setData({
       dayscolor:[]
     })
   },
+
+  drugDateRequest: function(dateString){
+    let patientId = wx.getStorageSync('patientid_token')
+    let start = dateString + ' ' + '00:00:01';
+    let end = dateString + ' ' + '23:59:59';
+    let header = {
+        'content-type': 'application/json'
+    }
+    let url = 'http://120.27.141.50:18908/data/fetch'
+    let method = 'POST'
+    let data = {
+        "patientId": patientId,
+        "start" : start,
+        "end": end,
+        "recordType" : 5
+    }
+    return new Promise((resolve, reject) => {
+        wx.request({
+            url: url,
+            header: header,
+            data: data,
+            method: method,
+            success: (res) => {
+                const { statusCode } = res
+                if (statusCode > 400 && statusCode < 500) {
+                    wx.showToast({
+                        title: '端口请求错啦' + statusCode,
+                        icon: 'none',
+                        duration: 1500
+                    })
+                } else if (statusCode > 500) {
+                    wx.showToast({
+                        title: '服务器请求失败' + statusCode,
+                        icon: 'none',
+                        duration: 1500
+                    })
+                }
+                if (res.data.flag == 200){
+                    resolve(res.data.recordList)
+                } else {
+                    resolve('')
+                }
+            },
+            fail: (err) => {
+                wx.showLoading({
+                    title: '网络错误!'
+                })
+                setTimeout(() => {
+                    wx.hideLoading()
+                }, 3000)
+                reject(err)
+            }
+        })
+    })
+},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let day = new Date().getDate()
+    console.log(day)
+    this.setData({
+      drugHisData:JSON.parse(options.data),
+      dayscolor:[{
+        month:'current',
+        day:day,
+        color:'white',
+        background:'#33ccff'
+      }]
+    })
   },
 
   /**

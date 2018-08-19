@@ -4,7 +4,7 @@
     height: 120rpx;
     display: flex;
     align-items: center;
-    padding-left: 20rpx;
+    padding-left: 10rpx;
     margin: 10rpx 0 20rpx 0;
     }
 .drug-his-item > view:first-child{
@@ -16,7 +16,7 @@
 .context{
     width: 80%;
     height: 100%;
-    margin-left: 10%;
+    margin-left: 62rpx;
     display: flex;
     align-items: center;
 	border: 1px solid #d8dce5;

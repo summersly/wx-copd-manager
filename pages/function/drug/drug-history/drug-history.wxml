@@ -4,10 +4,11 @@
     binddayClick="dayClick" 
     weeks-type="cn" 
     days-color="{{dayscolor}}" 
-    cell-size="42"
+    cell-size="38"
     bindnextMonth="dateChange"
     bindprevMonth="dateChange"
     binddateChange="dateChange"/>
 </view>
-
-<drug-his-list drugHisData="{{drugHisData}}"/>
+<view class="history">
+    <drug-his-list drugHisData="{{drugHisData}}"/>
+</view>

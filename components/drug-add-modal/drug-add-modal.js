@@ -39,7 +39,7 @@ Component({
         name: this.data.name || this.data.defaultName,
         time:this.data.time
       }
-      console.log(drug)
+      // console.log(drug)
       this.triggerEvent('drugAdd',drug)
       this.triggerEvent('hideShowModal')
     }

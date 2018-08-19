@@ -12,27 +12,6 @@ const evaluationStateList = ["未测评", "危险", "不佳", "中等", "良好"
 const getLastUrl = 'http://120.27.141.50:18908/data/GetLastGenericRecords'
 const fetchUrl = 'http://120.27.141.50:18908/data/fetch'
 const commitUrl = 'http://120.27.141.50:18908/data/commit'
-function uncomfortString(data){
-    let inflammation = parseInt(data.inflammation) 
-    let lung = parseInt(data.inflammation)
-    let heart = parseInt(data.heart)
-    let breath = parseInt(data.breath)
-    let result =''
-    if (inflammation & 1) result = result.concat('发烧,')
-    if (inflammation & 2) result = result.concat('咳嗽,')
-    if (inflammation & 4) result = result.concat('黄痰,')
-    if (inflammation & 8) result = result.concat('血痰,')
-    if (lung & 1) result = result.concat('活动后气短加重,')
-    if (lung & 2) result = result.concat('喘息,')
-    if (lung & 4) result = result.concat('气短,')
-    if (heart & 1) result = result.concat('反酸水,')
-    if (heart & 2) result = result.concat('腹胀,')
-    if (heart & 4) result = result.concat('腿肿,')
-    if (heart & 8) result = result.concat('消瘦,')
-    if (breath & 1) result = result.concat('嗜睡,')
-    if (breath & 2) result = result.concat('迷糊,')
-    return result  
-}
 
 function LastRequest(index) {
     let patientId = wx.getStorageSync('patientid_token')
@@ -287,13 +266,35 @@ function scaleScore(answer){
   return score
 }
 
+function uncomfortString(data){
+    let inflammation = parseInt(data.inflammation) 
+    let lung = parseInt(data.lung)
+    let heart = parseInt(data.heart)
+    let breath = parseInt(data.breath)
+    let result =''
+    if (inflammation & 1) result = result.concat('发烧,')
+    if (inflammation & 2) result = result.concat('黄痰,')
+    if (inflammation & 4) result = result.concat('咳嗽,')
+    if (inflammation & 8) result = result.concat('血痰,')
+    if (lung & 1) result = result.concat('活动后气短加重,')
+    if (lung & 2) result = result.concat('喘息,')
+    if (lung & 4) result = result.concat('气短,')
+    if (heart & 1) result = result.concat('反酸水,')
+    if (heart & 2) result = result.concat('腹胀,')
+    if (heart & 4) result = result.concat('腿肿,')
+    if (heart & 8) result = result.concat('消瘦,')
+    if (breath & 1) result = result.concat('嗜睡,')
+    if (breath & 2) result = result.concat('迷糊,')
+    return result? result:"正常,"  
+}
+
 export default {
-    evaluateWithPEF: evaluateWithPEF,
     evaluationTipList:evaluationTipList,
     evaluationStateList:evaluationStateList,
-    uncomfortString:uncomfortString,
+    CommitRequest:CommitRequest,
     Loadrequest: Loadrequest,
     calculateAge:calculateAge,
+    evaluateWithPEF: evaluateWithPEF,
     scaleScore:scaleScore,
-    CommitRequest:CommitRequest
+    uncomfortString:uncomfortString
 }

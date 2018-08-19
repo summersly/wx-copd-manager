@@ -1,0 +1,7 @@
+<!--pages/function/tips/uncomfort-tip.wxml-->
+<view class="container">
+    <view class="tip-card" wx:for="{{nameList}}" wx:key="index"> 
+        <label>{{item}}</label>
+        <view class="tip-content">{{tipList[index]}}</view>
+    </view>
+</view>

@@ -53,9 +53,9 @@ Page({
   onLoad: function () {
     var that = this
     indexRequest.Loadrequest().then((res) => {
-      // console.log(res)
+      console.log(res)
       let count = [(res[0].length > 0 ? 1 : 0), (res[1].length > 0 ? 1 : 0), (res[2].length > 0 ? 1 : 0)]
-      let memo = indexRequest.uncomfortString(res[5][0])
+      let memo = indexRequest.uncomfortString(res[5][0]).slice(0,-1)
       this.drawCircle(res[6][0].value)
       that.setData({
         evaluationScore: res[6][0].value,

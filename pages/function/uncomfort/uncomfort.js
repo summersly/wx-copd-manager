@@ -1,4 +1,7 @@
 // pages/function/uncomfort/uncomfort.js
+import scaleRequest from "../../../utils/Request"
+var util = require('../../../utils/util.js');
+
 Page({
 
   /**
@@ -12,7 +15,7 @@ Page({
     },
     uncomfData: [{
       name: "炎症表现",
-      options: ["发烧", "咳嗽", "黄痰", "血痰"],
+      options: ["发烧", "黄痰", "咳嗽", "血痰"],
       defaultIndex: [0, 0, 0, 0]
     }, {
       name: "肺功能下降",
@@ -59,9 +62,8 @@ Page({
       if (x) return inflammation += Math.pow(2,index)
     })
     // lung 计算时纠正index
-    let lungIndex = this.data.uncomfData[1].defaultIndex
-    let last = lungIndex[2]
-    lungIndex.pop()
+    let last = this.data.uncomfData[1].defaultIndex[2]
+    let lungIndex = this.data.uncomfData[1].defaultIndex.slice(0,-1)
     lungIndex.unshift(last)
     lungIndex.map((x,index) => {
       if (x) return lung += Math.pow(2,index)
@@ -81,6 +83,35 @@ Page({
   },
   submitRecord: function () {
     this.calculate()
+    let that = this
+    let measureTime = util.formatTime(new Date())
+    let uncomfortData = {
+      id: 0,
+      inflammation: this.data.inflammation,
+      lung: this.data.lung,
+      heart: this.data.heart,
+      breath: this.data.breath,
+      measureTime: measureTime,
+      memo:this.data.memo 
+    }
+    var dataSring = JSON.stringify(uncomfortData);
+    scaleRequest.CommitRequest(dataSring, 6).then(res => {
+      wx.showToast({
+        title:'上传成功',
+        duration:1500
+      })
+      setTimeout(() => {
+        if (that.data.state.defaultIndex){
+          wx.redirectTo({
+            url:"../tips/uncomfort-tip?data=" + dataSring
+          })
+        } else {
+          wx.navigateBack()
+        }
+      }, 1500)
+
+    })
+
   },
   /**
    * 生命周期函数--监听页面加载

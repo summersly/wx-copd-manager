@@ -15,7 +15,8 @@
     "pages/function/drug/drug-history/drug-history",
     "pages/register/register",
     "pages/mine/mine-info/mine-info",
-    "pages/function/tips/uncomfort-tip"
+    "pages/function/tips/uncomfort-tip",
+    "pages/function/tips/cat-tip"
   ],
   "window": {
     "backgroundTextStyle": "light",

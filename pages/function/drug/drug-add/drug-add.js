@@ -1,5 +1,7 @@
 // pages/function/drug/drug-add/drug-add.js
-// const drugNameList = ['舒利迭','噻托溴铵粉吸入剂','信必可都保','舒瑞灵','氨茶碱片','']
+import drugRequest from "../../../../utils/Request"
+var util = require('../../../../utils/util.js');
+
 Page({
 
   /**
@@ -38,7 +40,6 @@ Page({
     drugNameList: ['舒利迭', '噻托溴铵粉吸入剂', '信必可都保', '舒瑞灵', '氨茶碱片', '']
   },
   showM: function (e) {
-    console.log(e)
     this.setData({
       nameIndex: e.target.dataset.index,
       showModal: true
@@ -50,10 +51,34 @@ Page({
     })
   },
   onDrugAdd: function (e) {
-    console.log(e.detail)
-    let data = {
-    
+    let time = util.formatDay(new Date()) + ' ' + e.detail.time + ':00'
+    let name = e.detail.name 
+    if (!name){
+      wx.showToast({
+        title:'请输入药名',
+        icon:'none',
+        duration:1500
+      })
+      return
     }
+    let drugData = {
+      id: 0,
+      medicineName: name,
+      measureTime: time,
+    }
+    var dataSring = JSON.stringify(drugData);
+    console.log(dataSring)
+    drugRequest.CommitRequest(dataSring, 5).then(res => {
+      // console.log(res)
+      wx.showToast({
+        title:'上传成功',
+        duration:1500
+      })
+      setTimeout(() => {
+        wx.navigateBack()
+      }, 1300)
+
+    })
   },
   /**
    * 生命周期函数--监听页面加载

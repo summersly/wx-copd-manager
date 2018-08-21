@@ -80,9 +80,14 @@ Page({
       measureTime: measureTime,
     }
     var dataSring = JSON.stringify(gadData);
-    console.log(dataSring)
+    // console.log(dataSring)
     scaleRequest.CommitRequest(dataSring, 2).then(res => {
-      console.log(res)
+      // console.log(res)
+      let Pages = getCurrentPages()
+      let prevPage = Pages[Pages.length -2]
+      prevPage.setData({
+        'scaleCardData[2].memo' : '本月已填写',
+      })
       wx.showToast({
         title:'上传成功',
         duration:1500

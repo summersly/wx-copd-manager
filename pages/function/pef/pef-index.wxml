@@ -1,10 +1,12 @@
 <!-- pages/function/pef/pef-index.wxml -->
 <view class="main-container">
-    <view class="chart">placeholder</view>
+    <view class="chart">
+      <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </view>
     <view class="pef-input-content">
         <view class="item">
             <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/time.png" />
-            <label>服药时间</label>
+            <label>记录时间</label>
             <view class="modal-input">
                 <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
                     <view>{{time}}</view>
@@ -15,7 +17,7 @@
             <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/PEFinput.png" />
             <label>峰流速 L/min</label>
             <view class="modal-input {{defaultName.length?'none-border':''}}">
-                <input type="text" bindinput="bindPEFInput" value="{{name || defaultName}}" disabled="{{defaultName.length}}"></input>
+                <input type="digit" bindinput="bindPEFInput" value="{{pef}}"/>
             </view>
         </view>
     </view>

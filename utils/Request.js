@@ -13,7 +13,7 @@ const getLastUrl = 'http://120.27.141.50:18908/data/GetLastGenericRecords'
 const fetchUrl = 'http://120.27.141.50:18908/data/fetch'
 const commitUrl = 'http://120.27.141.50:18908/data/commit'
 
-function LastRequest(index) {
+function LastRequest(index,num = 1) {
     let patientId = wx.getStorageSync('patientid_token')
     let header = {
         'content-type': 'application/json'
@@ -23,7 +23,7 @@ function LastRequest(index) {
     let data = {
         "patientId": patientId,
         "recordType": index,
-        "num": 1
+        "num": num
     }
     return new Promise((resolve, reject) => {
         wx.request({
@@ -213,7 +213,6 @@ function evaluateWithPEF() {
     let age = calculateAge()
     let result = 0
     return Promise.all([LastRequest(1),LastRequest(4)]).then((req) =>{
-        console.log(req)
         let CatScore = req[0][0].score
         let PefScore = req[1][0].value
         if (sex == "M") {
@@ -247,6 +246,7 @@ function evaluateWithPEF() {
             evaluationTip: evaluationTipList[result],
             evaluationState: evaluationStateList[result]
         }
+        // console.log(evaluation)
         return evaluation;
     })
 }
@@ -292,6 +292,7 @@ export default {
     evaluationTipList:evaluationTipList,
     evaluationStateList:evaluationStateList,
     CommitRequest:CommitRequest,
+    LastRequest:LastRequest,
     DateRequest:DateRequest,
     Loadrequest: Loadrequest,
     calculateAge:calculateAge,

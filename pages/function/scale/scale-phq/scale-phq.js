@@ -88,9 +88,14 @@ Page({
       measureTime: measureTime,
     }
     var dataSring = JSON.stringify(phqData);
-    console.log(dataSring)
+    // console.log(dataSring)
     scaleRequest.CommitRequest(dataSring, 3).then(res => {
-      console.log(res)
+      // console.log(res)
+      let Pages = getCurrentPages()
+      let prevPage = Pages[Pages.length -2]
+      prevPage.setData({
+        'scaleCardData[1].memo' : '本月已填写',
+      })
       wx.showToast({
         title:'上传成功',
         duration:1500

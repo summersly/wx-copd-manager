@@ -31,14 +31,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.scale)
-    let scaleFinish = options.scale.split(',').map(data=>{return parseInt(data)})
-    console.log(scaleFinish)
-    this.setData({
-      'scaleCardData[0].memo' : scaleCardWeekMemo[scaleFinish[0]],
-      'scaleCardData[1].memo' : scaleCardMonthMemo[scaleFinish[1]],
-      'scaleCardData[2].memo' : scaleCardMonthMemo[scaleFinish[2]],
-    })
+    // console.log(options.scale)
+    if (options.scale) {
+      let scaleFinish = options.scale.split(',').map(data=>{return parseInt(data)})
+      this.setData({
+        'scaleCardData[0].memo' : scaleCardWeekMemo[scaleFinish[0]],
+        'scaleCardData[1].memo' : scaleCardMonthMemo[scaleFinish[1]],
+        'scaleCardData[2].memo' : scaleCardMonthMemo[scaleFinish[2]],
+      })
+    }
   },
 
   /**

@@ -15,7 +15,7 @@ Page({
     }]
   },
   dayClick:function(e){
-    console.log(e.detail);
+    // console.log(e.detail);
     this.setData({
       dayscolor:[{
         month:'current',
@@ -25,10 +25,17 @@ Page({
       }]
     })
     let dateString = e.detail.year.toString().concat('-',e.detail.month,'-',e.detail.day)
-    console.log(dateString)
+    // console.log(dateString)
     this.drugDateRequest(dateString).then(res => {
+      let drugHisList = []
+      for (let item of res){
+        drugHisList = drugHisList.concat({
+          time: item.measureTime.slice(11,16),
+          name: item.medicineName
+        })
+      }
       this.setData({
-        drugHisData:res
+        drugHisData:drugHisList
       })
     })
   },
@@ -97,7 +104,7 @@ Page({
    */
   onLoad: function (options) {
     let day = new Date().getDate()
-    console.log(day)
+    // console.log(day)
     this.setData({
       drugHisData:JSON.parse(options.data),
       dayscolor:[{

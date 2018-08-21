@@ -1,9 +1,22 @@
 /* pages/function/pef/pef-index.wxss */
 .chart{
     width: 650rpx;
-    height: 500rpx;
-    border: 1px solid;
+    height: 400rpx;
+    margin-top: 20rpx;
+    margin-bottom: 60rpx;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 6px 1px;
+    
 }
+
+ec-canvas {
+    width: 90%;
+    height: 460rpx;
+    position: absolute;
+    top: 20rpx;
+    left: 60rpx;
+}
+  
 .pef-input-content{
     padding: 20rpx 40rpx 20rpx 0;
 }

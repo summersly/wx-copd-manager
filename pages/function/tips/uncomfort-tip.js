@@ -23,7 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    // console.log(options)
     let data = JSON.parse(options.data)
     let nameList = [] ,tipList = []
     let inflammation = parseInt(data.inflammation) 

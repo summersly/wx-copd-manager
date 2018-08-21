@@ -51,22 +51,6 @@ Page({
 
   },
   onLoad: function () {
-    var that = this
-    indexRequest.Loadrequest().then((res) => {
-      console.log(res)
-      let count = [(res[0].length > 0 ? 1 : 0), (res[1].length > 0 ? 1 : 0), (res[2].length > 0 ? 1 : 0)]
-      let memo = indexRequest.uncomfortString(res[5][0]).slice(0,-1)
-      this.drawCircle(res[6][0].value)
-      that.setData({
-        evaluationScore: res[6][0].value,
-        evaluationState: indexRequest.evaluationStateList[res[6][0].value / 20],
-        evaluationTip: indexRequest.evaluationTipList[[res[6][0].value / 20]],
-        scaleFinish: count,
-        'functionCardData[1].memo': '上次记录:' + res[4][0].medicineName,
-        'functionCardData[2].memo': '上次记录:' + res[3][0].value + ' L/Min',
-        'functionCardData[0].memo': '上次记录:' + memo,
-      })
-    })
     // indexRequest.evaluateWithPEF().then((res) => {
     //   console.log(res)
     // })
@@ -85,4 +69,22 @@ Page({
     cxt_arc.stroke();
     cxt_arc.draw();
   },
+  onShow: function () {
+    var that = this
+    indexRequest.Loadrequest().then((res) => {
+      console.log(res)
+      let count = [(res[0].length > 0 ? 1 : 0), (res[1].length > 0 ? 1 : 0), (res[2].length > 0 ? 1 : 0)]
+      let memo = indexRequest.uncomfortString(res[5][0]).slice(0, -1)
+      this.drawCircle(res[6][0].value)
+      that.setData({
+        evaluationScore: res[6][0].value,
+        evaluationState: indexRequest.evaluationStateList[res[6][0].value / 20],
+        evaluationTip: indexRequest.evaluationTipList[[res[6][0].value / 20]],
+        scaleFinish: count,
+        'functionCardData[1].memo': '上次记录:' + res[4][0].medicineName,
+        'functionCardData[2].memo': '上次记录:' + res[3][0].value + ' L/Min',
+        'functionCardData[0].memo': '上次记录:' + memo,
+      })
+    })
+  }
 })

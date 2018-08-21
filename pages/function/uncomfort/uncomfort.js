@@ -1,5 +1,5 @@
 // pages/function/uncomfort/uncomfort.js
-import scaleRequest from "../../../utils/Request"
+import uncomfortRequest from "../../../utils/Request"
 var util = require('../../../utils/util.js');
 
 Page({
@@ -94,8 +94,16 @@ Page({
       measureTime: measureTime,
       memo:this.data.memo 
     }
+    if (that.data.state.defaultIndex && !uncomfortData.inflammation && !uncomfortData.lung && !uncomfortData.heart && !uncomfortData.breath && !uncomfortData.memo){
+      wx.showToast({
+        title:'尚未输入任何不适情况',
+        icon:'none',
+        duration:1500
+      })
+      return
+    }
     var dataSring = JSON.stringify(uncomfortData);
-    scaleRequest.CommitRequest(dataSring, 6).then(res => {
+    uncomfortRequest.CommitRequest(dataSring, 6).then(res => {
       wx.showToast({
         title:'上传成功',
         duration:1500
@@ -108,10 +116,9 @@ Page({
         } else {
           wx.navigateBack()
         }
-      }, 1500)
+      }, 1300)
 
     })
-
   },
   /**
    * 生命周期函数--监听页面加载

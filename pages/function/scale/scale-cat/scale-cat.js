@@ -84,17 +84,33 @@ Page({
       measureTime: measureTime,
     }
     var dataSring = JSON.stringify(catData);
-    console.log(dataSring)
+    // console.log(dataSring)
     scaleRequest.CommitRequest(dataSring, 1).then(res => {
-      console.log(res)
+      let Pages = getCurrentPages()
+      let prevPage = Pages[Pages.length -2]
+      prevPage.setData({
+        'scaleCardData[0].memo' : '本周已填写',
+      })
       wx.showToast({
         title:'上传成功',
         duration:1500
       })
-      setTimeout(() => {
-        wx.navigateBack()
-      }, 1500)
-
+      scaleRequest.evaluateWithPEF().then(res => {
+        let evaluation = res
+        let ds = JSON.stringify({
+          id: 0,
+          measureTime: measureTime,
+          value: evaluation.score
+        })
+        setTimeout(() => {
+          wx.navigateTo({
+            url:'../../tips/cat-tip?score='+evaluation.score
+          })
+          scaleRequest.CommitRequest(ds, 7).then(() => {
+            console.log('evaluation update')
+          })
+        }, 1000)
+      })
     })
   },
   /**

@@ -16,6 +16,31 @@ const commitUrl = 'http://120.27.141.50:18908/data/commit'
 const validateUrl = BASEURL + 'ValidateRegister'
 const registUrl = BASEURL + 'WapRegistWithPatientInfo'
 
+export const request = ({ data = {}, url = '' , method = 'GET' }) => {
+    let header = {
+      'content-type': 'application/json'
+    }
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: url,
+        header: header,
+        data: data,
+        method: method,
+        success: (res) => {
+          resolve(res)
+        },
+        fail: (err) => {
+          wx.showLoading({
+            title: '网络错误!'
+          })
+          setTimeout(() => {
+            wx.hideLoading()
+          }, 3000)
+          reject(err)
+        }
+      })
+    })
+  } 
 /**
  * 获取最新数据，index指定type, 默认数量为1
  */

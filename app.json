@@ -16,7 +16,9 @@
     "pages/register/register",
     "pages/mine/mine-info/mine-info",
     "pages/function/tips/uncomfort-tip",
-    "pages/function/tips/cat-tip"
+    "pages/function/tips/cat-tip",
+    "pages/class/video/video",
+    "pages/class/message/message"
   ],
   "window": {
     "backgroundTextStyle": "light",

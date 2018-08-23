@@ -177,16 +177,27 @@ Page({
   onShow: function () {
     var that = this;
     this.ecComponent = this.selectComponent('#mychart-dom-bar');
-    // 请求最近15次记录
+    // 请求最近15次记录,若不足15次请求上个月的数据
     pefRequest.LastRequest(4, 15).then(res => {
-      let dataList = res.map((item) => {
-        return item.value
-      })
-      that.setData({
-        dataList: dataList
-      })
-      // console.log(dataList)
-      that.init()
+      if (!res) {
+        pefRequest.DateRequest(4,2).then(res2 => {
+          let dataList = res2.map((item) => {
+            return item.value
+          })
+          that.setData({
+            dataList: dataList
+          })
+          that.init()
+        })
+      } else {
+        let dataList = res.map((item) => {
+          return item.value
+        })
+        that.setData({
+          dataList: dataList
+        })
+        that.init()
+      }
     }).catch(err => {
 
     })

@@ -1,11 +1,31 @@
-<!--pages/class/class.wxml-->
-<top-tbbar tabbarData="{{tabbarData}}"> 
+<!-- pages/class/class.wxml -->
+<top-tbbar tabbarData="{{tabbarData}}" bindscroll="getMoreKno">
     <view slot="toptab0">
-        <video src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/test.mp4"></video>
-
+        <navigator class="video-item" wx:for="{{proVideo}}" wx:key="index" url="video/video?url={{item.videoUrl}}">
+            <image src="{{item.videoPic}}" mode="aspectFit" />
+            <text>{{item.videoName}}</text>
+        </navigator>
+        <view style="height:100rpx;"></view>
     </view>
-    <view slot="toptab1">2</view>
-    <view slot="toptab2">3</view>
-    <view slot="toptab3">4</view>
+    <view slot="toptab1">
+        <navigator class="video-item" wx:for="{{medVideo}}" wx:key="index" url="video/video?url={{item.videoUrl}}">
+            <image src="{{item.videoPic}}" mode="aspectFit" />
+            <text>{{item.videoName}}</text>
+        </navigator>
+        <view style="height:100rpx;"></view>
+    </view>
+    <view slot="toptab2">
+        <navigator class="kno-item" wx:for="{{knoArr}}" wx:key="index" url="message/message?id={{item.knoId}}&read={{item.knoIfRead}}&like={{item.knoIfFavorite}}">
+            <text>{{item.knoName}}</text>
+            <text>{{item.knoTime}}</text>
+        </navigator>
+        <view style="height:100rpx;"></view>
+    </view>
+    <view slot="toptab3">
+        <navigator class="kno-item" wx:for="{{mesArr}}" wx:key="index" url="message/message?id={{item.knoId}}&read={{item.knoIfRead}}&like={{item.knoIfFavorite}}">
+            <text>{{item.knoName}}</text>
+            <text>{{item.knoTime}}</text>
+        </navigator>
+        <view style="height:100rpx;"></view>
+    </view>
 </top-tbbar>
-

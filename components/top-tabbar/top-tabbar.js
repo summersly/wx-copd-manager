@@ -30,6 +30,10 @@ Component({
       this.setData({
         activeIndex: e.detail.current
       })     
+    },
+    scrollLower :function(e){
+      // console.log(e)
+      this.triggerEvent('scroll', e.target.dataset)      
     }
   }
 })

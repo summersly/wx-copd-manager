@@ -1,0 +1,12 @@
+<!--components/num-input/num-input.wxml-->
+  <view class='number-input'>
+    <view class="input-name">
+      <label>{{model.name}}</label>
+    </view>
+    <view class="input-item">
+      <input type='{{model.type}}' value="{{model.value}}" placeholder="{{model.placeholder}}" bindinput="changeValue"/>
+    </view>
+    <view class="input-unit" wx:if="{{model.unit}}">
+      <label>{{model.unit}}</label>
+    </view>
+  </view>

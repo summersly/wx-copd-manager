@@ -90,9 +90,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "catrip",
-					"pathName": "pages/function/tips/cat-tip"
+					"id": 9,
+					"name": "register",
+					"pathName": "pages/register/register",
+					"query": ""
 				}
 			]
 		}

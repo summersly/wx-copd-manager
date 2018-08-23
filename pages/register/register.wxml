@@ -1,2 +1,73 @@
-<!--pages/register/register.wxml-->
-<text>pages/register/register.wxml</text>
+<!-- pages/register/register.wxml -->
+<view class='container'>
+    <view class="progress-group">
+        <progress percent="{{33.3*currentIndex}}" activeColor="#33ccff" backgroundColor="#eee" class="progress" />
+        <view class="progress-label">
+            <view style="{{currentIndex >= 0 ? 'border-color: #33ccff':''}}"></view>
+            <label>身份核验</label>
+        </view>
+        <view class="progress-label">
+            <view style="{{currentIndex >= 1 ? 'border-color: #33ccff':''}}"></view>
+            <label>个人信息</label>
+        </view>
+        <view class="progress-label">
+            <view style="{{currentIndex >= 2 ? 'border-color: #33ccff':''}}"></view>
+            <label>管理信息</label>
+        </view>
+        <view class="progress-label">
+            <view style="{{currentIndex >= 3 ? 'border-color: #33ccff':''}}"></view>
+            <label>注册完成</label>
+        </view>
+    </view>
+    <view class="validate-group" wx:if="{{currentIndex==0}}">
+        <num-input model="{{patientId}}" bindmychange='changePatientID' />
+        <num-input model="{{patientName}}" bindmychange='changePatientName' />
+        <button bindtap="validate">身份核验</button>
+    </view>
+    <view class="person-info-group" wx:if="{{currentIndex==1}}">
+        <view class="validate-info">
+            <text>{{patientName.value}}</text>
+            <text>{{patientId.value}}</text>
+        </view>
+        <radio-input model="{{sex}}" bindmychange='changeSexSelect' />
+        <num-input model="{{identityCardNumber}}" bindmychange="changeIdentityCardNumber" />
+        <num-input model="{{phoneNumber}}" bindmychange="changePhoneNumber" />
+        <num-input model="{{password}}" bindmychange="changePassword" />
+        <num-input model="{{passwordCheck}}" bindmychange="changePasswordCheck" />
+        <view class="btn">
+            <button bindtap="returnBack">上一步</button>
+            <button bindtap="personInfoValidate">下一步</button>
+        </view>
+    </view>
+    <view class="manager-info-group" wx:if="{{currentIndex>=2}}">
+        <view class="validate-info">
+            <text>{{patientName.value}}</text>
+            <text>{{patientId.value}}</text>
+        </view>
+        <num-input model="{{height}}" bindmychange="changeHeight" />
+        <num-input model="{{weight}}" bindmychange="changeWeight" />
+        <!-- 生日  默认值 -->
+        <picker-input model="{{birthDate}}" bindmychange="changebirthDate" />
+        <!-- <num-input model="{{birthDate}}" bindmychange="changebirthDate" /> -->
+        <radio-input model="{{smoke}}" bindmychange='changeSmokeSelect' />
+        <!-- 学历 职业 picker -->
+        <picker-input model="{{education}}" bindmychange="changeEducation" />
+        <picker-input model="{{profession}}" bindmychange="changeProfession" />
+        <!-- 家庭住址 -->
+        <view class='address-input'>
+            <view class="input-name">
+                <label>{{address.name}}</label>
+            </view>
+            <view class="input-item">
+                <picker mode="{{address.mode}}" value='{{address.value}}' bindchange='changeAddressPicker'>
+                    <view class="picker-tip">请先选择省市区</view>
+                </picker>
+                <textarea class="value" value="{{address.value}}" cursor-spacing="20" bindinput="changeAddressInput" />
+            </view>
+        </view>
+        <view class='btn'>
+            <button bindtap="returnBack">上一步</button>
+            <button bindtap="managerInfoValidate">注册</button>
+        </view>
+    </view>
+</view>

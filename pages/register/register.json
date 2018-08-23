@@ -1,1 +1,8 @@
-{}
+{
+  "navigationBarTitleText": "新用户注册",
+  "usingComponents": {
+    "num-input":"../../components/num-input/num-input",
+    "radio-input":"../../components/radio-input/radio-input",
+    "picker-input":"../../components/picker-input/picker-input"
+  }
+}

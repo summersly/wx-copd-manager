@@ -96,20 +96,22 @@ Page({
         duration:1500
       })
       scaleRequest.evaluateWithPEF().then(res => {
-        let evaluation = res
-        let ds = JSON.stringify({
-          id: 0,
-          measureTime: measureTime,
-          value: evaluation.score
-        })
-        setTimeout(() => {
-          wx.navigateTo({
-            url:'../../tips/cat-tip?score='+evaluation.score
+        if (res){
+          let evaluation = res
+          let ds = JSON.stringify({
+            id: 0,
+            measureTime: measureTime,
+            value: evaluation.score
           })
-          scaleRequest.CommitRequest(ds, 7).then(() => {
-            console.log('evaluation update')
-          })
-        }, 1000)
+          setTimeout(() => {
+            wx.navigateTo({
+              url:'../../tips/cat-tip?score='+evaluation.score
+            })
+            scaleRequest.CommitRequest(ds, 7).then(() => {
+              console.log('evaluation update')
+            })
+          }, 1000)
+        }
       })
     })
   },

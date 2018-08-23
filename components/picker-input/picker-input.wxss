@@ -1,0 +1,41 @@
+/* components/picker-input/picker-input.wxss */
+.picker-input {
+    width: 650rpx;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+  }
+  .input-name{
+    width: 30%;
+  }
+  .input-name > label {
+    width: auto;
+    font-size: 20px;
+    font-family: "PingFangSC-Regular", "PingFang SC";
+    font-weight: 500;
+    font-style: normal;
+    text-align: left;
+    color: black;
+    padding: 0px 5px;
+  }
+  
+   picker {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+  }
+  .input-item {
+    padding-left: 10px;
+    width: 50%;
+    margin-left: 15rpx;
+}
+.value{
+    width: 300rpx;
+    height: 40px;
+    line-height: 40px;
+  }
+  

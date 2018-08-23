@@ -47,16 +47,18 @@ Page({
     pefRequest.CommitRequest(dataSring, 4).then(res => {
       // console.log(res)
       pefRequest.evaluateWithPEF().then(res => {
-        let evaluation = res
-        let ds = JSON.stringify({
-          id: 0,
-          measureTime: time,
-          value: evaluation.score
-        })
-        // console.log(ds)
-        pefRequest.CommitRequest(ds, 7).then(res => {
-          console.log('evaluation update')
-        })
+        if(res){
+          let evaluation = res
+          let ds = JSON.stringify({
+            id: 0,
+            measureTime: time,
+            value: evaluation.score
+          })
+          // console.log(ds)
+          pefRequest.CommitRequest(ds, 7).then(res => {
+            console.log('evaluation update')
+          })
+        }
       })
       wx.showToast({
         title: '上传成功',

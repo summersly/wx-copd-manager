@@ -1,2 +1,17 @@
-<!--pages/class/message/message.wxml-->
-<text>pages/class/message/message.wxml</text>
+<!-- pages/class/message/message.wxml -->
+<view class='container' wx:if='{{showPage}}'>
+    <view class='article-title'>{{name}}</view>
+    <view class='article-info'>
+        <text>{{time}}</text>
+        <text>{{knoIfRead?'阅读完成':'尚未阅读'}}</text>
+        <image src="{{knoIfFavorite?like:dislike}}" mode="aspectFit" bindtap="recordLike"/>
+    </view>
+    <!-- <view class='article-litpic'>
+    <rich-text nodes='{{img}}'></rich-text>
+  </view> -->
+    <!-- <view class='article-des'>阅读本文大概需要{{readtime}}分钟</view> -->
+    <import src="../../../wxParser/index.wxml" />
+    <view class="wxParser">
+        <template is="wxParser" data="{{wxParserData:richText.nodes}}" />
+    </view>
+</view>

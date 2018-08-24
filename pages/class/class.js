@@ -18,6 +18,8 @@ Page({
     mesArr: [],
     knoPage: 2,
     mesPage: 2,
+    dislike:'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/like_dis.png',
+    like:'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/like.png'
   },
 
   getMoreKno: function (e) {

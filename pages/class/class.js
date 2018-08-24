@@ -121,7 +121,7 @@ Page({
       // console.log(res.data)
       if (res.data.result.current_item_count <= 0) {
         wx.showToast({
-          title: '推送消息获取失败',
+          title: '暂无消息推送',
           icon: 'none'
         })
       } else {
@@ -146,7 +146,7 @@ Page({
       // console.log(res.data)
       if (res.data.result.current_item_count <= 0) {
         wx.showToast({
-          title: '健康知识获取失败',
+          title: '暂无健康知识推荐',
           icon: 'none'
         })
       } else {

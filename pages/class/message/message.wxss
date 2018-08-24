@@ -33,18 +33,3 @@
     height: 40rpx;
     margin: 0 15rpx;
 }
-  /* .article-litpic {
-    text-align: center;
-  }
-  
-  .article-des {
-    background-color: #e4e4e4;
-    color: #03a9f4;
-    padding-left: 2.5%;
-    margin-top: 2.5%;
-    padding-top: 2.5%;
-    padding-bottom: 2%;
-    font-weight: 600;
-    line-height: 35rpx;
-    font-size: 35rpx;
-  } */

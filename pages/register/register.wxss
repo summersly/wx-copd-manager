@@ -138,6 +138,10 @@
     color: #33ccff;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     border-bottom: #33ccff 1px dotted;
+}
+.validate-info text{
+    width: 50%;
+    text-align: center;
 }

@@ -1,4 +1,6 @@
-{    "usingComponents": {
+{   
+  "navigationBarTitleText": "抑郁量表",
+   "usingComponents": {
     "scale-card-tip":"../../../../components/scale-card-tip/scale-card-tip",
     "scale-card-select":"../../../../components/scale-card-select/scale-card-select"
   }

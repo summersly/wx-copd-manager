@@ -4,6 +4,7 @@ const professionArr = ["工人", "农民", "科技", "行政", "教师", "金融
 const sexArr = ["男", "女"]
 const smokeArr = ['否', '是']
 import registRequest from "../../utils/Request"
+import { request } from '../../utils/Request'
 Page({
 
   /**
@@ -101,6 +102,7 @@ Page({
       name: '家庭住址',
       mode: 'region',
       value: '',
+      valueArr:['宁夏回族自治区','银川市','兴庆区']
     },
     // 页面
     currentIndex: 0,
@@ -174,7 +176,8 @@ Page({
   },
   changeAddressPicker: function (e) {
     this.setData({
-      'address.value': e.detail.value.join(',')
+      'address.value': e.detail.value.join(','),
+      'address.valueArr':e.detail.value
     })
   },
   changeAddressInput: function (e) {
@@ -311,6 +314,16 @@ Page({
     registRequest.registWithInfo(patientId,dataSring).then(res => {
       this.setData({
         currentIndex:3
+      })
+      request({
+        url:'http://120.27.141.50/copd/message/updateNewUserKnowledge?newUserId=' + patientId
+      }).then(res=>{
+        // if(res.data.result != "ok"){
+        //   wx.showToast({
+        //     title: '暂无新知识推荐',
+        //     icon: 'none'
+        //   })
+        // }
       })
       wx.showLoading({
         title:'立刻登陆吧'

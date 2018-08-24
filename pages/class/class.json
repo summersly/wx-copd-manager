@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "COPD知识课堂",
     "usingComponents": {
         "top-tbbar": "../../components/top-tabbar/top-tabbar"
     }

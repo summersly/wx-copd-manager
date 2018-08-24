@@ -2,5 +2,5 @@
     "usingComponents": {
         "ec-canvas": "../../../components/ec-canvas/ec-canvas"
       },
-    "navigationBarTitleText": "PEF "
+    "navigationBarTitleText": "PEF监测"
 }

@@ -33,7 +33,7 @@
         <num-input model="{{identityCardNumber}}" bindmychange="changeIdentityCardNumber" />
         <num-input model="{{phoneNumber}}" bindmychange="changePhoneNumber" />
         <num-input model="{{password}}" bindmychange="changePassword" />
-        <num-input model="{{passwordCheck}}" bindmychange="changePasswordCheck" />
+        <num-input model="{{passwordCheck}}" cursor-spacing="30" bindmychange="changePasswordCheck" />
         <view class="btn">
             <button bindtap="returnBack">上一步</button>
             <button bindtap="personInfoValidate">下一步</button>
@@ -59,10 +59,10 @@
                 <label>{{address.name}}</label>
             </view>
             <view class="input-item">
-                <picker mode="{{address.mode}}" value='{{address.value}}' bindchange='changeAddressPicker'>
+                <picker mode="{{address.mode}}" value='{{address.valueArr}}' bindchange='changeAddressPicker'>
                     <view class="picker-tip">请先选择省市区</view>
                 </picker>
-                <textarea class="value" value="{{address.value}}" cursor-spacing="20" bindinput="changeAddressInput" />
+                <textarea class="value" value="{{address.value}}" cursor-spacing="40" bindinput="changeAddressInput" />
             </view>
         </view>
         <view class='btn'>

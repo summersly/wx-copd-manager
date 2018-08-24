@@ -15,7 +15,7 @@
         <view wx:for="{{uncomfData}}" wx:key="index" wx:if="{{state.defaultIndex == 1}}">
             <uncomf-select uncomfSelectData="{{item}}" bindselectChange="selectRecord" data-type="{{index}}"></uncomf-select>
         </view>
-        <textarea wx:if="{{state.defaultIndex == 1}}" placeholder="备注" value="{{memo}}" bindinput="memoInput"></textarea>
+        <textarea wx:if="{{state.defaultIndex == 1}}" placeholder="备注" value="{{memo}}" cursor-spacing="40" bindinput="memoInput"></textarea>
         <button bindtap="submitRecord">保存</button>
     </view>
 </view>

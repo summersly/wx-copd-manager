@@ -18,7 +18,8 @@
     "pages/function/tips/uncomfort-tip",
     "pages/function/tips/cat-tip",
     "pages/class/video/video",
-    "pages/class/message/message"
+    "pages/class/message/message",
+    "pages/mine/mine-collection/collection"
   ],
   "window": {
     "backgroundTextStyle": "light",

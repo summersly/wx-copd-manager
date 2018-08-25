@@ -30,7 +30,7 @@ Page({
     ],
     evaluationScore: 0,
     evaluationState: '未测评',
-    evaluationTip: '请继续保持!记得要按时完成任务哦',
+    evaluationTip: '请填写CAT量表，并进行峰流速记录',
     scaleFinish: [0, 0, 0],
   },
   //事件处理函数

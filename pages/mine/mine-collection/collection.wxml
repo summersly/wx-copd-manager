@@ -1,0 +1,10 @@
+<!-- pages/mine/mine-collection/collection.wxml -->
+<scroll-view scroll-y="{{true}}" style="width:100vw;height:100vh" bindscrolltolower="getMoreKno">
+    <navigator wx:if="{{item.knoIfFavorite}}" class="kno-item" wx:for="{{knoArr}}" wx:key="index" url="../../class/message/message?id={{item.knoId}}&read={{item.knoIfRead}}&like={{item.knoIfFavorite}}&mark=[0,{{index}}]">
+        <text>{{item.knoName}}</text>
+        <view class="subtitle">
+            <text>{{item.knoTime}}</text>
+            <text>{{item.knoIfRead?'阅读完成':'尚未阅读'}}</text>
+        </view>
+    </navigator>
+</scroll-view>

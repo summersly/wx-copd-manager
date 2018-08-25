@@ -8,14 +8,20 @@ Page({
     imgSrc: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/arrowgray.png'
   },
 
+  noneUrlToast: function () {
+    wx.showToast({
+      title:'功能尚未开通',
+      icon:'none'
+    })
+  },
   quit: function () {
-    try{
+    try {
       wx.removeStorageSync('patientid_token')
       wx.removeStorageSync('password_token')
     } catch (e) {
       wx.showToast({
-        title:'清除缓存失败',
-        icon:'none'
+        title: '清除缓存失败',
+        icon: 'none'
       })
     }
     wx.reLaunch({

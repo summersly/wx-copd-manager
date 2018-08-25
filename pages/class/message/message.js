@@ -50,7 +50,7 @@ Page({
    */
   onLoad: function (options) {
     wx.showLoading()
-    console.log(options)
+    // console.log(options)
     let that = this
     let id = options.id
     let read = JSON.parse(options.read)
@@ -65,7 +65,7 @@ Page({
     request({
       url: knoBaseUrl + id
     }).then(res => {
-      console.log(res)
+      // console.log(res)
       this.setData({
         name: res.data.title,
         time: res.data.createTime

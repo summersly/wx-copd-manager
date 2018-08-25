@@ -46,7 +46,7 @@ ec-canvas {
     display: flex;
     align-items: center;
     border: 1rpx solid #ddd;
-    border-radius: 4rpx;
+    border-radius: 4px;
 }
 .none-border{
     border: 0px;

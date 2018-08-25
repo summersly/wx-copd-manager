@@ -39,8 +39,8 @@
     margin-bottom: 30rpx;
     display: flex;
     align-items: center;
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
 .item > image{
     width: 60rpx;
@@ -58,7 +58,7 @@
     display: flex;
     align-items: center;
     border: 1rpx solid #ddd;
-    border-radius: 4rpx;
+    border-radius: 4px;
 }
 .none-border{
     border: 0px;

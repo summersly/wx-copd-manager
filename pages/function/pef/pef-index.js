@@ -12,7 +12,7 @@ Page({
     ec: {
       lazyLoad: true
     },
-    dateList: [],
+    dataList: [],
     time: util.formatTime1(new Date()),
     pef: ""
   },
@@ -47,7 +47,7 @@ Page({
     pefRequest.CommitRequest(dataSring, 4).then(res => {
       // console.log(res)
       pefRequest.evaluateWithPEF().then(res => {
-        if(res){
+        if (res) {
           let evaluation = res
           let ds = JSON.stringify({
             id: 0,
@@ -73,11 +73,18 @@ Page({
 
     })
   },
+
+  pefChart:function(){
+    wx.navigateTo({
+      url:'pef-charts/pef-charts'
+    })
+  },
   // 绘图相关
   setOption: function (chart) {
     var dataAxis = [];
-    var data = (this.data.dataList).reverse();
-    var yMax = 600;
+    var data = this.data.dataList
+    // var yMax = 600;
+    var yMax = Math.max(...data)
     var dataShadow = [];
 
     for (var i = 0; i < data.length; i++) {
@@ -117,7 +124,8 @@ Page({
           textStyle: {
             color: '#999'
           }
-        }
+        },
+        max: yMax
       },
       series: [
         { // For shadow
@@ -135,6 +143,16 @@ Page({
           itemStyle: {
             color: '#83bff6'
           },
+        //   markLine: {
+        //     data: [{ 
+        //         yAxis: 300
+        //     }],
+        //     lineStyle: {
+        //         normal: {
+        //             color: '#33ccff'
+        //         }
+        //     }
+        // },
           data: data
         }
       ]
@@ -180,7 +198,7 @@ Page({
     // 请求最近15次记录,若不足15次请求上个月的数据
     pefRequest.LastRequest(4, 15).then(res => {
       if (!res) {
-        pefRequest.DateRequest(4,2).then(res2 => {
+        pefRequest.DateRequest(4, 2).then(res2 => {
           let dataList = res2.map((item) => {
             return item.value
           })
@@ -194,7 +212,7 @@ Page({
           return item.value
         })
         that.setData({
-          dataList: dataList
+          dataList: dataList.reverse()
         })
         that.init()
       }

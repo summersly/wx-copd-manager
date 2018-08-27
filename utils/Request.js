@@ -96,7 +96,7 @@ function LastRequest(index, num = 1) {
     })
 }
 /**
- * 获取某段时间的数据，timeindex：0 ：当天 1：一周 2：一个月 
+ * 获取某段时间的数据，timeindex：0 ：当天 1：一周 2：一个月 3：6个月
  */
 function DateRequest(type, timeIndex) {
     let patientId = wx.getStorageSync('patientid_token')
@@ -105,7 +105,8 @@ function DateRequest(type, timeIndex) {
     let today = util.dayStart(now) //获取当天数据
     let lastWeek = util.dayStart(new Date(now - 7 * 24 * 3600 * 1000)); // 获取上周数据
     let lastMonth = util.dayStart(new Date(now - 30 * 24 * 3600 * 1000)); // 获取上个月数据
-    let timeList = [today, lastWeek, lastMonth]
+    let sixMonth = util.dayStart(new Date(now - 180 * 24 * 3600 * 1000)); // 获取6个月数据
+    let timeList = [today, lastWeek, lastMonth, sixMonth]
     let header = {
         'content-type': 'application/json'
     }

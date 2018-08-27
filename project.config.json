@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -72,9 +72,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "pef",
-					"pathName": "pages/function/pef/pef-index",
+					"pathName": "pages/function/pef/pef-charts/pef-charts",
 					"query": ""
 				},
 				{

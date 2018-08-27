@@ -1,0 +1,11 @@
+/* pages/function/pef/pef-charts/pef-charts.wxss */
+
+.chart {
+    width: 98vh;
+    height: 90vw;
+    display: block;
+    margin-top: 5rpx;
+    transform-origin: top left; 
+    transform:rotate(90deg) translateY(-95vw);
+
+}

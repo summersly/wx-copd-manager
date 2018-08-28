@@ -428,7 +428,8 @@ function evaluateWithPEF() {
         let evaluation = {
             score: result * 20,
             evaluationTip: evaluationTipList[result],
-            evaluationState: evaluationStateList[result]
+            evaluationState: evaluationStateList[result],
+            standardPEF:standardPEF
         }
         // console.log(evaluation)
         return evaluation;

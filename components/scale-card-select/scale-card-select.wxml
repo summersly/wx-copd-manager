@@ -3,7 +3,7 @@
     <view>{{selectOptionData.qName}}</view>
     <radio-group bindchange="radioCheckedChange" class="select-group"> 
         <view class="select-option" wx:for="{{selectOptionData.optionNames}}" wx:key="index">
-            <label class="{{selectOptionData.defaultIndex == index?'active':''}}">
+            <label class="{{selectOptionData.defaultIndex === index?'active':''}}">
                 {{item}}
                 <radio value="{{index}}" hidden="true"></radio>
             </label>

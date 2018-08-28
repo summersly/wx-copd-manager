@@ -81,9 +81,9 @@ Page({
   },
   // 绘图相关
   setOption: function (chart) {
+    let standardPEF = wx.getStorageSync('pef_token')
     var dataAxis = [];
     var data = this.data.dataList
-    // var yMax = 600;
     var yMax = Math.max(...data)
     var dataShadow = [];
 
@@ -143,16 +143,19 @@ Page({
           itemStyle: {
             color: '#83bff6'
           },
-        //   markLine: {
-        //     data: [{ 
-        //         yAxis: 300
-        //     }],
-        //     lineStyle: {
-        //         normal: {
-        //             color: '#33ccff'
-        //         }
-        //     }
-        // },
+          markLine: {
+            data: [{ 
+                yAxis: standardPEF
+            }],
+            lineStyle: {
+                normal: {
+                    color: '#ff6600'
+                }
+            },
+            label: {
+              position: 'middle'
+            }
+        },
           data: data
         }
       ]

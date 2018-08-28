@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.2.3",
 	"appid": "wxfbc0924cff131b85",
-	"projectname": "wx-copd-manager",
+	"projectname": "copd-manager",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

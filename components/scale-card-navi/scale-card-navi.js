@@ -19,9 +19,27 @@ Component({
    */
   methods: {
     gotoRoute:function(){
-      wx.navigateTo({
-        url: this.data.model.route,
-      })
+      let that = this
+      if (this.data.model.finished){
+        wx.showModal({
+          content:'您'+this.data.model.memo+'过'+this.data.model.name+',是否继续填写？',
+          showCancel: true,
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: that.data.model.route,
+              })
+            } else if (res.cancel) {
+              console.log('取消')
+            }
+          }
+        })
+
+      } else {
+        wx.navigateTo({
+          url: that.data.model.route,
+        })
+      }
     }
   }
 })

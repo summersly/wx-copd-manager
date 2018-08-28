@@ -33,7 +33,7 @@
 }
 .memo{
   font-size: 28rpx;
-  color: red;
+  color: #ff6600;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;

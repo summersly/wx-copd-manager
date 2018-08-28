@@ -12,7 +12,8 @@ Component({
 
     ec: {
       type: Object
-    }
+    },
+    rotate: Boolean
   },
 
   data: {
@@ -44,7 +45,10 @@ Component({
       }
 
       ctx = wx.createCanvasContext(this.data.canvasId, this);
-
+      // if (this.data.rotate) {
+      //   ctx.rotate(Math.PI / 2)
+      //   console.log('rotate')
+      // }
       const canvas = new WxCanvas(ctx, this.data.canvasId);
 
       echarts.setCanvasCreator(() => {
@@ -66,7 +70,7 @@ Component({
       if (!opt.canvasId) {
         opt.canvasId = this.data.canvasId;
       }
-      
+
       ctx.draw(true, () => {
         wx.canvasToTempFilePath(opt, this);
       });

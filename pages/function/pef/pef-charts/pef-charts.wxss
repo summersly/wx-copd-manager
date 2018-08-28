@@ -7,5 +7,5 @@
     margin-top: 5rpx;
     transform-origin: top left; 
     transform:rotate(90deg) translateY(-95vw);
-
+    border: 1px solid
 }

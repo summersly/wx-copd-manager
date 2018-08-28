@@ -1,7 +1,7 @@
 // pages/function/pef/pef-charts/pef-charts.js
 import * as echarts from '../../../../components/ec-canvas/echarts.min';
 import chartRequest from "../../../../utils/Request"
-
+const ctx = wx.createCanvasContext('mychart-bar')
 Page({
 
   /**
@@ -132,6 +132,10 @@ Page({
         time: axis
       })
       that.init()
+      
+      // const ctx = wx.createCanvasContext('mychart-bar')
+      // ctx.strokeRect(100, 10, 150, 100)
+      // that.ecComponent.rotate( Math.PI / 2)
     })
 
   },

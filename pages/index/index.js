@@ -51,9 +51,9 @@ Page({
 
   },
   onLoad: function () {
-    // indexRequest.evaluateWithPEF().then((res) => {
-    //   console.log(res)
-    // })
+    indexRequest.evaluateWithPEF().then(res => {
+      wx.setStorageSync('pef_token', res.standardPEF.toFixed(0))
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -12,17 +12,20 @@ Page({
         name: 'CAT量表',
         color:['#81d4fa','#03a9f4'],
         route: 'scale-cat/scale-cat',
-        memo: ''
+        memo: '',
+        finished:false
       }, {
         name: '抑郁量表',
         color:['#c5e1a5','#8bc34a'],
         route: 'scale-phq/scale-phq',
-        memo: ''
+        memo: '',
+        finished:false
       }, {
         name: '焦虑量表',
         color:['#ffe082','#ffc107'],
         route: 'scale-gad/scale-gad',
-        memo: ''
+        memo: '',
+        finished:false
       }
     ]
   },
@@ -38,6 +41,9 @@ Page({
         'scaleCardData[0].memo' : scaleCardWeekMemo[scaleFinish[0]],
         'scaleCardData[1].memo' : scaleCardMonthMemo[scaleFinish[1]],
         'scaleCardData[2].memo' : scaleCardMonthMemo[scaleFinish[2]],
+        'scaleCardData[0].finished' : scaleFinish[0],
+        'scaleCardData[1].finished' : scaleFinish[1],
+        'scaleCardData[2].finished' : scaleFinish[2]
       })
     }
   },

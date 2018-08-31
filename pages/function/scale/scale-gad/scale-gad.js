@@ -105,7 +105,7 @@ Page({
             }, 1500)
           })
         } else if (res.cancel) {
-          console.log('取消')
+          // console.log('取消')
         }
       }
     })

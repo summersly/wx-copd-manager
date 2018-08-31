@@ -11,8 +11,8 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.3",
-	"appid": "wxfbc0924cff131b85",
+	"libVersion": "2.2.4",
+	"appid": "wxcf51d9aa50011dbc",
 	"projectname": "copd-manager",
 	"isGameTourist": false,
 	"condition": {
@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -49,12 +49,6 @@
 				},
 				{
 					"id": -1,
-					"name": "drug-his",
-					"pathName": "pages/function/drug/drug-history/drug-history",
-					"query": ""
-				},
-				{
-					"id": -1,
 					"name": "drug-index",
 					"pathName": "pages/function/drug/drug-index",
 					"query": ""
@@ -63,12 +57,6 @@
 					"id": -1,
 					"name": "class",
 					"pathName": "pages/class/class",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "drug-add",
-					"pathName": "pages/function/drug/drug-add/drug-add",
 					"query": ""
 				},
 				{
@@ -93,6 +81,12 @@
 					"id": 9,
 					"name": "register",
 					"pathName": "pages/register/register",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "walk",
+					"pathName": "pages/function/walk-test/walk-test",
 					"query": ""
 				}
 			]

@@ -1,5 +1,5 @@
 <!-- pages/class/message/message.wxml -->
-<!-- <view class='container' wx:if='{{showPage}}'>
+<view class='container' wx:if='{{showPage}}'>
     <view class='article-title'>{{name}}</view>
     <view class='article-info'>
         <text>{{time}}</text>
@@ -10,5 +10,6 @@
     <view class="wxParser">
         <template is="wxParser" data="{{wxParserData:richText.nodes}}" />
     </view>
-</view> -->
-<web-view src="http://120.27.141.50/copd/message/show?knoId={{id}}" />
+</view>
+<!-- web-view会覆盖其他组件，当前不允许其与其他组件混合使用 -->
+<!-- <web-view src="http://120.27.141.50/copd/message/show?knoId={{id}}" /> -->

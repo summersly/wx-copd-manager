@@ -1,6 +1,8 @@
 var util = require('util.js');
 const app = getApp()
-
+/**
+ * 整体评估五种分类情况LIST
+ */
 const evaluationTipList = [
     "请填写CAT量表，并进行峰流速记录",
     "您需要立刻去门诊就诊控制病情",
@@ -9,13 +11,19 @@ const evaluationTipList = [
     "请继续保持!记得要按时完成任务哦！"
 ]
 const evaluationStateList = ["未测评", "危险", "不佳", "中等", "良好"]
+/**
+ * URL for request
+ */
 const BASEURL = 'http://120.27.141.50:18908/'
-const getLastUrl = 'http://120.27.141.50:18908/data/GetLastGenericRecords'
-const fetchUrl = 'http://120.27.141.50:18908/data/fetch'
-const commitUrl = 'http://120.27.141.50:18908/data/commit'
+const getLastUrl = BASEURL + 'data/GetLastGenericRecords'
+const fetchUrl = BASEURL + 'data/fetch'
+const commitUrl = BASEURL + 'data/commit'
 const validateUrl = BASEURL + 'ValidateRegister'
 const registUrl = BASEURL + 'WapRegistWithPatientInfo'
 
+/**
+ * 通用请求 用于pages/class请求视频与知识
+ */
 export const request = ({ data = {}, url = '' , method = 'GET' }) => {
     let header = {
       'content-type': 'application/json'
@@ -41,7 +49,45 @@ export const request = ({ data = {}, url = '' , method = 'GET' }) => {
       })
     })
   } 
+
 /**
+ * 六分钟步行测试相关方法
+ */
+function rad(degrees) {
+    return degrees * Math.PI / 180.0;
+}
+
+export const calculateDistance = (latitudeLast,latitudeNew,longitudeLast,longitudeNew) => {
+    //计算两点位置距离
+
+    // double a, b, sa2, sb2;
+    // int d;
+    // lat1 = rad(lat1);
+    // lat2 = rad(lat2);
+    // a = lat1 - lat2;
+    // b = rad(long1 - long2);
+
+    // sa2 = Math.sin(a / 2.0);
+    // sb2 = Math.sin(b / 2.0);
+    // d = (int)(2 * EARTH_RADIUS * 1000
+    //         * Math.asin(Math.sqrt(sa2 * sa2 + Math.cos(lat1)
+    //         * Math.cos(lat2) * sb2 * sb2)));
+    // return d;
+
+    var rad1 = rad(latitudeLast)
+    var rad2 = rad(latitudeNew)
+    var a = rad1 - rad2
+    var b = rad(longitudeLast) - rad(longitudeNew)
+    //地球半径 单位 m
+    var r = 6371000;
+    var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2.0), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2.0), 2)));
+    
+    return distance;
+}
+
+/**
+ * pages/function 请求与计算 
+ * 
  * 获取最新数据，index指定type, 默认数量为1
  */
 function LastRequest(index, num = 1) {
@@ -478,6 +524,7 @@ function uncomfortString(data) {
     return result ? result : "正常,"
 }
 /**
+ * 注册功能
  * 检查身份证号码 && 手机号码
  */
 function validateID(code) {

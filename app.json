@@ -20,7 +20,8 @@
     "pages/class/video/video",
     "pages/class/message/message",
     "pages/mine/mine-collection/collection",
-    "pages/function/pef/pef-charts/pef-charts"
+    "pages/function/pef/pef-charts/pef-charts",
+    "pages/function/walk-test/walk-test"
   ],
   "window": {
     "backgroundTextStyle": "light",

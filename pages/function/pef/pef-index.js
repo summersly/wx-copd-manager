@@ -44,39 +44,52 @@ Page({
     }
     var dataSring = JSON.stringify(pefData);
     // console.log(dataSring)
-    pefRequest.CommitRequest(dataSring, 4).then(res => {
-      // console.log(res)
-      pefRequest.evaluateWithPEF().then(res => {
-        if (res) {
-          let evaluation = res
-          let ds = JSON.stringify({
-            id: 0,
-            measureTime: time,
-            value: evaluation.score
-          })
-          // console.log(ds)
-          pefRequest.CommitRequest(ds, 7).then(res => {
-            console.log('evaluation update')
-          })
-        }
-      })
-      wx.showToast({
-        title: '上传成功',
-        duration: 1500
-      })
-      setTimeout(() => {
-        this.onShow()
-        this.setData({
-          pef: ''
-        })
-      }, 1000)
+    var that = this 
+    wx.showModal({
+      title: '注意',
+      content: '提交后无法修改',
+      showCancel: true,
+      success: function (res) {
+        if (res.confirm) {
+          pefRequest.CommitRequest(dataSring, 4).then(res => {
+            // console.log(res)
+            pefRequest.evaluateWithPEF().then(res => {
+              if (res) {
+                let evaluation = res
+                let ds = JSON.stringify({
+                  id: 0,
+                  measureTime: time,
+                  value: evaluation.score
+                })
+                // console.log(ds)
+                pefRequest.CommitRequest(ds, 7).then(res => {
+                  console.log('evaluation update')
+                })
+              }
+            })
+            wx.showToast({
+              title: '上传成功',
+              duration: 1500
+            })
+            setTimeout(() => {
+              that.onShow()
+              that.setData({
+                pef: ''
+              })
+            }, 1000)
 
+          })
+        } else if (res.cancel) {
+          // console.log('取消')
+        }
+      }
     })
+
   },
 
-  pefChart:function(){
+  pefChart: function () {
     wx.navigateTo({
-      url:'pef-charts/pef-charts'
+      url: 'pef-charts/pef-charts'
     })
   },
   // 绘图相关
@@ -144,18 +157,18 @@ Page({
             color: '#83bff6'
           },
           markLine: {
-            data: [{ 
-                yAxis: standardPEF
+            data: [{
+              yAxis: standardPEF
             }],
             lineStyle: {
-                normal: {
-                    color: '#ff6600'
-                }
+              normal: {
+                color: '#ff6600'
+              }
             },
             label: {
               position: 'middle'
             }
-        },
+          },
           data: data
         }
       ]

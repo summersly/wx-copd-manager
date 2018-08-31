@@ -57,22 +57,22 @@ Page({
     })
   },
   calculate: function () {
-    let inflammation = 0 ,lung = 0 ,heart = 0 ,breath = 0
-    this.data.uncomfData[0].defaultIndex.map((x,index) => {
-      if (x) return inflammation += Math.pow(2,index)
+    let inflammation = 0, lung = 0, heart = 0, breath = 0
+    this.data.uncomfData[0].defaultIndex.map((x, index) => {
+      if (x) return inflammation += Math.pow(2, index)
     })
     // lung 计算时纠正index
     let last = this.data.uncomfData[1].defaultIndex[2]
-    let lungIndex = this.data.uncomfData[1].defaultIndex.slice(0,-1)
+    let lungIndex = this.data.uncomfData[1].defaultIndex.slice(0, -1)
     lungIndex.unshift(last)
-    lungIndex.map((x,index) => {
-      if (x) return lung += Math.pow(2,index)
+    lungIndex.map((x, index) => {
+      if (x) return lung += Math.pow(2, index)
     })
-    this.data.uncomfData[2].defaultIndex.map((x,index) => {
-      if (x) return heart += Math.pow(2,index)
+    this.data.uncomfData[2].defaultIndex.map((x, index) => {
+      if (x) return heart += Math.pow(2, index)
     })
-    this.data.uncomfData[3].defaultIndex.map((x,index) => {
-      if (x) return breath += Math.pow(2,index)
+    this.data.uncomfData[3].defaultIndex.map((x, index) => {
+      if (x) return breath += Math.pow(2, index)
     })
     this.setData({
       inflammation: inflammation,
@@ -92,33 +92,45 @@ Page({
       heart: this.data.heart,
       breath: this.data.breath,
       measureTime: measureTime,
-      memo:this.data.memo 
+      memo: this.data.memo
     }
-    if (that.data.state.defaultIndex && !uncomfortData.inflammation && !uncomfortData.lung && !uncomfortData.heart && !uncomfortData.breath && !uncomfortData.memo){
+    if (that.data.state.defaultIndex == '1' && !uncomfortData.inflammation && !uncomfortData.lung && !uncomfortData.heart && !uncomfortData.breath && !uncomfortData.memo) {
       wx.showToast({
-        title:'尚未输入任何不适情况',
-        icon:'none',
-        duration:1500
+        title: '尚未输入任何不适情况',
+        icon: 'none',
+        duration: 1500
       })
       return
     }
     var dataSring = JSON.stringify(uncomfortData);
-    uncomfortRequest.CommitRequest(dataSring, 6).then(res => {
-      wx.showToast({
-        title:'上传成功',
-        duration:1500
-      })
-      setTimeout(() => {
-        if (that.data.state.defaultIndex){
-          wx.redirectTo({
-            url:"../tips/uncomfort-tip?data=" + dataSring
+    let modalContent = uncomfortRequest.uncomfortString(uncomfortData).slice(0, -1)
+    wx.showModal({
+      title: '提交后无法修改',
+      content: '本次记录：' + modalContent,
+      showCancel: true,
+      success: function (res) {
+        if (res.confirm) {
+          uncomfortRequest.CommitRequest(dataSring, 6).then(res => {
+            wx.showToast({
+              title: '上传成功',
+              duration: 1500
+            })
+            setTimeout(() => {
+              if (that.data.state.defaultIndex) {
+                wx.redirectTo({
+                  url: "../tips/uncomfort-tip?data=" + dataSring
+                })
+              } else {
+                wx.navigateBack()
+              }
+            }, 1300)
           })
-        } else {
-          wx.navigateBack()
-        }
-      }, 1300)
+        } else if (res.cancel) {
 
+        }
+      }
     })
+
   },
   /**
    * 生命周期函数--监听页面加载

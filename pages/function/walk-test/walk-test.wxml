@@ -17,7 +17,7 @@
             <canvas canvas-id="canvasCircle"></canvas>
             <canvas canvas-id="canvasArcCir"></canvas>
             <view>
-                <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/walk-circle.png" style="width:30px;height:30px"/>
+                <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/walk-circle.png" style="width:30px;height:30px" />
             </view>
         </view>
         <text>当前已走的距离为</text>
@@ -29,5 +29,33 @@
             <view>{{item.latitude}}</view>
             <view>{{item.longitude}}</view>
         </view> -->
+    </view>
+    <!-- 测试前问卷 -->
+    <view class="block_3" wx:if="{{showIndex == 2}}">
+        <!-- 提示 -->
+        <view class='basic-card'>
+            <icon type="info" size="23" color="#33ccff" />
+            <text>开始测试前，请患者本人回答</text>
+        </view>
+        <!-- 问题 -->
+        <swiper style="width:100vw;height: 82vh;" indicator-dots indicator-color="#33ccff" current="{{currentIndex}}" bindchange="swiperChange">
+            <swiper-item wx:for="{{questionData}}" wx:key="index">
+                <scale-card-select selectOptionData="{{item}}" bindselectChange="qselectChangeBefore" data-index="{{index}}" myWidth="40"></scale-card-select>
+            </swiper-item>
+        </swiper>
+    </view>
+    <!-- 测试后问卷 -->
+    <view class="block_3" wx:if="{{showIndex == 3}}">
+        <!-- 提示 -->
+        <view class='basic-card'>
+            <icon type="info" size="23" color="#33ccff" />
+            <text>测试完成后，请患者本人回答</text>
+        </view>
+        <!-- 问题 -->
+        <swiper style="width:100vw;height: 82vh;" indicator-dots indicator-color="#33ccff" current="{{currentIndex}}" bindchange="swiperChange">
+            <swiper-item wx:for="{{questionData}}" wx:key="index">
+                <scale-card-select selectOptionData="{{item}}" bindselectChange="qselectChangeAfter" data-index="{{index}}" myWidth="40"></scale-card-select>
+            </swiper-item>
+        </swiper>
     </view>
 </view>

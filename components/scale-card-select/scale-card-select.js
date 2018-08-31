@@ -1,10 +1,15 @@
 // components/scale-card-select/scale-card-select.js
 Component({
+  // externalClasses: ['select-option'],
   /**
    * 组件的属性列表
    */
   properties: {
-    selectOptionData: Object
+    selectOptionData: Object,
+    myWidth:{
+      value: 80,
+      type: Number
+    }
   },
 
   /**

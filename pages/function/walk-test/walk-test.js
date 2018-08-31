@@ -61,7 +61,7 @@ audioTest.onEnded(() => {
     }, 57400)
   } else {
     audioTest.destroy()
-    console.log('销毁')
+    console.log('销毁' + new Date())
   }
 })
 
@@ -83,19 +83,104 @@ Page({
     positonData: [],
     value: 0,
     initLatitude: 0,
-    initlongitude: 0
+    initlongitude: 0,
+    //scale data
+    questionData: [{
+      qName: "1.请选择您的呼吸困难级别。",
+      optionNames: ["正常", "非常非常轻微", "非常轻微", "轻微(轻度)", "中度", "有些严重", "严重1级(重度)", "严重2级", "非常严重1级", "非常严重2级", "非常严重3级", "非常非常严重"],
+      defaultIndex: '',
+    }, {
+      qName: "2.请选择您的疲劳困难级别。",
+      optionNames: ["正常", "非常非常轻微", "非常轻微", "轻微(轻度)", "中度", "有些严重", "严重1级(重度)", "严重2级", "非常严重1级", "非常严重2级", "非常严重3级", "非常非常严重"],
+      defaultIndex: '',
+    }],
+    brogAnswerIndexBefore: ['', ''],
+    brogAnswerIndexAfter: ['', ''],
+    currentIndex: 0
   },
 
+  /**
+   * brog问卷相关 测试前 后填写
+   */
+  qselectChangeBefore: function (e) {
+    let defaultIndex = 'questionData[' + e.target.dataset.index + '].defaultIndex'
+    let answer = 'brogAnswerIndexBefore[' + e.target.dataset.index + ']'
+    if (this.data.currentIndex == 0) {
+      this.setData({
+        [defaultIndex]: parseInt(e.detail),
+        [answer]: parseInt(e.detail),
+        currentIndex: 1
+      })
+
+    } else {
+      this.setData({
+        [defaultIndex]: parseInt(e.detail),
+        showIndex: 1,
+        [answer]: parseInt(e.detail),
+        currentIndex: 0
+      })
+      this.TestControl()
+    }
+  },
+  qselectChangeAfter: function (e) {
+    let defaultIndex = 'questionData[' + e.target.dataset.index + '].defaultIndex'
+    let answer = 'brogAnswerIndexAfter[' + e.target.dataset.index + ']'
+    if (this.data.currentIndex == 0) {
+      this.setData({
+        [defaultIndex]: parseInt(e.detail),
+        [answer]: parseInt(e.detail),
+        currentIndex: 1
+      })
+
+    } else {
+      this.setData({
+        [defaultIndex]: parseInt(e.detail),
+        [answer]: parseInt(e.detail),
+      })
+      // 问卷结束后 上传数据
+      wx.showModal({
+        title: '测试结果',
+        content: '步行距离：' + this.data.distance1 + '米',
+        showCancel: true,
+        confirmText: '确认上传',
+        cancelText: '重新测试',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('检查问卷填写情况，上传数据')
+          } else if (res.cancel) {
+
+          }
+        }
+      })
+    }
+  },
+  swiperChange: function (e) {
+    this.setData({
+      currentIndex: e.detail.current
+    })
+  },
+  /**
+   * 跳过语音提示，直接进入测试阶段，开始测试前量表填写
+   */
   skipAudio: function () {
+    // 进入brog量表
     var that = this
     audioTip.stop()
     this.setData({
-      showIndex: 1
+      showIndex: 2
     })
+  },
+  /**
+   * 步行测试控制方法 语音提示 同时获取定位 刷新时间进度条
+   */
+  TestControl: function () {
+    //语音控制
+    var that = this
     setTimeout(() => {
       console.log('audio play start' + new Date())
       audioTest.play()
     }, 500)
+    //定位控制
     setTimeout(() => {
       wx.getLocation({
         success: function (res) {
@@ -106,18 +191,26 @@ Page({
           })
           console.log(new Date())
         },
-        fail: function(err) {
+        fail: function (err) {
           console.log(err)
         }
       })
       this.getLocation_15s()
     }, 9500)
+    //时间进度条控制
     setTimeout(() => {
       this.drawCirclePro()
-    },9500)
-
+    }, 9500)
+    //结束控制
+    setTimeout(() => {
+      // 进入测试后问卷前清除记录
+      this.setData({
+        'questionData[0].defaultIndex': '',
+        'questionData[1].defaultIndex': '',
+        showIndex: 3
+      })
+    }, 380500)
   },
-
   /**
    * 每15s定位一次，并计算与上次定位的距离，更新距离总和
    */
@@ -144,7 +237,7 @@ Page({
               value: dis1
             })
           }
-          console.log(new Date())
+          console.log(dis1 + util.formatTime(new Date()))
         }
       })
     }, 15000)
@@ -157,21 +250,22 @@ Page({
   /**
    * 终止测试 停止播报及定位 返回pages/index
    */
-  onStopTest:function(){
+  onStopTest: function () {
 
   },
 
   /**
    * 圆形进度条相关function 每1s刷新一次进度
    */
-  drawCircleArc: function (ctx,time) {
+  drawCircleArc: function (ctx, time) {
     var startAngle = 1.5 * Math.PI, endAngle = time * 2.0 * Math.PI / 360 + 1.5 * Math.PI;
     var x = 100, y = 100, radius = 95;
     ctx.setStrokeStyle('#33ccff');
+    ctx.setLineWidth(4);
     ctx.beginPath();
     ctx.arc(x, y, radius, startAngle, endAngle, false);
     ctx.stroke()
-    ctx.draw()   
+    ctx.draw()
   },
   drawCircleFull: function () {
     var cxt_arc = wx.createCanvasContext('canvasCircle');
@@ -183,18 +277,17 @@ Page({
     cxt_arc.stroke();
     cxt_arc.draw();
   },
-  drawCirclePro:function(){
+  drawCirclePro: function () {
     var ctx = wx.createCanvasContext('canvasArcCir');
     ctx.setFillStyle('white');
     ctx.clearRect(0, 0, 200, 200);
     ctx.draw();
-    ctx.setLineWidth(8);
     ctx.setLineCap('round');
     let count = 0
-    let draw = setInterval(()=>{
-      this.drawCircleArc(ctx,count)
+    let draw = setInterval(() => {
+      this.drawCircleArc(ctx, count)
       count++
-    },1000)
+    }, 1000)
     setTimeout(() => {
       clearInterval(draw)
     }, Time6m)
@@ -235,7 +328,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+   //退出页面 强制停止定位 语音 等
   },
 
   /**

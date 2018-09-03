@@ -17,8 +17,10 @@ const audioTip = wx.createInnerAudioContext()
 audioTip.src = audioTipSrc[audioTipIndex]
 audioTip.volume = 0.8
 audioTip.onStop(() => {
-  audioTip.destroy()
-  console.log('停止播放+销毁')
+  // audioTip.destroy()
+  console.log('停止播放')
+  audioTipIndex = 0
+  audioTip.src = audioTipSrc[audioTipIndex]
 })
 audioTip.onEnded(() => {
   // console.log('播放结束')
@@ -26,11 +28,14 @@ audioTip.onEnded(() => {
     audioTip.src = audioTipSrc[++audioTipIndex]
     audioTip.play()
   } else {
-    audioTip.destroy()
-    console.log('销毁')
+    // audioTip.destroy()
+    console.log('结束播放')
+    audioTipIndex = 0
+    audioTip.src = audioTipSrc[audioTipIndex]
   }
 })
 //audioTest 初始化
+var set
 var audioTestIndex = 0
 const audioTestSrc = ['https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_prep.mp3',
   'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_prep2.mp3',
@@ -45,8 +50,10 @@ const audioTest = wx.createInnerAudioContext()
 audioTest.src = audioTestSrc[audioTestIndex]
 audioTest.volume = 0.8
 audioTest.onStop(() => {
-  audioTest.destroy()
-  console.log('停止播放+销毁')
+  // audioTest.destroy()
+  console.log('停止播放')
+  audioTestIndex = 0
+  audioTest.src = audioTestSrc[audioTestIndex]
 })
 audioTest.onEnded(() => {
   // console.log('播放结束')
@@ -54,14 +61,16 @@ audioTest.onEnded(() => {
     audioTest.src = audioTestSrc[++audioTestIndex]
     audioTest.play()
   } else if (audioTestIndex < 7) {
-    setTimeout(() => {
+      set = setTimeout(() => {
       audioTest.src = audioTestSrc[++audioTestIndex]
       audioTest.play()
       console.log('audio' + new Date())
     }, 57400)
   } else {
-    audioTest.destroy()
-    console.log('销毁' + new Date())
+    // audioTest.destroy()
+    console.log('结束' + new Date())
+    audioTestIndex = 0
+    audioTest.src = audioTestSrc[audioTestIndex]
   }
 })
 
@@ -79,7 +88,7 @@ Page({
     showIndex: 0,
     distance1: 0,
     date1: '',
-    // diatance2: 0,
+    diatance2: 0,
     positonData: [],
     value: 0,
     initLatitude: 0,
@@ -123,6 +132,7 @@ Page({
     }
   },
   qselectChangeAfter: function (e) {
+    var that = this
     let defaultIndex = 'questionData[' + e.target.dataset.index + '].defaultIndex'
     let answer = 'brogAnswerIndexAfter[' + e.target.dataset.index + ']'
     if (this.data.currentIndex == 0) {
@@ -147,8 +157,12 @@ Page({
         success: function (res) {
           if (res.confirm) {
             console.log('检查问卷填写情况，上传数据')
+            that.onStopTest()
           } else if (res.cancel) {
-
+            that.onStopTest()
+            wx.navigateTo({
+              url:'walk-test'
+            })
           }
         }
       })
@@ -176,12 +190,12 @@ Page({
   TestControl: function () {
     //语音控制
     var that = this
-    setTimeout(() => {
+    this.audioset = setTimeout(() => {
       console.log('audio play start' + new Date())
       audioTest.play()
     }, 500)
     //定位控制
-    setTimeout(() => {
+    this.locationset = setTimeout(() => {
       wx.getLocation({
         success: function (res) {
           // console.log(res)
@@ -189,7 +203,7 @@ Page({
             initLatitude: res.latitude,
             initlongitude: res.longitude
           })
-          console.log(new Date())
+          console.log(util.formatTime(new Date()))
         },
         fail: function (err) {
           console.log(err)
@@ -198,11 +212,11 @@ Page({
       this.getLocation_15s()
     }, 9500)
     //时间进度条控制
-    setTimeout(() => {
+    this.timeset = setTimeout(() => {
       this.drawCirclePro()
     }, 9500)
     //结束控制
-    setTimeout(() => {
+    this.endset = setTimeout(() => {
       // 进入测试后问卷前清除记录
       this.setData({
         'questionData[0].defaultIndex': '',
@@ -216,33 +230,28 @@ Page({
    */
   getLocation_15s: function () {
     var that = this
-    var timer = setInterval(function () {
+    this.timer = setInterval(function () {
       wx.getLocation({
         success: function (res) {
           let dis1 = calculateDistance(that.data.initLatitude, res.latitude, that.data.initlongitude, res.longitude)
           //判断距离有效性
-          if (dis1 < 100) {
-            that.setData({
-              positonData: that.data.positonData.concat(res),
-              distance1: that.data.distance1 + dis1,
-              initLatitude: res.latitude,
-              initlongitude: res.longitude,
-              date1: util.formatTime(new Date()),
-              value: dis1
-            })
-          } else {
-            that.setData({
-              positonData: that.data.positonData.concat(res),
-              date1: util.formatTime(new Date()),
-              value: dis1
-            })
-          }
+          console.log(res)
+          let distance1 = dis1 < 100 ? that.data.distance1 + dis1 : that.data.distance1
+          that.setData({
+            positonData: that.data.positonData.concat(res),
+            distance1: distance1,
+            distance2: distance1.toFixed(0),
+            initLatitude: res.latitude,
+            initlongitude: res.longitude,
+            date1: util.formatTime(new Date()),
+            value: dis1
+          })
           console.log(dis1 + util.formatTime(new Date()))
         }
       })
     }, 15000)
     setTimeout(() => {
-      clearInterval(timer)
+      clearInterval(this.timer)
     }, Time6m)
 
   },
@@ -251,7 +260,15 @@ Page({
    * 终止测试 停止播报及定位 返回pages/index
    */
   onStopTest: function () {
-
+    audioTest.stop()
+    clearInterval(this.timer)
+    clearInterval(this.draw)
+    clearTimeout(set)
+    clearTimeout(this.audioset)
+    clearTimeout(this.locationset)
+    clearTimeout(this.timeset)
+    clearTimeout(this.endset)
+    wx.navigateBack()
   },
 
   /**
@@ -284,19 +301,41 @@ Page({
     ctx.draw();
     ctx.setLineCap('round');
     let count = 0
-    let draw = setInterval(() => {
+    this.draw = setInterval(() => {
       this.drawCircleArc(ctx, count)
-      count++
-    }, 1000)
+      count = count + 2
+    }, 2000)
     setTimeout(() => {
-      clearInterval(draw)
+      clearInterval(this.draw)
     }, Time6m)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.drawCircleFull()
+
+    // let param = {
+    //   src:'',
+    //   prod:'miniprogram',
+    //   ver:'',
+    //   ak: 'FI81wHPlkGUAzITLMZPFNGDzEX1ElAin',
+    //   trace:false
+    // };
+
+    // wx.request({
+    //   url: 'https://api.map.baidu.com/locapi/v2',
+    //   data: param,
+    //   header: {
+    //     "content-type": "application/json"
+    //   },
+    //   method: 'GET',
+    //   success:function(res){
+    //     console.log(res)
+    //   },
+    //   fail:function(err){
+    //     console.log(err)
+    //   }
+    // })
   },
 
   /**
@@ -305,6 +344,7 @@ Page({
   onReady: function () {
     // 测试前语音播报开始
     setTimeout(() => {
+      this.drawCircleFull()
       audioTip.play()
     }, 500)
   },
@@ -313,7 +353,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // this.getLocation_15s()
+
 
   },
 
@@ -328,7 +368,16 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-   //退出页面 强制停止定位 语音 等
+    //退出页面 强制停止定位 语音 等
+    audioTip.stop()
+    audioTest.stop()
+    clearInterval(this.timer)
+    clearInterval(this.draw)
+    clearTimeout(set)
+    clearTimeout(this.audioset)
+    clearTimeout(this.locationset)
+    clearTimeout(this.timeset)
+    clearTimeout(this.endset)
   },
 
   /**

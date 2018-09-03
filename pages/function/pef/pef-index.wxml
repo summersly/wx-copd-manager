@@ -23,6 +23,6 @@
     </view>
     <view class="btn-group">
         <button bindtap="pefAdd"><text >提交</text></button>
-        <!-- <button bindtap="pefChart" ><text >查看更多历史记录</text></button> -->
+        <button bindtap="pefChart" ><text >查看更多历史记录</text></button>
     </view>
 </view>

@@ -1,7 +1,7 @@
 // pages/function/pef/pef-charts/pef-charts.js
 import * as echarts from '../../../../components/ec-canvas/echarts.min';
 import chartRequest from "../../../../utils/Request"
-const ctx = wx.createCanvasContext('mychart-bar')
+// const ctx = wx.createCanvasContext('mychart-bar')
 Page({
 
   /**
@@ -12,20 +12,21 @@ Page({
       lazyLoad: true
     },
     dataList: [],
-    time:[]
+    time: []
   },
 
 
   // 绘图相关
   setOption: function (chart) {
+    let standardPEF = wx.getStorageSync('pef_token')
     var dataAxis = this.data.time
     var data = this.data.dataList
     // var yMax = 600;
     var yMax = Math.max(...data)
     var option = {
       title: {
-        text: 'PEF历史记录',
-        padding: [20, 20, 0, 20],
+        text: '近6个月PEF历史记录',
+        padding: [0, 20, 0, 20],
         textStyle: {
           color: '#188df0',
           fontWeight: 'bold',
@@ -33,34 +34,30 @@ Page({
         },
       },
       xAxis: {
-        data: dataAxis,
+        type: 'value',
+        position: 'top',
         axisLabel: {
-          rotate:-45,
           textStyle: {
             color: '#999'
-          } 
+          },
+          rotate: 90
+        },
+        max: yMax,
+        z: 10
+      },
+      yAxis: {
+        type: 'category',
+        data: dataAxis,
+        axisLabel: {
+          rotate: -45,
+          textStyle: {
+            color: '#999'
+          }
         },
         axisTick: {
           show: true
         },
-        axisLine: {
-          
-        },
-        z: 10
-      },
-      yAxis: {
-        axisLine: {
 
-        },
-        axisTick: {
-  
-        },
-        axisLabel: {
-         textStyle: {
-            color: '#999'
-          } 
-        },
-        max: yMax
       },
       series: [
         {
@@ -70,13 +67,18 @@ Page({
           },
           markLine: {
             data: [{
-              yAxis: 300 //STANDARD PEF VALUES
+              xAxis: standardPEF //STANDARD PEF VALUES
             }],
             lineStyle: {
               normal: {
-                color: '#cc6600'
-              }
-            }
+                color: '#ff6600',
+                width: 2
+              },
+            },
+            label: {
+              position: 'start'
+            },
+            symbol: ['arrow', 'circle']
           },
           data: data
         }
@@ -87,8 +89,9 @@ Page({
   init: function () {
     this.ecComponent.init((canvas, width, height) => {
       const chart = echarts.init(canvas, null, {
-        width: height,
-        height: width
+        width: width,
+        height: height,
+        renderer: 'svg'
       });
       this.setOption(chart);
       // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
@@ -122,20 +125,17 @@ Page({
     this.ecComponent = this.selectComponent('#pefchart-bar');
     // 请求最近3个月记录
     chartRequest.DateRequest(4, 3).then(res => {
-      let dataList =[],axis=[]
-       res.map((item) => {
+      let dataList = [], axis = []
+      let resrev = res.reverse()
+      resrev.map((item) => {
         dataList = dataList.concat(item.value)
-        axis = axis.concat(item.measureTime.split(' ')[0])
+        axis = axis.concat(item.measureTime.slice(5,10))
       })
       that.setData({
         dataList: dataList,
         time: axis
       })
       that.init()
-      
-      // const ctx = wx.createCanvasContext('mychart-bar')
-      // ctx.strokeRect(100, 10, 150, 100)
-      // that.ecComponent.rotate( Math.PI / 2)
     })
 
   },

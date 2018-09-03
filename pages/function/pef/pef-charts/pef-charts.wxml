@@ -1,4 +1,4 @@
 <!-- pages/function/pef/pef-charts/pef-charts.wxml -->
 <view class="chart">
-    <ec-canvas  id="pefchart-bar" canvas-id="mychart-bar" ec="{{ ec }}" rotate="{{true}}"></ec-canvas>
+    <ec-canvas id="pefchart-bar" canvas-id="mychart-bar" ec="{{ ec }}" rotate="{{true}}"></ec-canvas>
 </view>

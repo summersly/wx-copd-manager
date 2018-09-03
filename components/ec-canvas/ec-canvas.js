@@ -4,6 +4,9 @@ import * as echarts from './echarts.min';
 let ctx;
 
 Component({
+  // options: {
+  //   addGlobalClass: true
+  // },
   properties: {
     canvasId: {
       type: String,

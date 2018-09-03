@@ -14,7 +14,7 @@ Page({
     account: '',
     password: '',
     showPsw: false,
-    WapLoginUrl: 'http://120.27.141.50:18908/WapLogin'
+    WapLoginUrl: 'https://zjubiomedit.com/COPDService.svc/WapLogin'
   },
 
   userNameInput: function (e) {

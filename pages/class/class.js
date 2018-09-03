@@ -1,7 +1,7 @@
 // pages/class/class.js
 import { request } from '../../utils/Request'
-const videoBaseUrl = 'http://120.27.141.50:8080/health-knowledge/GetCOPDVideoInfo.jsp?'
-const knoUrl = 'http://120.27.141.50/copd/message/getKnoListPaging?'
+const videoBaseUrl = 'https://zjubiomedit.com/health-knowledge/GetCOPDVideoInfo.jsp?'
+const knoUrl = 'https://zjubiomedit.com/copd/message/getKnoListPaging?'
 Page({
 
   /**

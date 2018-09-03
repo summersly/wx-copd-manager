@@ -10,4 +10,11 @@
     transform: rotate(90deg) translateY(-95vw); */
     /* border: 1px solid */
 }
+.none{
+    color: '#188df0';
+    font-weight: 'bold';
+    font-size: 22px;
+    text-align: center;
+    margin-top: 30rpx;
+}
 

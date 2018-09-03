@@ -1,7 +1,7 @@
 // pages/class/message/message.js
 const wxParser = require('../../../wxParser/index');
 import { request } from '../../../utils/Request'
-const knoBaseUrl = 'http://120.27.141.50/copd/message/get?knoId='
+const knoBaseUrl = 'https://zjubiomedit.com/copd/message/get?knoId='
 Page({
 
   /**
@@ -25,7 +25,7 @@ Page({
     let like = this.data.knoIfFavorite?0:1
     let patientId = wx.getStorageSync('patientid_token')
     request({
-      url:'http://120.27.141.50/copd/message/recordFavorite?patientId='+patientId+'&knoId='+this.data.id+'&value='+like
+      url:'https://zjubiomedit.com/copd/message/recordFavorite?patientId='+patientId+'&knoId='+this.data.id+'&value='+like
     }).then(res=>{
       if(res.data.result == 'ok'){
         this.setData({
@@ -130,7 +130,7 @@ Page({
     if (!this.data.knoIfRead) {
     let patientId = wx.getStorageSync('patientid_token')
     request({
-      url:'http://120.27.141.50/copd/message/recordIfRead?patientId='+patientId+'&knoId='+this.data.id+'&value=1'
+      url:'https://zjubiomedit.com/copd/message/recordIfRead?patientId='+patientId+'&knoId='+this.data.id+'&value=1'
     }).then(res=>{
       if(res.data.result == 'ok'){
         this.setData({

@@ -1,0 +1,12 @@
+<!-- pages/function/walk-test/to-app.wxml -->
+<!-- <web-view src="http://zjubiomedit.com:83/"/> -->
+<view class="text-flex" >
+    <text>小程序端六分钟步行测试尚未开放</text>
+    <text>请前往APP端进行测试</text>
+</view>
+<image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager%2Ficon%2Fic_launcher.png" />
+<view class="text-flex download">
+    <text>若尚未安装APP，请复制以下网址</text>
+    <text>在浏览器打开</text>
+    <text>http://zjubiomedit.com:83/</text>
+</view>

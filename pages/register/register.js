@@ -306,7 +306,7 @@ Page({
       profession:pro,
       phoneNumber:this.data.phoneNumber.value,
       address:add,
-      smoke:smokeArr[this.data.smoke.index],
+      smoke:this.data.smoke.index?true:false,
       password:this.data.password.value
     }
     var dataSring = JSON.stringify(info);
@@ -316,7 +316,7 @@ Page({
         currentIndex:3
       })
       request({
-        url:'http://120.27.141.50/copd/message/updateNewUserKnowledge?newUserId=' + patientId
+        url:'https://zjubiomedit.com/copd/message/updateNewUserKnowledge?newUserId=' + patientId
       }).then(res=>{
         // if(res.data.result != "ok"){
         //   wx.showToast({

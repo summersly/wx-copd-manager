@@ -1,30 +1,18 @@
-// pages/function/drug/drug-index.js
-import drugRequest from "../../../utils/Request"
-
+// pages/function/walk-test/to-app.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    drugHisData:[]
+  
   },
-  addNew:function(){
-    wx.navigateTo({
-      url:"drug-add/drug-add"
-    })
-  },
-  reviewHistory:function(){
-    let data = JSON.stringify(this.data.drugHisData)
-    wx.navigateTo({
-      url:"drug-history/drug-history?data=" + data
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  
   },
 
   /**
@@ -38,22 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    drugRequest.DateRequest(5,0).then(res => {
-      // console.log(res)
-      let drugHisList = []
-      for (let item of res){
-        drugHisList = drugHisList.concat({
-          time: item.measureTime.slice(11,16),
-          name: item.medicineName
-        })
-      }
-      // console.log(drugHisList)
-      this.setData({
-        drugHisData:drugHisList
-      })
-    }).catch((err) => {
-
-    })
+  
   },
 
   /**

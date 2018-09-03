@@ -1,6 +1,6 @@
 // pages/mine/mine-collection/collection.js
 import { request } from '../../../utils/Request'
-const knoUrl = 'http://120.27.141.50/copd/message/getKnoListPaging?'
+const knoUrl = 'https://zjubiomedit.com/copd/message/getKnoListPaging?'
 Page({
 
   /**

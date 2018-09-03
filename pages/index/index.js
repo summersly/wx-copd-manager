@@ -52,7 +52,9 @@ Page({
   },
   onLoad: function () {
     indexRequest.evaluateWithPEF().then(res => {
-      wx.setStorageSync('pef_token', res.standardPEF.toFixed(0))
+      if(res){
+        wx.setStorageSync('pef_token', res.standardPEF.toFixed(0))
+      }
     })
   },
   /**

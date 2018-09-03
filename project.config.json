@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -88,6 +88,11 @@
 					"name": "walk",
 					"pathName": "pages/function/walk-test/walk-test",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "toapp",
+					"pathName": "pages/function/walk-test/to-app"
 				}
 			]
 		}

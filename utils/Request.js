@@ -14,41 +14,44 @@ const evaluationStateList = ["未测评", "危险", "不佳", "中等", "良好"
 /**
  * URL for request
  */
-const BASEURL = 'http://120.27.141.50:18908/'
-const getLastUrl = BASEURL + 'data/GetLastGenericRecords'
-const fetchUrl = BASEURL + 'data/fetch'
-const commitUrl = BASEURL + 'data/commit'
+const BASEURL = 'https://zjubiomedit.com/COPDService.svc/'
+// const getLastUrl = BASEURL + 'data/GetLastGenericRecords'
+// const fetchUrl = BASEURL + 'data/fetch'
+// const commitUrl = BASEURL + 'data/commit'
+const getLastUrl = BASEURL + 'GetLastGenericRecords'
+const fetchUrl = BASEURL + 'GetGenericRecords'
+const commitUrl = BASEURL + 'CommitGenericRecord'
 const validateUrl = BASEURL + 'ValidateRegister'
 const registUrl = BASEURL + 'WapRegistWithPatientInfo'
 
 /**
  * 通用请求 用于pages/class请求视频与知识
  */
-export const request = ({ data = {}, url = '' , method = 'GET' }) => {
+export const request = ({ data = {}, url = '', method = 'GET' }) => {
     let header = {
-      'content-type': 'application/json'
+        'content-type': 'application/json'
     }
     return new Promise((resolve, reject) => {
-      wx.request({
-        url: url,
-        header: header,
-        data: data,
-        method: method,
-        success: (res) => {
-          resolve(res)
-        },
-        fail: (err) => {
-          wx.showLoading({
-            title: '网络错误!'
-          })
-          setTimeout(() => {
-            wx.hideLoading()
-          }, 3000)
-          reject(err)
-        }
-      })
+        wx.request({
+            url: url,
+            header: header,
+            data: data,
+            method: method,
+            success: (res) => {
+                resolve(res)
+            },
+            fail: (err) => {
+                wx.showLoading({
+                    title: '网络错误!'
+                })
+                setTimeout(() => {
+                    wx.hideLoading()
+                }, 3000)
+                reject(err)
+            }
+        })
     })
-  } 
+}
 
 /**
  * 六分钟步行测试相关方法
@@ -57,22 +60,7 @@ function rad(degrees) {
     return degrees * Math.PI / 180.0;
 }
 
-export const calculateDistance = (latitudeLast,latitudeNew,longitudeLast,longitudeNew) => {
-    //计算两点位置距离
-
-    // double a, b, sa2, sb2;
-    // int d;
-    // lat1 = rad(lat1);
-    // lat2 = rad(lat2);
-    // a = lat1 - lat2;
-    // b = rad(long1 - long2);
-
-    // sa2 = Math.sin(a / 2.0);
-    // sb2 = Math.sin(b / 2.0);
-    // d = (int)(2 * EARTH_RADIUS * 1000
-    //         * Math.asin(Math.sqrt(sa2 * sa2 + Math.cos(lat1)
-    //         * Math.cos(lat2) * sb2 * sb2)));
-    // return d;
+export const calculateDistance = (latitudeLast, latitudeNew, longitudeLast, longitudeNew) => {
 
     var rad1 = rad(latitudeLast)
     var rad2 = rad(latitudeNew)
@@ -81,7 +69,7 @@ export const calculateDistance = (latitudeLast,latitudeNew,longitudeLast,longitu
     //地球半径 单位 m
     var r = 6371000;
     var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2.0), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2.0), 2)));
-    
+
     return distance;
 }
 
@@ -332,7 +320,7 @@ function validateRequest(patientId, patientName) {
 /**
  * 注册请求
  */
-function registWithInfo(patientId,dataString){
+function registWithInfo(patientId, dataString) {
     let header = {
         'content-type': 'application/json'
     }
@@ -428,28 +416,32 @@ function evaluateWithPEF() {
     let height = app.globalData.loginUserInfo.newestHeight
     let age = calculateAge()
     let result = 0
+    if (sex == "M") {
+        standardPEF = 75.6 + 20.4 * age - 0.41 * age * age + 0.002 * age * age * age + 1.19 * height;
+    } else {
+        standardPEF = 282.0 + 1.79 * age - 0.046 * age * age + 0.68 * height;
+    }
     return Promise.all([LastRequest(1), LastRequest(4)]).then((req) => {
-        if (!req[0][0]){
+        if (!req[0][0]) {
             wx.showToast({
-                title:'填写CAT量表后进行整体评估',
-                icon:'none'
+                title: '填写CAT量表后进行整体评估',
+                icon: 'none'
             })
-            return false
+            return evaluation = {
+                standardPEF: standardPEF
+            }
         }
-        if(!req[1][0]){
+        if (!req[1][0]) {
             wx.showToast({
-                title:'提交PEF记录后进行整体评估',
-                icon:'none'
+                title: '提交PEF记录后进行整体评估',
+                icon: 'none'
             })
-            return false
+            return evaluation = {
+                standardPEF: standardPEF
+            }
         }
         let CatScore = req[0][0].score
         let PefScore = req[1][0].value
-        if (sex == "M") {
-            standardPEF = 75.6 + 20.4 * age - 0.41 * age * age + 0.002 * age * age * age + 1.19 * height;
-        } else {
-            standardPEF = 282.0 + 1.79 * age - 0.046 * age * age + 0.68 * height;
-        }
         if (PefScore / standardPEF >= 0.8) {
             if (CatScore <= 10) {
                 result = 4;
@@ -475,7 +467,7 @@ function evaluateWithPEF() {
             score: result * 20,
             evaluationTip: evaluationTipList[result],
             evaluationState: evaluationStateList[result],
-            standardPEF:standardPEF
+            standardPEF: standardPEF
         }
         // console.log(evaluation)
         return evaluation;
@@ -618,9 +610,9 @@ function validateID(code) {
     if (!pass) console.log(tip);
 
     return {
-        birthDate:birthDate,
-        tip:tip,
-        pass:pass
+        birthDate: birthDate,
+        tip: tip,
+        pass: pass
     }
 
 }
@@ -629,15 +621,15 @@ function validatePhone(phone) {
     return (reg.test(phone))
 }
 
-function personInfoVali(code,phone){
+function personInfoVali(code, phone) {
     return new Promise((resolve, reject) => {
         let id = validateID(code)
         let p = validatePhone(phone)
-        if (!id.pass || !p){
+        if (!id.pass || !p) {
             wx.showToast({
                 title: id.tip || '手机号输入有误',
-                icon:'none',
-                duration:1500
+                icon: 'none',
+                duration: 1500
             })
             reject(id.tip)
         } else {
@@ -658,6 +650,6 @@ export default {
     scaleScore: scaleScore,
     uncomfortString: uncomfortString,
     validateRequest: validateRequest,
-    personInfoVali:personInfoVali,
-    registWithInfo:registWithInfo
+    personInfoVali: personInfoVali,
+    registWithInfo: registWithInfo
 }

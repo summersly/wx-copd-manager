@@ -21,7 +21,8 @@
     "pages/class/message/message",
     "pages/mine/mine-collection/collection",
     "pages/function/pef/pef-charts/pef-charts",
-    "pages/function/walk-test/walk-test"
+    "pages/function/walk-test/walk-test",
+    "pages/function/walk-test/to-app"
   ],
   "window": {
     "backgroundTextStyle": "light",

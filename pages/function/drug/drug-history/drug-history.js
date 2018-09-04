@@ -52,7 +52,7 @@ Page({
     let header = {
         'content-type': 'application/json'
     }
-    let url = 'http://120.27.141.50:18908/data/fetch'
+    let url = 'https://zjubiomedit.com/COPDService.svc/GetGenericRecords'
     let method = 'POST'
     let data = {
         "patientId": patientId,

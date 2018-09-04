@@ -1,5 +1,5 @@
 <!-- pages/mine/mine-collection/collection.wxml -->
-<scroll-view scroll-y="{{true}}" style="width:100vw;height:100vh" bindscrolltolower="getMoreKno">
+<scroll-view scroll-y="{{true}}" style="width:100vw;height:100vh" >
     <navigator wx:if="{{item.knoIfFavorite}}" class="kno-item" wx:for="{{knoArr}}" wx:key="index" url="../../class/message/message?id={{item.knoId}}&read={{item.knoIfRead}}&like={{item.knoIfFavorite}}&mark=[0,{{index}}]">
         <text>{{item.knoName}}</text>
         <view class="subtitle">

@@ -68,7 +68,7 @@ Page({
               icon: 'none'
             })
           } else {
-            let arr = res.data.result.items.map(data => {
+            let arr = res2.data.result.items.map(data => {
               return {
                 knoId: data.knoId,
                 knoIfFavorite: data.knoIfFavorite,

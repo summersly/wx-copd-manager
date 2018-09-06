@@ -21,7 +21,7 @@
     </view>
     <view class="validate-group" wx:if="{{currentIndex==0}}">
         <num-input model="{{patientId}}" bindmychange='changePatientID' />
-        <num-input model="{{patientName}}" bindmychange='changePatientName' />
+        <num-input model="{{patientName}}" bindmychange='changePatientName' bindmychangeend='changePatientName'/>
         <button bindtap="validate">身份核验</button>
     </view>
     <view class="person-info-group" wx:if="{{currentIndex==1}}">
@@ -62,7 +62,7 @@
                 <picker mode="{{address.mode}}" value='{{address.valueArr}}' bindchange='changeAddressPicker'>
                     <view class="picker-tip">请先选择省市区</view>
                 </picker>
-                <textarea class="value" value="{{address.value}}" cursor-spacing="40" bindinput="changeAddressInput" />
+                <textarea class="value" value="{{address.value}}" cursor-spacing="40" bindinput="changeAddressInput" bindblur="changeAddressInput"/>
             </view>
         </view>
         <view class='btn'>

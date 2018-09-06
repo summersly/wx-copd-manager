@@ -25,6 +25,14 @@ Component({
       }
       this.triggerEvent('mychange', detail)
 
+    },
+    changeValueEnd: function (e) {
+      let detail = {
+        key: 'value',
+        value: e.detail.value
+      }
+      this.triggerEvent('mychangeend', detail)
+
     }
   }
 })

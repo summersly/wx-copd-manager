@@ -4,7 +4,7 @@
       <label>{{model.name}}</label>
     </view>
     <view class="input-item">
-      <input type='{{model.type}}' value="{{model.value}}" placeholder="{{model.placeholder}}" bindinput="changeValue"/>
+      <input type='{{model.type}}' value="{{model.value}}" placeholder="{{model.placeholder}}" bindinput="changeValue" bindblur="changeValueEnd"/>
     </view>
     <view class="input-unit" wx:if="{{model.unit}}">
       <label>{{model.unit}}</label>

@@ -24,7 +24,7 @@ Page({
       }, {
         name: '步行测试',
         icon: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/walk.png',
-        route: '../function/walk-test/walk-test',
+        route: '../function/walk-test/to-app',
         memo: ''
       }
     ],

@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.4",
+	"libVersion": "1.9.97",
 	"appid": "wxcf51d9aa50011dbc",
 	"projectname": "copd-manager",
 	"isGameTourist": false,

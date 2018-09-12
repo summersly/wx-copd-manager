@@ -6,7 +6,8 @@
 </view>
 <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager%2Ficon%2Fic_launcher.png" />
 <view class="text-flex download">
-    <text>若尚未安装APP，请复制以下网址</text>
+    <button bindtap="copyToBlipb" style="margin-bottom:30rpx;">复制链接</button>
+    <text>若尚未安装APP，点击按钮复制以下网址</text>
     <text>在浏览器打开</text>
-    <text>http://zjubiomedit.com:83/</text>
+    <text>{{url}}</text>
 </view>

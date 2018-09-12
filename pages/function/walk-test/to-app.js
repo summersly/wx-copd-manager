@@ -1,66 +1,66 @@
 // pages/function/walk-test/to-app.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-  
+    url: "http://zjubiomedit.com:83/"
   },
 
+  copyToBlipb: function() {
+    wx.setClipboardData({
+      data:this.data.url,
+      success:function(){
+        wx.showToast({
+          title:'复制成功！立即下载吧！',
+          icon:'none'
+        })
+      },
+      fail:function(){
+        wx.showToast({
+          title:'复制失败，请重试',
+          icon:'none'
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
-  },
+  onLoad: function(options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
-  },
+  onShow: function() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
-  },
+  onHide: function() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
-  },
+  onUnload: function() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
-  },
+  onPullDownRefresh: function() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
-  },
+  onReachBottom: function() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  }
-})
+  onShareAppMessage: function() {}
+});

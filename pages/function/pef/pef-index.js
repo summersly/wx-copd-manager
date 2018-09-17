@@ -13,12 +13,14 @@ Page({
       lazyLoad: true
     },
     dataList: [],
-    time: util.formatTime1(new Date()),
+    time: '',
+    time1:'',
     pef: ""
   },
   bindTimeChange: function (e) {
     this.setData({
-      time: e.detail.value
+      time: e.detail.value,
+      time1: e.detail.value + ':00'
     })
   },
   bindPEFInput: function (e) {
@@ -27,7 +29,7 @@ Page({
     })
   },
   pefAdd: function () {
-    let time = util.formatDay(new Date()) + ' ' + this.data.time + ':00'
+    let time = util.formatDay(new Date()) + ' ' + this.data.time1
     let pef = this.data.pef
     if (!pef) {
       wx.showToast({
@@ -72,6 +74,7 @@ Page({
               duration: 1500
             })
             setTimeout(() => {
+              that.onLoad()
               that.onShow()
               that.setData({
                 pef: ''
@@ -195,7 +198,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      time:util.formatTime1(new Date()),
+      time1:util.formatTime2(new Date())
+    })
   },
 
   /**

@@ -20,7 +20,7 @@
         <text>量表填写</text>
         <text>{{scaleFinish[0]+scaleFinish[1]+scaleFinish[2]}}/3</text>
       </view>
-      <progress percent="{{(scaleFinish[0]+scaleFinish[1]+scaleFinish[2]) / 3 * 100}}" stroke-width="6" activeColor="rgba(80, 94, 131, 1)" backgroundColor="white" active="{{true}}" />
+      <progress percent="{{(scaleFinish[0]+scaleFinish[1]+scaleFinish[2]) / 3 * 100}}" stroke-width="4" activeColor="#ff6600" backgroundColor="white" active="{{true}}" />
     </view>
     <view>
       <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/scale.png" mode='aspectFit' class="scale-icon" />

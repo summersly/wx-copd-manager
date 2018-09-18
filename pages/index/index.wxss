@@ -73,7 +73,7 @@
     height: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     padding:0 0 25rpx 5px;
 }
 .scale-card-navi > view:last-child {
@@ -88,7 +88,7 @@
 }
 .scale-card-text{
     height: 50%;
-    padding: 0 5px 0 0;
+    padding: 15px 5px 0 0;
     display: flex;
     justify-content: space-between;
 }

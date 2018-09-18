@@ -6,13 +6,7 @@ Page({
    */
   data: {
     dayscolor:[],
-    drugHisData:[{
-      time:'14:30',
-      name:'信必可都宝'
-    },{
-      time:'14:56',
-      name:'噻托溴铵分吸入剂'
-    }]
+    drugHisData:[]
   },
   dayClick:function(e){
     // console.log(e.detail);
@@ -39,6 +33,7 @@ Page({
       })
     })
   },
+  
   dateChange:function(e){
     this.setData({
       dayscolor:[]

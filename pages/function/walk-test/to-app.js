@@ -1,10 +1,12 @@
 // pages/function/walk-test/to-app.js
+import { iconBaseUrl } from '../../../utils/config'
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    url: "http://zjubiomedit.com:83/"
+    url: "https://nx.zjubiomedit.com/app/copd/copd.apk",
+    icImg:iconBaseUrl + 'ic_launcher.png'
   },
 
   copyToBlipb: function() {

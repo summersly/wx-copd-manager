@@ -1,7 +1,7 @@
 // pages/class/message/message.js
 const wxParser = require('../../../wxParser/index');
 import { request } from '../../../utils/Request'
-const knoBaseUrl = 'https://zjubiomedit.com/copd/message/get?knoId='
+import { knoGetContentUrl , knoLikeUrl , knoReadUrl , iconBaseUrl } from '../../../utils/config'
 Page({
 
   /**
@@ -15,8 +15,8 @@ Page({
     knoIfRead: false,
     knoIfFavorite: false,
     mark:[],
-    dislike: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/like_dis.png',
-    like: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/like.png'
+    dislike: iconBaseUrl + 'like_dis.png',
+    like: iconBaseUrl + 'like.png'
 
   },
 
@@ -25,7 +25,7 @@ Page({
     let like = this.data.knoIfFavorite?0:1
     let patientId = wx.getStorageSync('patientid_token')
     request({
-      url:'https://zjubiomedit.com/copd/message/recordFavorite?patientId='+patientId+'&knoId='+this.data.id+'&value='+like
+      url:knoLikeUrl + 'patientId=' + patientId + '&knoId=' + this.data.id + '&value=' + like
     }).then(res=>{
       if(res.data.result == 'ok'){
         this.setData({
@@ -63,9 +63,9 @@ Page({
       mark:mark
     })
     request({
-      url: knoBaseUrl + id
+      url: knoGetContentUrl + id
     }).then(res => {
-      // console.log(res)
+      console.log(res)
       this.setData({
         name: res.data.title,
         time: res.data.createTime
@@ -78,6 +78,24 @@ Page({
         tapLink: (url) => { // 点击超链接时的回调函数
           // url 就是 HTML 富文本中 a 标签的 href 属性值
           // 这里可以自定义点击事件逻辑，比如页面跳转
+          // wx.navigateTo({
+          //   url:"messageurl?url=" + url
+          // })
+          wx.setClipboardData({
+            data:url,
+            success:function(){
+              wx.showToast({
+                title:'复制成功！请在浏览器打开链接！',
+                icon:'none'
+              })
+            },
+            fail:function(){
+              wx.showToast({
+                title:'复制失败，请重试',
+                icon:'none'
+              })
+            }
+          })
         }
       })
       that.setData({
@@ -130,7 +148,7 @@ Page({
     if (!this.data.knoIfRead) {
     let patientId = wx.getStorageSync('patientid_token')
     request({
-      url:'https://zjubiomedit.com/copd/message/recordIfRead?patientId='+patientId+'&knoId='+this.data.id+'&value=1'
+      url:knoReadUrl + 'patientId=' + patientId + '&knoId=' + this.data.id + '&value=1'
     }).then(res=>{
       if(res.data.result == 'ok'){
         this.setData({

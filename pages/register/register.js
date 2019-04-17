@@ -3,8 +3,9 @@ const educationArr = ["小学", "初中", "中专", "高中", "大专", "本科"
 const professionArr = ["工人", "农民", "科技", "行政", "教师", "金融", "商业", "医疗", "学生", "军人", "家务", "个体", "其他"]
 const sexArr = ["男", "女"]
 const smokeArr = ['否', '是']
-import registRequest from "../../utils/Request"
-import { request } from '../../utils/Request'
+import {validateRequest,personInfoVali,registWithInfo,request} from '../../utils/Request'
+import { knoNewUserUrl , provinceUrl , hospitalUrl , doctorUrl } from '../../utils/config'
+
 Page({
 
   /**
@@ -104,8 +105,29 @@ Page({
       value: '',
       valueArr:['宁夏回族自治区','银川市','兴庆区']
     },
+    province: {
+      name: '省份',
+      mode: 'selector',
+      value: '',
+      range: []
+    },
+    hospital: {
+      name: '医院',
+      mode: 'selector',
+      value: '',
+      range: []
+    },
+    doctor: {
+      name: '管理',
+      mode: 'selector',
+      value: '',
+      range: []
+    },
     // 页面
     currentIndex: 0,
+    provinceArr : [],
+    hospitalArr : [],
+    doctorArr : []
   },
 
   // 数据绑定函数
@@ -185,7 +207,54 @@ Page({
       'address.value': e.detail.value
     })
   },
-
+  changeProvince: function (e) {
+    this.setData({
+      'province.value': this.data.provinceArr[e.detail.value],
+      'hospital.value':'',
+      'doctor.value':''
+    })
+    request({
+      url:hospitalUrl,
+      header:{
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      method:'POST',
+      data:{
+        province:this.data.province.value.provinceCode
+      }
+    }).then(res=>{
+      this.setData({
+        'hospital.range':res.data,
+        hospitalArr:res.data
+      })
+    })
+  },
+  changeHospital: function (e) {
+    this.setData({
+      'hospital.value': this.data.hospitalArr[e.detail.value],
+      'doctor.value':''
+    })
+    request({
+      url:doctorUrl,
+      header:{
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      method:'POST',
+      data:{
+        hospitalCode:this.data.hospital.value.hospitalCode
+      }
+    }).then(res=>{
+      this.setData({
+        'doctor.range':res.data,
+        doctorArr:res.data
+      })
+    })
+  },
+  changeDoctor: function (e) {
+    this.setData({
+      'doctor.value': this.data.doctorArr[e.detail.value]
+    })
+  },
   /**
    * 数据处理函数
    */
@@ -207,7 +276,7 @@ Page({
       })
       return
     }
-    registRequest.validateRequest(patientId, patientName).then((res) => {
+    validateRequest(patientId, patientName).then((res) => {
       console.log(res)
       this.setData({
         currentIndex: 1
@@ -236,7 +305,7 @@ Page({
     }
     //身份证检验 自动生成生日
     //手机号检验 
-    registRequest.personInfoVali(id,phone).then(res => {
+    personInfoVali(id,phone).then(res => {
       console.log(res)
       this.setData({
         'birthDate.value':res
@@ -264,6 +333,7 @@ Page({
     let edu = this.data.education.value
     let pro = this.data.profession.value
     let add = this.data.address.value
+    let doctor = this.data.doctor.value
     let toast = ''
     //各项数据 除了密码 是否填写
     if (!height){
@@ -283,6 +353,9 @@ Page({
     }
     if (!add){
       toast = toast.concat('家庭住址，')
+    }
+    if (!doctor){
+      toast = toast.concat('管理')
     }
     if (toast){
       wx.showToast({
@@ -307,16 +380,17 @@ Page({
       phoneNumber:this.data.phoneNumber.value,
       address:add,
       smoke:this.data.smoke.index?true:false,
-      password:this.data.password.value
+      password:this.data.password.value,
+      doctor:doctor.userId
     }
     var dataSring = JSON.stringify(info);
     console.log(dataSring)
-    registRequest.registWithInfo(patientId,dataSring).then(res => {
+    registWithInfo(patientId,dataSring).then(res => {
       this.setData({
         currentIndex:3
       })
       request({
-        url:'https://zjubiomedit.com/copd/message/updateNewUserKnowledge?newUserId=' + patientId
+        url: knoNewUserUrl + patientId
       }).then(res=>{
         // if(res.data.result != "ok"){
         //   wx.showToast({
@@ -342,7 +416,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    request({
+      url:provinceUrl,
+      header:{
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      method:'POST'
+    }).then(res=>{
+      console.log(res)
+      that.setData({
+        'province.range':res.data,
+        provinceArr:res.data
+      })
+    })
   },
 
   /**

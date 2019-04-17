@@ -1,13 +1,14 @@
 // pages/function/drug/drug-index.js
-import drugRequest from "../../../utils/Request"
-
+import {DateRequest} from "../../../utils/Request"
+import { iconBaseUrl } from '../../../utils/config'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    drugHisData:[]
+    drugHisData:[],
+    drugAddImg:iconBaseUrl + 'add.png'
   },
   addNew:function(){
     wx.navigateTo({
@@ -38,7 +39,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    drugRequest.DateRequest(5,0).then(res => {
+    DateRequest(5,0).then(res => {
       // console.log(res)
       let drugHisList = []
       for (let item of res){

@@ -2,7 +2,7 @@
 <view class="drug-list">
     
     <view class="drug-navi" bindtap="addNew">
-        <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/add.png" />
+        <image src="{{drugAddImg}}" />
         <view class="context">
             <text>添加新纪录</text>
         </view>

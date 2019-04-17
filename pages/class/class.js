@@ -1,7 +1,6 @@
 // pages/class/class.js
 import { request } from '../../utils/Request'
-const videoBaseUrl = 'https://zjubiomedit.com/health-knowledge/GetCOPDVideoInfo.jsp?'
-const knoUrl = 'https://zjubiomedit.com/copd/message/getKnoListPaging?'
+import { videoBaseUrl , knoGetListUrl , iconBaseUrl } from '../../utils/config'
 Page({
 
   /**
@@ -18,8 +17,8 @@ Page({
     mesArr: [],
     knoPage: 2,
     mesPage: 2,
-    dislike:'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/like_dis.png',
-    like:'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/like.png'
+    dislike:iconBaseUrl + 'like_dis.png',
+    like:iconBaseUrl + 'like.png'
   },
 
   getMoreKno: function (e) {
@@ -27,7 +26,7 @@ Page({
     if (e.detail.index == 2) {
       let page = this.data.knoPage
       request({
-        url: knoUrl + 'type=1&patientId=' + patientId + '&page_index=' + page + '&items_per_page=10'
+        url: knoGetListUrl + 'type=1&patientId=' + patientId + '&page_index=' + page + '&items_per_page=10'
       }).then(res => {
         if (res.data.result.current_item_count <= 0) {
           wx.showToast({
@@ -53,7 +52,7 @@ Page({
     } else if (e.detail.index == 3) {
       let page = this.data.mesPage
       request({
-        url: knoUrl + 'type=0&patientId=' + patientId + '&page_index=' + page + '&items_per_page=10'
+        url: knoGetListUrl + 'type=0&patientId=' + patientId + '&page_index=' + page + '&items_per_page=10'
       }).then(res => {
         if (res.data.result.current_item_count <= 0) {
           wx.showToast({
@@ -116,7 +115,7 @@ Page({
     })
     let patientId = wx.getStorageSync('patientid_token')
     request({
-      url: knoUrl + 'type=0&patientId=' + patientId + '&page_index=1&items_per_page=10'
+      url: knoGetListUrl + 'type=0&patientId=' + patientId + '&page_index=1&items_per_page=10'
     }).then(res => {
       // console.log(res.data)
       if (res.data.result.current_item_count <= 0) {
@@ -141,7 +140,7 @@ Page({
       }
     })
     request({
-      url: knoUrl + 'type=1&patientId=' + patientId + '&page_index=1&items_per_page=10'
+      url: knoGetListUrl + 'type=1&patientId=' + patientId + '&page_index=1&items_per_page=10'
     }).then(res => {
       // console.log(res.data)
       if (res.data.result.current_item_count <= 0) {

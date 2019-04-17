@@ -1,5 +1,6 @@
 //index.js
-import indexRequest from "../../utils/Request"
+import {evaluateWithPEF , Loadrequest , evaluationStateList , uncomfortString , evaluationTipList} from "../../utils/Request"
+import { iconBaseUrl } from '../../utils/config'
 var util = require('../../utils/util.js');
 const app = getApp()
 
@@ -8,22 +9,22 @@ Page({
     functionCardData: [
       {
         name: '不适记录',
-        icon: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/uncomfort.png',
+        icon: iconBaseUrl + 'uncomfort.png',
         route: '../function/uncomfort/uncomfort',
         memo: ''
       }, {
         name: '用药记录',
-        icon: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/drugblue.png',
+        icon: iconBaseUrl +'drugblue.png',
         route: '../function/drug/drug-index',
         memo: ''
       }, {
         name: 'PEF监测',
-        icon: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/pef.png',
+        icon: iconBaseUrl +'pef.png',
         route: '../function/pef/pef-index',
         memo: ''
       }, {
         name: '步行测试',
-        icon: 'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/walk.png',
+        icon: iconBaseUrl +'walk.png',
         route: '../function/walk-test/to-app',
         memo: ''
       }
@@ -32,6 +33,7 @@ Page({
     evaluationState: '未测评',
     evaluationTip: '请填写CAT量表，并进行峰流速记录',
     scaleFinish: [0, 0, 0],
+    scaleImg:iconBaseUrl + 'scale.png'
   },
   //事件处理函数
   drawCircle: function (score) {
@@ -51,7 +53,7 @@ Page({
 
   },
   onLoad: function () {
-    indexRequest.evaluateWithPEF().then(res => {
+    evaluateWithPEF().then(res => {
       if(res){
         wx.setStorageSync('pef_token', res.standardPEF.toFixed(0))
       }
@@ -73,14 +75,14 @@ Page({
   },
   onShow: function () {
     var that = this
-    indexRequest.Loadrequest().then((res) => {
+    Loadrequest().then((res) => {
       console.log(res)
       let count = [(res[0].length > 0 ? 1 : 0), (res[1].length > 0 ? 1 : 0), (res[2].length > 0 ? 1 : 0)]
       that.setData({
         scaleFinish: count,
       })
       if (res[5][0]){
-        let memo = indexRequest.uncomfortString(res[5][0]).slice(0, -1)
+        let memo = uncomfortString(res[5][0]).slice(0, -1)
         that.setData({
           'functionCardData[0].memo': '上次记录:' + memo
         })
@@ -89,8 +91,8 @@ Page({
         this.drawCircle(res[6][0].value)
         that.setData({
           evaluationScore: res[6][0].value,
-          evaluationState: indexRequest.evaluationStateList[res[6][0].value / 20],
-          evaluationTip: indexRequest.evaluationTipList[[res[6][0].value / 20]]
+          evaluationState: evaluationStateList[res[6][0].value / 20],
+          evaluationTip: evaluationTipList[[res[6][0].value / 20]]
         })
       }
       if (res[4][0]) {

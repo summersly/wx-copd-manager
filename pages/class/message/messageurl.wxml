@@ -1,0 +1,2 @@
+<!--pages/class/message/messageurl.wxml-->
+<web-view src="{{url}}" />

@@ -41,9 +41,7 @@ Component({
       const isValid = version[0] > 1 || (version[0] === 1 && version[1] > 9)
         || (version[0] === 1 && version[1] === 9 && version[2] >= 91);
       if (!isValid) {
-        console.error('微信基础库版本过低，需大于等于 1.9.91。'
-          + '参见：https://github.com/ecomfe/echarts-for-weixin'
-          + '#%E5%BE%AE%E4%BF%A1%E7%89%88%E6%9C%AC%E8%A6%81%E6%B1%82');
+        console.error('微信基础库版本过低，需大于等于 1.9.91。');
         return;
       }
 

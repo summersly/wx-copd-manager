@@ -1,5 +1,5 @@
 /* pages/register/register.wxss */
-
+@import '../../components/picker-input/picker-input.wxss';
 .container {
     width: 750rpx;
     display: flex;
@@ -93,13 +93,14 @@
     flex-direction: column;
 }
 
-.value {
+.address-input .value {
     width: 400rpx;
     height: 70px;
     line-height: 35px;
     margin-top: 10rpx;
     border: 1px solid #ddd;
     border-radius: 5px;
+    padding: 10rpx;
 }
 
 .picker-tip {

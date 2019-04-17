@@ -23,7 +23,7 @@
       <progress percent="{{(scaleFinish[0]+scaleFinish[1]+scaleFinish[2]) / 3 * 100}}" stroke-width="4" activeColor="#ff6600" backgroundColor="white" active="{{true}}" />
     </view>
     <view>
-      <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/scale.png" mode='aspectFit' class="scale-icon" />
+      <image src="{{scaleImg}}" mode='aspectFit' class="scale-icon" />
     </view>
   </navigator>
   <home-card-navi wx:for="{{functionCardData}}" wx:key="{{item.name}}" model="{{item}}" />

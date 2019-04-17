@@ -1,6 +1,6 @@
 // pages/function/scale/scale-gad/scale-gad.js
 const option = ["完全不会", "偶尔几天", "一半以上的日子", "几乎每天"]
-import scaleRequest from "../../../../utils/Request"
+import {scaleScore,CommitRequest } from "../../../../utils/Request"
 var util = require('../../../../utils/util.js');
 
 Page({
@@ -67,7 +67,7 @@ Page({
     })
   },
   submitAnswer: function () {
-    let score = scaleRequest.scaleScore(this.data.gadAnswerIndex)
+    let score = scaleScore(this.data.gadAnswerIndex)
     if (score < 0) {
       return false
     }
@@ -89,7 +89,7 @@ Page({
       success: function (res) {
         if (res.confirm) {
           // console.log('111')
-          scaleRequest.CommitRequest(dataSring, 2).then(res => {
+          CommitRequest(dataSring, 2).then(res => {
             // console.log(res)
             let Pages = getCurrentPages()
             let prevPage = Pages[Pages.length - 2]

@@ -17,7 +17,7 @@
             <canvas canvas-id="canvasCircle"></canvas>
             <canvas canvas-id="canvasArcCir"></canvas>
             <view>
-                <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/walk-circle.png" style="width:30px;height:30px" />
+                <image src="{{walkImg}}" style="width:30px;height:30px" />
             </view>
         </view>
         <text>当前已走的距离为</text>

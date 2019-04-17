@@ -3,6 +3,7 @@
 // pages/function/walk-test/walk-test.js
 import { calculateDistance } from '../../../utils/Request'
 var util = require('../../../utils/util.js');
+import { audioBaseUrl , iconBaseUrl } from '../../../utils/config'
 /**
  * 步行测试语音播报部分 audioTip测试填写问卷前进行提示 audioTest测试前中后进行提示 并提醒进行测试后问卷填写
  */
@@ -10,9 +11,9 @@ var util = require('../../../utils/util.js');
 const Time6m = 360000
 //audioTip 初始化
 var audioTipIndex = 0
-const audioTipSrc = ['https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_tip1.mp3',
-  'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_tip2.mp3',
-  'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_tip3.mp3']
+const audioTipSrc = [audioBaseUrl + 'audio_tip1.mp3',
+audioBaseUrl + 'audio_tip2.mp3',
+audioBaseUrl + 'audio_tip3.mp3']
 const audioTip = wx.createInnerAudioContext()
 audioTip.src = audioTipSrc[audioTipIndex]
 audioTip.volume = 0.8
@@ -37,15 +38,15 @@ audioTip.onEnded(() => {
 //audioTest 初始化
 var set
 var audioTestIndex = 0
-const audioTestSrc = ['https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_prep.mp3',
-  'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_prep2.mp3',
-  'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_1m.mp3',
-  'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_2m.mp3',
-  'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_3m.mp3',
-  'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_4m.mp3',
-  'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_5m.mp3',
-  'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_6m.mp3',
-  'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/audio/audio_write.mp3']
+const audioTestSrc = [audioBaseUrl + 'audio_prep.mp3',
+audioBaseUrl + 'audio_prep2.mp3',
+audioBaseUrl + 'audio_1m.mp3',
+audioBaseUrl + 'audio_2m.mp3',
+audioBaseUrl + 'audio_3m.mp3',
+audioBaseUrl + 'audio_4m.mp3',
+audioBaseUrl + 'audio_5m.mp3',
+audioBaseUrl + 'audio_6m.mp3',
+audioBaseUrl + 'audio_write.mp3']
 const audioTest = wx.createInnerAudioContext()
 audioTest.src = audioTestSrc[audioTestIndex]
 audioTest.volume = 0.8
@@ -105,7 +106,8 @@ Page({
     }],
     brogAnswerIndexBefore: ['', ''],
     brogAnswerIndexAfter: ['', ''],
-    currentIndex: 0
+    currentIndex: 0,
+    walkImg:iconBaseUrl + 'walk-circle.png'
   },
 
   /**
@@ -321,21 +323,6 @@ Page({
     //   ak: 'FI81wHPlkGUAzITLMZPFNGDzEX1ElAin',
     //   trace:false
     // };
-
-    // wx.request({
-    //   url: 'https://api.map.baidu.com/locapi/v2',
-    //   data: param,
-    //   header: {
-    //     "content-type": "application/json"
-    //   },
-    //   method: 'GET',
-    //   success:function(res){
-    //     console.log(res)
-    //   },
-    //   fail:function(err){
-    //     console.log(err)
-    //   }
-    // })
   },
 
   /**

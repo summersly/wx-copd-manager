@@ -1,5 +1,6 @@
 // components/drug-add-modal/drug-add-modal.js
 var util = require('../../utils/util.js');
+import { iconBaseUrl } from '../../utils/config'
 Component({
   /**
    * 组件的属性列表
@@ -14,7 +15,10 @@ Component({
    */
   data: {
     time:util.formatTime1(new Date()),
-    name:''
+    name:'',
+    timeImg:iconBaseUrl + 'time.png',
+    drugBlueImg: iconBaseUrl + 'drugblue.png'
+    
   },
 
   /**

@@ -1,5 +1,5 @@
 // pages/function/uncomfort/uncomfort.js
-import uncomfortRequest from "../../../utils/Request"
+import {uncomfortString,CommitRequest} from "../../../utils/Request"
 var util = require('../../../utils/util.js');
 
 Page({
@@ -103,14 +103,14 @@ Page({
       return
     }
     var dataSring = JSON.stringify(uncomfortData);
-    let modalContent = uncomfortRequest.uncomfortString(uncomfortData).slice(0, -1)
+    let modalContent = uncomfortString(uncomfortData).slice(0, -1)
     wx.showModal({
       title: '提交后无法修改',
       content: '本次记录：' + modalContent,
       showCancel: true,
       success: function (res) {
         if (res.confirm) {
-          uncomfortRequest.CommitRequest(dataSring, 6).then(res => {
+          CommitRequest(dataSring, 6).then(res => {
             wx.showToast({
               title: '上传成功',
               duration: 1500

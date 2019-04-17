@@ -1,4 +1,6 @@
 // pages/function/drug/drug-history/drug-history.js
+import { request } from '../../../../utils/Request'
+import {fetchUrl} from '../../../../utils/config'
 Page({
 
   /**
@@ -44,10 +46,7 @@ Page({
     let patientId = wx.getStorageSync('patientid_token')
     let start = dateString + ' ' + '00:00:01';
     let end = dateString + ' ' + '23:59:59';
-    let header = {
-        'content-type': 'application/json'
-    }
-    let url = 'https://zjubiomedit.com/COPDService.svc/GetGenericRecords'
+    let url = fetchUrl
     let method = 'POST'
     let data = {
         "patientId": patientId,
@@ -56,41 +55,12 @@ Page({
         "recordType" : 5
     }
     return new Promise((resolve, reject) => {
-        wx.request({
-            url: url,
-            header: header,
-            data: data,
-            method: method,
-            success: (res) => {
-                const { statusCode } = res
-                if (statusCode > 400 && statusCode < 500) {
-                    wx.showToast({
-                        title: '端口请求错啦' + statusCode,
-                        icon: 'none',
-                        duration: 1500
-                    })
-                } else if (statusCode > 500) {
-                    wx.showToast({
-                        title: '服务器请求失败' + statusCode,
-                        icon: 'none',
-                        duration: 1500
-                    })
-                }
-                if (res.data.flag == 200){
-                    resolve(res.data.recordList)
-                } else {
-                    resolve('')
-                }
-            },
-            fail: (err) => {
-                wx.showLoading({
-                    title: '网络错误!'
-                })
-                setTimeout(() => {
-                    wx.hideLoading()
-                }, 3000)
-                reject(err)
-            }
+      request({
+        url: url,
+        data: data,
+        method: method
+      }).then(res=>{
+           resolve(res.data.recordList)
         })
     })
 },

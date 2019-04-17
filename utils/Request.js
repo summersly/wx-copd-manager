@@ -1,36 +1,36 @@
 var util = require('util.js');
+import {
+    getLastUrl,
+    fetchUrl,
+    commitUrl,
+    validateUrl,
+    registUrl
+} from 'config.js'
 const app = getApp()
 /**
  * 整体评估五种分类情况LIST
  */
-const evaluationTipList = [
+export const evaluationTipList = [
     "请填写CAT量表，并进行峰流速记录",
     "您需要立刻去门诊就诊控制病情",
     "请联系医生进一步调整治疗方案",
     "请继续努力!记得要按时完成任务哦！",
     "请继续保持!记得要按时完成任务哦！"
 ]
-const evaluationStateList = ["未测评", "危险", "不佳", "中等", "良好"]
-/**
- * URL for request
- */
-const BASEURL = 'https://zjubiomedit.com/COPDService.svc/'
-// const getLastUrl = BASEURL + 'data/GetLastGenericRecords'
-// const fetchUrl = BASEURL + 'data/fetch'
-// const commitUrl = BASEURL + 'data/commit'
-const getLastUrl = BASEURL + 'GetLastGenericRecords'
-const fetchUrl = BASEURL + 'GetGenericRecords'
-const commitUrl = BASEURL + 'CommitGenericRecord'
-const validateUrl = BASEURL + 'ValidateRegister'
-const registUrl = BASEURL + 'WapRegistWithPatientInfo'
+export const evaluationStateList = ["未测评", "危险", "不佳", "中等", "良好"]
+
 
 /**
  * 通用请求 用于pages/class请求视频与知识
  */
-export const request = ({ data = {}, url = '', method = 'GET' }) => {
-    let header = {
+export const request = ({
+    data = {},
+    url = '',
+    method = 'GET',
+    header = {
         'content-type': 'application/json'
     }
+}) => {
     return new Promise((resolve, reject) => {
         wx.request({
             url: url,
@@ -38,7 +38,26 @@ export const request = ({ data = {}, url = '', method = 'GET' }) => {
             data: data,
             method: method,
             success: (res) => {
+                const {
+                    statusCode
+                } = res
+                if (statusCode > 400 && statusCode < 500) {
+                    wx.showToast({
+                        title: '端口请求错啦' + statusCode,
+                        icon: 'none',
+                        duration: 1500
+                    })
+                    return false
+                } else if (statusCode > 500) {
+                    wx.showToast({
+                        title: '服务器请求失败' + statusCode,
+                        icon: 'none',
+                        duration: 1500
+                    })
+                    return false
+                }
                 resolve(res)
+      
             },
             fail: (err) => {
                 wx.showLoading({
@@ -78,7 +97,7 @@ export const calculateDistance = (latitudeLast, latitudeNew, longitudeLast, long
  * 
  * 获取最新数据，index指定type, 默认数量为1
  */
-function LastRequest(index, num = 1) {
+export const LastRequest=(index, num = 1)=> {
     let patientId = wx.getStorageSync('patientid_token')
     let header = {
         'content-type': 'application/json'
@@ -97,7 +116,9 @@ function LastRequest(index, num = 1) {
             data: data,
             method: method,
             success: (res) => {
-                const { statusCode } = res
+                const {
+                    statusCode
+                } = res
                 if (statusCode > 400 && statusCode < 500) {
                     wx.showToast({
                         title: '端口请求错啦' + statusCode,
@@ -132,7 +153,7 @@ function LastRequest(index, num = 1) {
 /**
  * 获取某段时间的数据，timeindex：0 ：当天 1：一周 2：一个月 3：6个月
  */
-function DateRequest(type, timeIndex) {
+export const DateRequest=(type, timeIndex)=> {
     let patientId = wx.getStorageSync('patientid_token')
     let now = new Date();
     let end = util.formatTime(now)
@@ -159,7 +180,9 @@ function DateRequest(type, timeIndex) {
             data: data,
             method: method,
             success: (res) => {
-                const { statusCode } = res
+                const {
+                    statusCode
+                } = res
                 if (statusCode > 400 && statusCode < 500) {
                     wx.showToast({
                         title: '端口请求错啦' + statusCode,
@@ -194,7 +217,7 @@ function DateRequest(type, timeIndex) {
 /**
  * 提交数据
  */
-function CommitRequest(dataString, type) {
+export const CommitRequest=(dataString, type)=> {
     let patientId = wx.getStorageSync('patientid_token')
     let header = {
         'content-type': 'application/json'
@@ -213,7 +236,9 @@ function CommitRequest(dataString, type) {
             data: data,
             method: method,
             success: (res) => {
-                const { statusCode } = res
+                const {
+                    statusCode
+                } = res
                 if (statusCode > 400 && statusCode < 500) {
                     wx.showToast({
                         title: '端口请求错啦' + statusCode,
@@ -252,8 +277,8 @@ function CommitRequest(dataString, type) {
 
 /** 
  * 身份核验请求
-*/
-function validateRequest(patientId, patientName) {
+ */
+export const validateRequest=(patientId, patientName)=> {
     let header = {
         'content-type': 'application/json'
     }
@@ -270,7 +295,9 @@ function validateRequest(patientId, patientName) {
             data: data,
             method: method,
             success: (res) => {
-                const { statusCode } = res
+                const {
+                    statusCode
+                } = res
                 if (statusCode > 400 && statusCode < 500) {
                     wx.showToast({
                         title: '端口请求错啦' + statusCode,
@@ -290,7 +317,9 @@ function validateRequest(patientId, patientName) {
                         icon: 'none',
                         duration: 1500
                     })
-                    resolve({ flag: 200 })
+                    resolve({
+                        flag: 200
+                    })
                 } else if (res.data.flag == 254) {
                     wx.showToast({
                         title: '该账号已存在' + res.data.flag,
@@ -320,7 +349,7 @@ function validateRequest(patientId, patientName) {
 /**
  * 注册请求
  */
-function registWithInfo(patientId, dataString) {
+export const registWithInfo=(patientId, dataString)=> {
     let header = {
         'content-type': 'application/json'
     }
@@ -337,7 +366,9 @@ function registWithInfo(patientId, dataString) {
             data: data,
             method: method,
             success: (res) => {
-                const { statusCode } = res
+                const {
+                    statusCode
+                } = res
                 if (statusCode > 400 && statusCode < 500) {
                     wx.showToast({
                         title: '端口请求错啦' + statusCode,
@@ -354,7 +385,9 @@ function registWithInfo(patientId, dataString) {
                         title: '注册成功',
                         icon: 'none'
                     })
-                    resolve({ flag: 200 })
+                    resolve({
+                        flag: 200
+                    })
                 } else if (res.data.flag == 254) {
                     wx.showToast({
                         title: '注册失败' + res.data.flag,
@@ -382,15 +415,16 @@ function registWithInfo(patientId, dataString) {
 /** 
  * pages/index初始化或刷新，获取量表填写情况，上一次各项记录
  */
-function Loadrequest() {
+export const Loadrequest=()=> {
     let index = 4
     return Promise.all([DateRequest(1, 1),
-    DateRequest(2, 2),
-    DateRequest(3, 2),
-    LastRequest(index),
-    LastRequest(++index),
-    LastRequest(++index),
-    LastRequest(++index)]).then(req => {
+        DateRequest(2, 2),
+        DateRequest(3, 2),
+        LastRequest(index),
+        LastRequest(++index),
+        LastRequest(++index),
+        LastRequest(++index)
+    ]).then(req => {
         return req
     })
 
@@ -398,7 +432,7 @@ function Loadrequest() {
 /** 
  * 计算整体评估情况：先计算年龄，获取CAT和PEF数据进行评估
  */
-function calculateAge() {
+export const calculateAge=()=> {
     let birthdate = app.globalData.loginUserInfo.birthDate
     var today = new Date();
     var birthDate = new Date(birthdate);
@@ -410,7 +444,7 @@ function calculateAge() {
     return age;
 }
 
-function evaluateWithPEF() {
+export const evaluateWithPEF=()=> {
     let standardPEF = 0
     let sex = app.globalData.loginUserInfo.sexCode
     let height = app.globalData.loginUserInfo.newestHeight
@@ -476,7 +510,7 @@ function evaluateWithPEF() {
 /** 
  * 检查量表填写情况，是否全部填写完毕并提示
  */
-function scaleScore(answer) {
+export const scaleScore=(answer)=> {
     let score = 0
     answer.map((data, index) => {
         if (data !== 0 && !data) {
@@ -492,8 +526,8 @@ function scaleScore(answer) {
 }
 /** 
  * 转义不适记录的二进制数值为字符串
-*/
-function uncomfortString(data) {
+ */
+export const uncomfortString=(data)=> {
     if (!data) return ''
     let inflammation = parseInt(data.inflammation)
     let lung = parseInt(data.lung)
@@ -519,7 +553,7 @@ function uncomfortString(data) {
  * 注册功能
  * 检查身份证号码 && 手机号码
  */
-function validateID(code) {
+export const validateID=(code)=> {
     var city = {
         11: "北京",
         12: "天津",
@@ -616,12 +650,13 @@ function validateID(code) {
     }
 
 }
-function validatePhone(phone) {
+
+export const validatePhone=(phone)=> {
     var reg = /^1[3|4|5|7|8][0-9]{9}$/; //验证规则
     return (reg.test(phone))
 }
 
-function personInfoVali(code, phone) {
+export const personInfoVali=(code, phone)=> {
     return new Promise((resolve, reject) => {
         let id = validateID(code)
         let p = validatePhone(phone)
@@ -638,18 +673,18 @@ function personInfoVali(code, phone) {
     })
 }
 
-export default {
-    evaluationTipList: evaluationTipList,
-    evaluationStateList: evaluationStateList,
-    CommitRequest: CommitRequest,
-    LastRequest: LastRequest,
-    DateRequest: DateRequest,
-    Loadrequest: Loadrequest,
-    calculateAge: calculateAge,
-    evaluateWithPEF: evaluateWithPEF,
-    scaleScore: scaleScore,
-    uncomfortString: uncomfortString,
-    validateRequest: validateRequest,
-    personInfoVali: personInfoVali,
-    registWithInfo: registWithInfo
-}
+// export default {
+//     evaluationTipList: evaluationTipList,
+//     evaluationStateList: evaluationStateList,
+//     CommitRequest: CommitRequest,
+//     LastRequest: LastRequest,
+//     DateRequest: DateRequest,
+//     Loadrequest: Loadrequest,
+//     calculateAge: calculateAge,
+//     evaluateWithPEF: evaluateWithPEF,
+//     scaleScore: scaleScore,
+//     uncomfortString: uncomfortString,
+//     validateRequest: validateRequest,
+//     personInfoVali: personInfoVali,
+//     registWithInfo: registWithInfo
+// }

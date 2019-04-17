@@ -1,4 +1,5 @@
 // pages/function/tips/cat-tip.js
+import { iconBaseUrl } from '../../../utils/config'
 const tipList = ['您好，根据评测结果，您目前慢性阻塞性肺疾病病情未得到控制，您需要立刻前往门诊就诊控制病情。',
 '您好，根据评测结果，您目前慢性阻塞性肺疾病病情控制不佳，您需要联系医生进一步调整治疗方案。',
 '您好，根据评测结果，您目前慢性阻塞性肺疾病病情中等，需要继续努力！',
@@ -7,10 +8,10 @@ const colorList = [['#ff5252','#ffcdd2'],
 ['#ff9100','#ffd180'],
 ['#ffea00','#ffff8d'],
 ['#00e676','#b9f6ca']]
-const srcList = ['https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/bad.png',
-'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/poor.png',
-'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/medium.png',
-'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/great.png']
+const srcList = [iconBaseUrl + 'bad.png',
+iconBaseUrl + 'poor.png',
+iconBaseUrl + 'medium.png',
+iconBaseUrl + 'great.png']
 Page({
 
   /**
@@ -22,7 +23,7 @@ Page({
     tip: '您好，根据评测结果，您目前慢性阻塞性肺疾病病情良好，请继续保持！',
     colorout:'#b9f6ca',
     colorin:'#00e676',
-    imgsrc:'https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/great.png'
+    imgsrc:iconBaseUrl + 'great.png'
   },
   onFinish:function(){
     wx.navigateBack({

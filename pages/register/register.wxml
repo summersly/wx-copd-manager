@@ -21,7 +21,7 @@
     </view>
     <view class="validate-group" wx:if="{{currentIndex==0}}">
         <num-input model="{{patientId}}" bindmychange='changePatientID' />
-        <num-input model="{{patientName}}" bindmychange='changePatientName' bindmychangeend='changePatientName'/>
+        <num-input model="{{patientName}}" bindmychange='changePatientName' bindmychangeend='changePatientName' />
         <button bindtap="validate">身份核验</button>
     </view>
     <view class="person-info-group" wx:if="{{currentIndex==1}}">
@@ -62,7 +62,41 @@
                 <picker mode="{{address.mode}}" value='{{address.valueArr}}' bindchange='changeAddressPicker'>
                     <view class="picker-tip">请先选择省市区</view>
                 </picker>
-                <textarea class="value" value="{{address.value}}" cursor-spacing="40" bindinput="changeAddressInput" bindblur="changeAddressInput"/>
+                <textarea class="value" value="{{address.value}}" cursor-spacing="40" bindinput="changeAddressInput" bindblur="changeAddressInput" />
+            </view>
+        </view>
+        <!-- 医院信息 -->
+        <!-- <picker-input model="{{province}}" bindmychange="changeProvince" /> -->
+        <view class='picker-input'>
+            <view class="input-name">
+                <label>{{province.name}}</label>
+            </view>
+            <view class="input-item">
+                <picker mode="{{province.mode}}" value='{{province.value.provinceName}}' range='{{province.range}}' bindchange='changeProvince' range-key="provinceName">
+                    <view class="value">{{province.value.provinceName}}</view>
+                </picker>
+            </view>
+        </view>
+        <!-- <picker-input model="{{hospital}}" bindmychange="changeHospital" /> -->
+        <view class='picker-input'>
+            <view class="input-name">
+                <label>{{hospital.name}}</label>
+            </view>
+            <view class="input-item">
+                <picker mode="{{hospital.mode}}" value='{{hospital.value.hospitalName}}' range='{{hospital.range}}' bindchange='changeHospital' range-key="hospitalName">
+                    <view class="value" style="overflow:hidden">{{hospital.value.hospitalName}}</view>
+                </picker>
+            </view>
+        </view>
+        <!-- <picker-input model="{{doctor}}" bindmychange="changeDoctor" /> -->
+        <view class='picker-input'>
+            <view class="input-name">
+                <label>{{doctor.name}}</label>
+            </view>
+            <view class="input-item">
+                <picker mode="{{doctor.mode}}" value='{{doctor.value.userName}}' range='{{doctor.range}}' bindchange='changeDoctor' range-key="userName">
+                    <view class="value">{{doctor.value.userName}}</view>
+                </picker>
             </view>
         </view>
         <view class='btn'>

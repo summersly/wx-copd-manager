@@ -1,5 +1,5 @@
 // pages/function/scale/scale-cat/scale-cat.js
-import scaleRequest from "../../../../utils/Request"
+import {scaleScore,CommitRequest,evaluateWithPEF} from "../../../../utils/Request"
 var util = require('../../../../utils/util.js');
 
 Page({
@@ -71,7 +71,7 @@ Page({
     })
   },
   submitAnswer: function () {
-    let score = scaleRequest.scaleScore(this.data.catAnswerIndex)
+    let score = scaleScore(this.data.catAnswerIndex)
     if (score < 0) {
       return false
     }
@@ -93,7 +93,7 @@ Page({
       success: function (res) {
         if (res.confirm) {
           // console.log('111')
-          scaleRequest.CommitRequest(dataSring, 1).then(res => {
+          CommitRequest(dataSring, 1).then(res => {
             let Pages = getCurrentPages()
             let prevPage = Pages[Pages.length - 2]
             prevPage.setData({
@@ -103,7 +103,7 @@ Page({
               title: '上传成功',
               duration: 1500
             })
-            scaleRequest.evaluateWithPEF().then(res => {
+            evaluateWithPEF().then(res => {
               if (res) {
                 let evaluation = res
                 let ds = JSON.stringify({
@@ -115,7 +115,7 @@ Page({
                   wx.navigateTo({
                     url: '../../tips/cat-tip?score=' + evaluation.score
                   })
-                  scaleRequest.CommitRequest(ds, 7).then(() => {
+                  CommitRequest(ds, 7).then(() => {
                     console.log('evaluation update')
                   })
                 }, 1000)

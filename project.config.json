@@ -4,14 +4,15 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.97",
+	"libVersion": "2.0.9",
 	"appid": "wxcf51d9aa50011dbc",
 	"projectname": "copd-manager",
 	"isGameTourist": false,

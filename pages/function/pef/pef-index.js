@@ -1,8 +1,8 @@
 // pages/function/pef/pef-index.js
 var util = require('../../../utils/util.js');
 import * as echarts from '../../../components/ec-canvas/echarts.min';
-import pefRequest from "../../../utils/Request"
-
+import {CommitRequest , evaluateWithPEF , LastRequest , DateRequest} from "../../../utils/Request"
+import { iconBaseUrl } from '../../../utils/config'
 Page({
 
   /**
@@ -15,7 +15,9 @@ Page({
     dataList: [],
     time: '',
     time1:'',
-    pef: ""
+    pef: "",
+    timeImg: iconBaseUrl + 'time.png',
+    pefImg: iconBaseUrl + 'PEFinput.png'
   },
   bindTimeChange: function (e) {
     this.setData({
@@ -53,9 +55,9 @@ Page({
       showCancel: true,
       success: function (res) {
         if (res.confirm) {
-          pefRequest.CommitRequest(dataSring, 4).then(res => {
+          CommitRequest(dataSring, 4).then(res => {
             // console.log(res)
-            pefRequest.evaluateWithPEF().then(res => {
+            evaluateWithPEF().then(res => {
               if (res) {
                 let evaluation = res
                 let ds = JSON.stringify({
@@ -64,7 +66,7 @@ Page({
                   value: evaluation.score
                 })
                 // console.log(ds)
-                pefRequest.CommitRequest(ds, 7).then(res => {
+                CommitRequest(ds, 7).then(res => {
                   console.log('evaluation update')
                 })
               }
@@ -218,9 +220,9 @@ Page({
     var that = this;
     this.ecComponent = this.selectComponent('#mychart-dom-bar');
     // 请求最近15次记录,若不足15次请求上个月的数据
-    pefRequest.LastRequest(4, 15).then(res => {
+    LastRequest(4, 15).then(res => {
       if (!res) {
-        pefRequest.DateRequest(4, 2).then(res2 => {
+        DateRequest(4, 2).then(res2 => {
           let dataList = res2.map((item) => {
             return item.value
           })

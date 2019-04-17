@@ -1,6 +1,6 @@
 // pages/mine/mine-collection/collection.js
 import { request } from '../../../utils/Request'
-const knoUrl = 'https://zjubiomedit.com/copd/message/getKnoListPaging?'
+import { knoGetListUrl} from '../../../utils/config'
 Page({
 
   /**
@@ -15,7 +15,7 @@ Page({
   //   let patientId = wx.getStorageSync('patientid_token')
   //   let page = this.data.knoPage
   //   request({
-  //     url: knoUrl + 'type=1&patientId=' + patientId + '&page_index=' + page + '&items_per_page=10'
+  //     url: knoGetListUrl + 'type=1&patientId=' + patientId + '&page_index=' + page + '&items_per_page=10'
   //   }).then(res => {
   //     if (res.data.result.current_item_count <= 0) {
   //       wx.showToast({
@@ -51,7 +51,7 @@ Page({
     },3000)
     let patientId = wx.getStorageSync('patientid_token')
     request({
-      url: knoUrl + 'type=1&patientId=' + patientId + '&page_index=1&items_per_page=10'
+      url: knoGetListUrl + 'type=1&patientId=' + patientId + '&page_index=1&items_per_page=10'
     }).then(res => {
       if (res.data.result.current_item_count <= 0) {
         wx.showToast({
@@ -60,7 +60,7 @@ Page({
         })
       } else {
         request({
-          url: knoUrl + 'type=1&patientId=' + patientId + '&page_index=1&items_per_page=' + res.data.result.total_items
+          url: knoGetListUrl + 'type=1&patientId=' + patientId + '&page_index=1&items_per_page=' + res.data.result.total_items
         }).then(res2 => {
           if (res2.data.result.current_item_count <= 0) {
             wx.showToast({

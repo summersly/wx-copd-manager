@@ -1,6 +1,6 @@
 // pages/function/pef/pef-charts/pef-charts.js
 import * as echarts from '../../../../components/ec-canvas/echarts.min';
-import chartRequest from "../../../../utils/Request"
+import {DateRequest} from "../../../../utils/Request"
 // const ctx = wx.createCanvasContext('mychart-bar')
 Page({
 
@@ -123,7 +123,7 @@ Page({
     var that = this;
     this.ecComponent = this.selectComponent('#pefchart-bar');
     // 请求最近3个月记录
-    chartRequest.DateRequest(4, 3).then(res => {
+    DateRequest(4, 3).then(res => {
       let dataList = [], axis = []
       let resrev = res.reverse()
       resrev.map((item) => {

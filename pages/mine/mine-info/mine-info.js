@@ -1,5 +1,5 @@
 // pages/mine/mine-info/mine-info.js
-import indexRequest from "../../../utils/Request"
+import {calculateAge} from "../../../utils/Request"
 const app = getApp()
 
 Page({
@@ -23,7 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let age = indexRequest.calculateAge()
+    let age = calculateAge()
     let birthDate = app.globalData.loginUserInfo.birthDate
     birthDate = birthDate.split(' ')
     this.setData({

@@ -1,7 +1,7 @@
 <!-- pages/function/drug/drug-add/drug-add.wxml -->
 <view class="main-container">
     <view class="drug-add-title">
-        <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/drugblue.png" mode="aspectFit" style="height:80rpx" />
+        <image src="{{drugBlueImg}}" mode="aspectFit" style="height:80rpx" />
         <view class="title">药品名称</view>
     </view>
     <view class="drug-add-list" wx:for="{{drugList}}" wx:key="index" >

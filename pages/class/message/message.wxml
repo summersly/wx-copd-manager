@@ -12,4 +12,4 @@
     </view>
 </view>
 <!-- web-view会覆盖其他组件，当前不允许其与其他组件混合使用 -->
-<!-- <web-view src="http://120.27.141.50/copd/message/show?knoId={{id}}" /> -->
+

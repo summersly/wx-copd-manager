@@ -1,20 +1,19 @@
 // pages/login/login.js
 var app = getApp()
-
+import { iconBaseUrl , loginUrl } from '../../utils/config'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userSrc: "https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/user.png",
-    passwordSrc: "https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/password.png",
-    eyeCloseSrc: "https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/eye_close.png",
-    eyeOpenSrc: "https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/eye_open.png",
+    userSrc: iconBaseUrl + "user.png",
+    passwordSrc: iconBaseUrl + "password.png",
+    eyeCloseSrc: iconBaseUrl + "eye_close.png",
+    eyeOpenSrc: iconBaseUrl + "eye_open.png",
     account: '',
     password: '',
     showPsw: false,
-    WapLoginUrl: 'https://zjubiomedit.com/COPDService.svc/WapLogin'
   },
 
   userNameInput: function (e) {
@@ -45,7 +44,7 @@ Page({
       })
     } else {
       wx.request({
-        url: this.data.WapLoginUrl,
+        url: loginUrl,
         data: {
           account: account,
           password: password,

@@ -4,14 +4,14 @@
     <view class="modal-title">添加自定义药物</view>
     <view class="modal-content">
         <view class="item">
-            <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/drugblue.png" />
+            <image src="{{drugBlueImg}}" />
             <label>药物名称</label>
             <view class="modal-input {{defaultName.length?'none-border':''}}">
                 <input type="text" bindinput="bindNameInput" value="{{name || defaultName}}" disabled="{{defaultName.length}}"></input>
             </view>
         </view>
         <view class="item"> 
-            <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/time.png" />
+            <image src="{{timeImg}}" />
             <label>服药时间</label>
             <view class="modal-input">
                 <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">

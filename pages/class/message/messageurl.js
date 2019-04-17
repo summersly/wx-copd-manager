@@ -1,39 +1,22 @@
-// pages/mine/mine.js
-import { iconBaseUrl } from '../../utils/config'
+// pages/class/message/messageurl.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgSrc: iconBaseUrl + 'arrowgray.png'
+
   },
 
-  noneUrlToast: function () {
-    wx.showToast({
-      title:'功能尚未开通',
-      icon:'none'
-    })
-  },
-  quit: function () {
-    try {
-      wx.removeStorageSync('patientid_token')
-      wx.removeStorageSync('password_token')
-    } catch (e) {
-      wx.showToast({
-        title: '清除缓存失败',
-        icon: 'none'
-      })
-    }
-    wx.reLaunch({
-      url: '../login/login'
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (options.url) {
+      this.setData({
+        url:options.url
+      })
+    }
   },
 
   /**

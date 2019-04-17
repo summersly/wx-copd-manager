@@ -5,7 +5,7 @@
     </view>
     <view class="pef-input-content">
         <view class="item">
-            <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/time.png" />
+            <image src="{{timeImg}}" />
             <label>记录时间</label>
             <view class="modal-input">
                 <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
@@ -14,7 +14,7 @@
             </view>
         </view>
         <view class="item">
-            <image src="https://zju-bmi-assets.oss-cn-beijing.aliyuncs.com/wx-copd-manager/icon/PEFinput.png" />
+            <image src="{{pefImg}}" />
             <label>峰流速 L/min</label>
             <view class="modal-input {{defaultName.length?'none-border':''}}">
                 <input type="digit" bindinput="bindPEFInput" value="{{pef}}"/>

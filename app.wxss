@@ -1,4 +1,6 @@
 /**app.wxss**/
+
+@import "/wxParser/index.wxss";
 .main-container {
     width: 96vw;
     margin-left: 2%;

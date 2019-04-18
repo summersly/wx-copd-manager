@@ -23,7 +23,8 @@
     "pages/function/pef/pef-charts/pef-charts",
     "pages/function/walk-test/walk-test",
     "pages/function/walk-test/to-app",
-    "pages/class/message/messageurl"
+    "pages/class/message/messageurl",
+    "pages/function/message/message"
   ],
   "window": {
     "backgroundTextStyle": "light",

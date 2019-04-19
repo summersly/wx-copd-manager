@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "添加新用药记录",
+    "usingComponents": {
+        "drug-add-modal": "../../../../../components/drug-add-modal/drug-add-modal"
+      }
+}

@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "scale-card-select":"../../../../components/scale-card-select/scale-card-select"
+      }
+}

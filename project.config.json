@@ -1,0 +1,101 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.9",
+	"appid": "wxcf51d9aa50011dbc",
+	"projectname": "copd-manager",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 9,
+			"list": [
+				{
+					"id": -1,
+					"name": "scale",
+					"pathName": "pages/function/scale/scale-index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "uncomfort",
+					"pathName": "pages/function/uncomfort/uncomfort",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "drug-index",
+					"pathName": "pages/function/drug/drug-index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "class",
+					"pathName": "pages/class/class",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "pef",
+					"pathName": "pages/function/pef/pef-charts/pef-charts",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "mine",
+					"pathName": "pages/mine/mine-info/mine-info",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "register",
+					"pathName": "pages/register/register",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "walk",
+					"pathName": "pages/function/walk-test/walk-test",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "toapp",
+					"pathName": "pages/function/walk-test/to-app"
+				}
+			]
+		}
+	}
+}

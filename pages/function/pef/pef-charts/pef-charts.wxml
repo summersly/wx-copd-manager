@@ -1,0 +1,5 @@
+<!-- pages/function/pef/pef-charts/pef-charts.wxml -->
+<view class="chart" >
+    <ec-canvas id="pefchart-bar" canvas-id="mychart-bar" ec="{{ ec }}" ></ec-canvas>
+</view>
+<view class="none" wx:if="{{dataList.length==0}}">暂无</view>

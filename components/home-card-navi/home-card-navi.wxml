@@ -1,0 +1,8 @@
+<!--component/home-card-navi/home-card-navi.wxml-->
+  <view class='basic-card {{!model.route?"disable":""}}' bindtap='gotoRoute'>
+      <image class='icon' mode='aspectFit' src="{{model.icon}}"/> 
+    <view class='text-content'>
+      <text class='name'>{{ model.name }}</text>
+      <text class='memo'>{{ model.memo }}</text>
+    </view>
+  </view>

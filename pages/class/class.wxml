@@ -1,0 +1,39 @@
+<!-- pages/class/class.wxml -->
+<top-tbbar tabbarData="{{tabbarData}}" bindscroll="getMoreKno">
+    <view slot="toptab0">
+        <navigator class="video-item" wx:for="{{proVideo}}" wx:key="index" url="video/video?url={{item.videoUrl}}">
+            <image src="{{item.videoPic}}" mode="aspectFit" />
+            <text>{{item.videoName}}</text>
+        </navigator>
+        <view style="height:100rpx;"></view>
+    </view>
+    <view slot="toptab1">
+        <navigator class="video-item" wx:for="{{medVideo}}" wx:key="index" url="video/video?url={{item.videoUrl}}">
+            <image src="{{item.videoPic}}" mode="aspectFit" />
+            <text>{{item.videoName}}</text>
+        </navigator>
+        <view style="height:100rpx;"></view>
+    </view>
+    <view slot="toptab2">
+        <navigator class="kno-item" wx:for="{{knoArr}}" wx:key="index"  url="message/message?id={{item.knoId}}&read={{item.knoIfRead}}&like={{item.knoIfFavorite}}&mark=[0,{{index}}]">
+            <text>{{item.knoName}}</text>
+            <view class="subtitle">
+                <text>{{item.knoTime}}</text>
+                <text>{{item.knoIfRead?'阅读完成':'尚未阅读'}}</text>
+                <image src="{{item.knoIfFavorite?like:dislike}}" mode="aspectFit" />
+            </view>
+        </navigator>
+        <view style="height:100rpx;"></view>
+    </view>
+    <view slot="toptab3">
+        <navigator class="kno-item" wx:for="{{mesArr}}" wx:key="index"  url="message/message?id={{item.knoId}}&read={{item.knoIfRead}}&like={{item.knoIfFavorite}}&mark=[1,{{index}}]">
+            <text>{{item.knoName}}</text>
+            <view class="subtitle">
+                <text>{{item.knoTime}}</text>
+                <text>{{item.knoIfRead?'阅读完成':'尚未阅读'}}</text>
+                <image src="{{item.knoIfFavorite?like:dislike}}" mode="aspectFit" />
+            </view>
+        </navigator>
+        <view style="height:100rpx;"></view>
+    </view>
+</top-tbbar>

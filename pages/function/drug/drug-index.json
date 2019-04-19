@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "用药记录",
+    "usingComponents": {
+        "drug-his-list": "../../../../components/drug-his-list/drug-his-list"
+      }
+}

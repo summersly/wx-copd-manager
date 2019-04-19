@@ -1,0 +1,15 @@
+<!-- pages/class/message/message.wxml -->
+<view class='container' wx:if='{{showPage}}'>
+    <view class='article-title'>{{name}}</view>
+    <view class='article-info'>
+        <text>{{time}}</text>
+        <text>{{knoIfRead?'阅读完成':'尚未阅读'}}</text>
+        <image src="{{knoIfFavorite?like:dislike}}" mode="aspectFit" bindtap="recordLike" />
+    </view>
+    <import src="../../../wxParser/index.wxml" />
+    <view class="wxParser">
+        <template is="wxParser" data="{{wxParserData:richText.nodes}}" />
+    </view>
+</view>
+<!-- web-view会覆盖其他组件，当前不允许其与其他组件混合使用 -->
+

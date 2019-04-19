@@ -1,0 +1,38 @@
+/* component/scale-card-navi/scale-card-navi.wxss */
+.basic-card {
+    width: 92vw;
+    height: 80px;
+    margin-top: 24rpx;
+    padding-left: 5px;
+    /* background-color: white; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 2px gainsboro;
+  }
+  
+  .icon {
+    width: 20px;
+  }
+  
+  .text-content {
+    width: 60%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .name{
+    font-size: 20px;
+    font-family: "PingFangSC-Regular", "PingFang SC";
+    font-weight: bold;
+    color:white;
+  }
+
+  .memo{
+    color: white;
+    font-size: 14px;
+  }

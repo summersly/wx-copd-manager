@@ -1,0 +1,35 @@
+/* components/uncomf-select/uncomf-select.wxss */
+.select-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.select-group > view:first-child{
+    width: 30%;
+    height: 90rpx;
+    font-weight: 500;
+    font-size: 20px;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 10rpx;
+
+}
+.flex{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex-item{
+    height: 90rpx;
+    line-height: 90rpx;
+    flex: 1 0 40%;
+    margin: 0 20rpx 20rpx 0;
+    text-align: center;
+    color: gray;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+.active{
+    border: 2px solid #33ccff;
+    color: #33ccff;
+}

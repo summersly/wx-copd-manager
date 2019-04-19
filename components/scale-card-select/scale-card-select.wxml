@@ -1,0 +1,13 @@
+<!-- components/scale-card-select/scale-card-select.wxml -->
+<view class='basic-card'>
+    <view>{{selectOptionData.qName}}</view>
+    <radio-group bindchange="radioCheckedChange" class="select-group"> 
+        <view class="select-option" wx:for="{{selectOptionData.optionNames}}" wx:key="index"  style="width:{{myWidth}}%;">
+            <label class="{{selectOptionData.defaultIndex === index?'active':''}}" >
+                {{item}}
+                <radio value="{{index}}" hidden="true"></radio>
+            </label>
+        </view>
+    </radio-group>
+</view>
+<!-- -->

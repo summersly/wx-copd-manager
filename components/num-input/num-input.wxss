@@ -1,0 +1,41 @@
+/* components/num-input/num-input.wxss */
+.number-input {
+  width: 650rpx;
+  height: 60px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+.input-name{
+  width: 30%;
+}
+.input-name > label {
+  width: auto;
+  font-size: 20px;
+  font-family: "PingFangSC-Regular", "PingFang SC";
+  font-weight: 500;
+  font-style: normal;
+  text-align: left;
+  color: black;
+  padding: 0px 5px;
+}
+
+.number-input > view {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+.input-item {
+  padding-left: 10px;
+  width: 60%;
+  margin-left: 15rpx;
+  /* border: 1px solid gainsboro; */
+}
+
+.input-unit {
+  color: #797979;
+  width: 20%;
+  margin-left: 2%;  
+}

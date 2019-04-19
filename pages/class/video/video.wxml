@@ -1,0 +1,4 @@
+<!-- pages/class/video/video.wxml -->
+<view class="container">
+    <video src="{{url}}" direction="90" />
+</view>

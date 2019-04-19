@@ -1,0 +1,26 @@
+/* components/drug-his-list/drug-his-list.wxss */
+.drug-his-item{
+    width: 650rpx;
+    height: 120rpx;
+    display: flex;
+    align-items: center;
+    padding-left: 10rpx;
+    margin: 10rpx 0 20rpx 0;
+    }
+.drug-his-item > view:first-child{
+    width: 10px;
+    height: 10px;
+    background-color: #33ccff;
+    border-radius: 10px;
+}
+.context{
+    width: 80%;
+    height: 100%;
+    margin-left: 62rpx;
+    display: flex;
+    align-items: center;
+	border: 1px solid #d8dce5;
+}
+.context text{
+    margin-left: 15rpx;
+}

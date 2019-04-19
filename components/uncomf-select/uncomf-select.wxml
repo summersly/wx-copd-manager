@@ -1,0 +1,13 @@
+<!-- components/uncomf-select/uncomf-select.wxml -->
+<view class="select-group">
+    <view>{{uncomfSelectData.name}}</view>
+    <view class="flex">
+        <view class="flex-item {{uncomfSelectData.defaultIndex[index]?'active':''}}" 
+        wx:for="{{uncomfSelectData.options}}" 
+        wx:key="index"
+        data-index="{{index}}"
+        bindtap="selectChange">
+            {{item}}
+        </view>
+    </view>
+</view>

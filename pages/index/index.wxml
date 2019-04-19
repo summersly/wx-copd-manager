@@ -1,0 +1,37 @@
+<!-- index.wxml -->
+<view class='main-container'>
+  <view class="evaluation-card">
+    <view class="evaluation-card-circle">
+      <canvas canvas-id="canvasCircle"></canvas>
+      <canvas canvas-id="canvasArcCir"></canvas>
+      <view>
+        <text class='evaluation-score'>{{evaluationScore}}</text>
+        <text class='evaluation-state'>{{evaluationState}}</text>
+      </view>
+    </view>
+    <view class="evaluation-card-text">
+      <text>整体评估</text>
+      <text>{{evaluationTip}}</text>
+    </view>
+  </view>
+<view class="scale-message-navi">
+    <navigator class="scale-card-navi" url="../function/scale/scale-index?scale={{scaleFinish}}">
+      <view>
+        <view class="scale-card-text">
+          <text>量表填写</text>
+          <text>{{scaleFinish[0]+scaleFinish[1]+scaleFinish[2]}}/3</text>
+        </view>
+        <progress percent="{{(scaleFinish[0]+scaleFinish[1]+scaleFinish[2]) / 3 * 100}}" stroke-width="4" activeColor="#ff6600" backgroundColor="white" active="{{true}}" />
+      </view>
+      <view>
+        <image src="{{scaleImg}}" mode='aspectFit' class="scale-icon" />
+      </view>
+    </navigator>
+    <view class='message-card {{!messageCardData.route?"disable":""}}' bindtap='gotoMessage'>    
+      <text class='message-name'>{{ messageCardData.name }}</text>
+    </view>
+  </view>
+  <home-card-navi wx:for="{{functionCardData}}" wx:key="{{item.name}}" model="{{item}}" />
+</view>
+
+

@@ -1,0 +1,12 @@
+<!-- pages/function/tips/cat-tip.wxml -->
+<view class="container">
+    <view class="circle-out" style="background-color:{{colorout}};"> 
+        <view  class="circle-in" style="background-color:{{colorin}};">
+            <image src="{{imgsrc}}" />
+            <text>{{score}}分</text>
+        </view>
+    </view>
+    <text class="">{{tip}}</text>
+    <button class="finish-btn" bindtap="onFinish">完成</button>
+    <button bindtap="onNaviToPHQ">继续填写其他量表</button>
+</view>

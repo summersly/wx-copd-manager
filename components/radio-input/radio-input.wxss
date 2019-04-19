@@ -1,0 +1,37 @@
+/* components/radio-input/radio-input.wxss */
+.radio-input {
+  width: 650rpx;
+  height: 60px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #cccccc;
+
+}
+.input-name{
+  width: 30%;
+}
+.input-name > label {
+  width: auto;
+  font-size: 20px;
+  font-family: "PingFangSC-Regular", "PingFang SC";
+  font-weight: 500;
+  font-style: normal;
+  text-align: left;
+  color: black;
+  padding: 0px 5px;
+}
+
+.radio-input  > radio-group {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  margin-left: 15rpx;
+}
+radio:first-child{
+  width: 50%;
+}
+.radio-input-item{
+  width: 40%;
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "不适记录",
+    "usingComponents": {
+        "uncomf-select": "../../../components/uncomf-select/uncomf-select"
+    }
+}

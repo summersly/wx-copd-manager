@@ -1,0 +1,88 @@
+/* pages/function/pef/pef-index.wxss */
+.chart{
+    width: 650rpx;
+    height: 400rpx;
+    margin-top: 20rpx;
+    margin-bottom: 60rpx;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.239216) 0px 1px 6px 1px;
+    
+}
+
+ec-canvas {
+    width: 90%;
+    height: 460rpx;
+    position: absolute;
+    top: 20rpx;
+    left: 60rpx;
+}
+  
+.pef-input-content{
+    padding: 20rpx 40rpx 20rpx 0;
+}
+.item {
+    width: 100%;
+    height: 120rpx;
+    padding: 0 20rpx 0 20rpx;
+    margin-bottom: 30rpx;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.item > image{
+    width: 60rpx;
+    height: 60rpx;
+}
+.item > label{
+    width: 40%;
+    padding-left: 10rpx;
+    margin-right: 25rpx; 
+}  
+.modal-input {
+    width: 40%;
+    height: 90rpx;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    border: 1rpx solid #ddd;
+    border-radius: 4px;
+}
+.none-border{
+    border: 0px;
+    background-color: #f9f9f9;
+}
+input{
+    width: 100%;
+    height: 90rpx;
+    font-size: 35rpx;
+    line-height: 35rpx;
+    padding: 0 20rpx;
+    text-align: end;
+    box-sizing: border-box;
+    color: #33ccff;
+}
+picker{
+    width: 100%;
+    height: 90rpx;
+    font-size: 40rpx;
+    line-height: 40rpx;
+    padding: 0 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    color:#33ccff
+}
+.btn-group{
+    width: 80%;
+}
+.btn-group > button:first-child{
+    background-color: #33ccff;
+    color: white;
+    margin-bottom: 30rpx;
+}
+.btn-group > button:last-child{
+    background-color: white;
+    color: #33ccff;
+    border: #33ccff 1px solid;
+}

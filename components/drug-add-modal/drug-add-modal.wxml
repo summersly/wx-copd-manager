@@ -1,0 +1,27 @@
+<!-- components/drug-add-modal/drug-add-modal.wxml -->
+<view class="modal-mask" style='z-index: 900;' bindtap="hideModal" catchtouchmove="preventTouchMove"></view>
+<view class="modal-dialog" style='z-index: 990'>
+    <view class="modal-title">添加自定义药物</view>
+    <view class="modal-content">
+        <view class="item">
+            <image src="{{drugBlueImg}}" />
+            <label>药物名称</label>
+            <view class="modal-input {{defaultName.length?'none-border':''}}">
+                <input type="text" bindinput="bindNameInput" value="{{name || defaultName}}" disabled="{{defaultName.length}}"></input>
+            </view>
+        </view>
+        <view class="item"> 
+            <image src="{{timeImg}}" />
+            <label>服药时间</label>
+            <view class="modal-input">
+                <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+                    <view>{{time}}</view>
+                </picker>
+            </view>
+        </view>
+    </view>
+    <view class="modal-footer">
+        <view  bindtap="hideModal" data-status="cancel">取消</view>
+        <view  bindtap="onConfirm" data-status="confirm">确定</view>
+    </view>
+</view>

@@ -1,0 +1,36 @@
+/* pages/class/message/message.wxss */
+
+.container {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.article-title {
+  margin-top: 20rpx;
+  font-size: 45rpx;
+  line-height: 1.5em;
+  padding-bottom: 15rpx;
+  font-weight: bold;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.article-info {
+  padding: 15rpx 0;
+  font-size: 30rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-indent: -10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.article-info text {
+  color: #666;
+  padding: 0 15rpx;
+}
+
+.article-info>image {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 0 15rpx;
+}

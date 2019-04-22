@@ -26,7 +26,7 @@ Page({
     }).then(res=>{
       that.setData({
         msgList: res.data.recordList,
-        scrollTop: res.data.recordList.length * 1000
+        scrollTop: res.data.recordList.length * 100
       })
     })
   },

@@ -9,34 +9,36 @@ page {
 
 .leftView{
   display: flex; 
-  padding: 0 11vw 2vw 3vw;
+  padding: 8rpx 0 30rpx 30rpx;
 }
 
 .rightView{
   display: flex; 
   justify-content: flex-end; 
-  padding: 0 3vw 2vw 11vw;
+  padding: 8rpx 30rpx 30rpx 0;
 }
 
 .leftInfo{
   display: flex;
+  padding-left: 30rpx;
 }
 
-.leftInfo>view{
+.leftInfo > view{
   font-size: 28rpx;
 }
 
 .rightInfo{
   display: flex;
   justify-content: flex-end;
+  padding-right: 30rpx;
 }
 
-.rightInfo>view{
+.rightInfo > view{
   font-size: 28rpx;
 }
 
 .timeMsg{
-  margin-left:4vw; 
+  margin-left:20rpx; 
 }
 
 .inputRoom {
@@ -75,23 +77,35 @@ input {
 }
 
 .leftMsg {
-  font-size: 35rpx;
+  max-width: 70%;
+  font-size: 40rpx;
   color: #444;
-  line-height: 7vw;
-  padding: 2vw 2.5vw;
+  line-height: 60rpx;
+  padding: 18rpx;
   background-color: #fff;
-  margin-left: -1.6vw;
   border-radius: 10rpx;
   z-index: 10;
 }
 
 .rightMsg {
-  font-size: 35rpx;
+  max-width: 70%;
+  font-size: 40rpx;
   color: #444;
-  line-height: 7vw;
-  padding: 2vw 2.5vw;
+  line-height: 60rpx;
+  padding: 18rpx;
   background-color: #96EB6A;
-  margin-right: -1.6vw;
   border-radius: 10rpx;
   z-index: 10;
 }
+/* 
+.rightMsg::before{
+  position: absolute;
+  top: 19px;
+  right: -3px;
+  background-color: #96EB6A;
+  display: block;
+  width: 8px;
+  height: 6px;
+  content: '\00a0';
+  transform: rotate(29deg) skew(-35deg);
+} */

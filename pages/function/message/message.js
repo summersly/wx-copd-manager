@@ -1,7 +1,7 @@
 // pages/function/message/message.js
 var util = require('../../../utils/util.js');
 import { request } from '../../../utils/Request'
-import { sendMessageUrl,fetchMessageUrl } from '../../../utils/config'
+import { sendMessageUrl, fetchMessageUrl, updateMessageUrl } from '../../../utils/config'
 Page({
 
   /**
@@ -95,6 +95,17 @@ Page({
    */
   onLoad: function (options) {
     this.display()
+    let patientId = wx.getStorageSync('patientid_token')
+    let doctor = wx.getStorageSync('doctorid_token')
+    request({
+      url: updateMessageUrl,
+      method: "POST",
+      data: {
+        patientId: patientId,
+        doctor: doctor
+      }
+    }).then(res => {
+    })
   },
 
   /**

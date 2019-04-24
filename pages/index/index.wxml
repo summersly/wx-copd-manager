@@ -27,11 +27,17 @@
         <image src="{{scaleImg}}" mode='aspectFit' class="scale-icon" />
       </view>
     </navigator>
-    <view class='message-card {{!messageCardData.route?"disable":""}}' bindtap='gotoMessage'>    
+    <view class='message-card {{!messageCardData.route?"disable":""}}' bindtap='gotoMessage'>
+      <view wx:if='{{messageUnreadNum>0}}' class='message-prompt'>
+        <text class='messageNum'>{{messageUnreadNum}}</text>
+      </view>    
       <text class='message-name'>{{ messageCardData.name }}</text>
     </view>
   </view>
   <home-card-navi wx:for="{{functionCardData}}" wx:key="{{item.name}}" model="{{item}}" />
 </view>
+
+
+
 
 

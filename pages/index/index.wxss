@@ -121,14 +121,26 @@
   background-color: #ddd;
   box-shadow:none;
 }
-.message-icon {
-  width: 28%;
-  height: 28%;
-}
 .message-name{
   font-size: 20px;
   font-family: "PingFangSC-Regular", "PingFang SC";
   font-weight: bold;
   writing-mode:vertical-lr;
   text-align: center;
+}
+.message-prompt{
+  width: 5vw;
+  height: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: 370rpx;
+  right: 30rpx;
+}
+.messageNum{
+  color: white;
+  font-weight: bold;
 }

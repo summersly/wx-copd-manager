@@ -27,7 +27,7 @@
   </scroll-view>
 
   <view class='inputRoom'>
-    <input bindinput='userMessageInput' value='{{inputMessage}}' confirm-type='send' cursor-spacing='10'></input>
+    <textarea bindinput='userMessageInput' value='{{inputMessage}}' cursor-spacing='10'></textarea>
     <button class='sendButton' bindtap='sendMessage'>发送</button>
   </view>
 </view>

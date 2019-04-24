@@ -1,6 +1,6 @@
 //index.js
-import {evaluateWithPEF , Loadrequest , evaluationStateList , uncomfortString , evaluationTipList} from "../../utils/Request"
-import { iconBaseUrl } from '../../utils/config'
+import { evaluateWithPEF, Loadrequest, evaluationStateList, uncomfortString, evaluationTipList, request} from "../../utils/Request"
+import { iconBaseUrl, fetchMessageUrl } from '../../utils/config'
 var util = require('../../utils/util.js');
 const app = getApp()
 
@@ -37,7 +37,8 @@ Page({
     evaluationState: '未测评',
     evaluationTip: '请填写CAT量表，并进行峰流速记录',
     scaleFinish: [0, 0, 0],
-    scaleImg:iconBaseUrl + 'scale.png'
+    scaleImg:iconBaseUrl + 'scale.png',
+    messageUnreadNum:0,
   },
   //事件处理函数
   drawCircle: function (score) {
@@ -57,6 +58,27 @@ Page({
 
   },
   onLoad: function () {
+    let patientId = wx.getStorageSync('patientid_token')
+    request({
+      url: fetchMessageUrl,
+      method: "POST",
+      data: {
+        patientId: patientId,
+        messageNum: 50
+      }
+    }).then(res => {
+      let messageList=res.data.recordList
+      let unreadCount=0
+      for(let messageItem of messageList){
+        if(messageItem.messageFrom==1 && messageItem.mark==0){
+          unreadCount++
+        }
+      }
+      this.setData({
+        messageUnreadNum:unreadCount
+      })
+    })
+    
     evaluateWithPEF().then(res => {
       if(res){
         wx.setStorageSync('pef_token', res.standardPEF.toFixed(0))
@@ -114,6 +136,9 @@ Page({
   gotoMessage: function () {
     wx.navigateTo({
       url: this.data.messageCardData.route,
+    })
+    this.setData({
+      messageUnreadNum:0
     })
   },
     /**

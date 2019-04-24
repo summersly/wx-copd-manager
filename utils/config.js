@@ -17,6 +17,7 @@ const hospitalUrl = BASEURL + 'WapGetHospital'
 const doctorUrl = BASEURL + 'WapGetDoctor'
 const sendMessageUrl = BASEURL + 'data/MessageCommit'
 const fetchMessageUrl = BASEURL + 'data/MessageFetch'
+const updateMessageUrl = BASEURL + 'data/MessageUpdate'
 
 /**
  * ICON and AUDIO
@@ -56,5 +57,6 @@ export {
     knoNewUserUrl,
     //
     sendMessageUrl,
-    fetchMessageUrl
+    fetchMessageUrl,
+    updateMessageUrl
 }

@@ -66,6 +66,7 @@ Page({
           that.setData({
             inputMessage: ""
           })
+          this.display()
           wx.showToast({
             title: '发送成功',
             duration: 1000
@@ -87,7 +88,6 @@ Page({
         }
       })
     }
-    this.display()
   },
 
   /**

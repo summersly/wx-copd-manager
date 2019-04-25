@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.9",
 	"appid": "wxcf51d9aa50011dbc",
-	"projectname": "copd-manager",
+	"projectname": "copd-manager-github",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -93,7 +93,14 @@
 				{
 					"id": -1,
 					"name": "toapp",
-					"pathName": "pages/function/walk-test/to-app"
+					"pathName": "pages/function/walk-test/to-app",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "message",
+					"pathName": "pages/function/message/message",
+					"scene": null
 				}
 			]
 		}

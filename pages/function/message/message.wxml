@@ -10,6 +10,7 @@
         </view>
         <view class='leftView'>
           <view class='leftMsg'>{{item.message}}</view>
+          <text class="{{item.mark?'readtext':' readtext unread'}}">{{item.mark?'已读':'未读'}}</text>
         </view>
       </view>
       <!-- 单个消息 患者发出（右） -->
@@ -23,11 +24,12 @@
       </view>
     </block>
     <!-- 占位 -->
-    <view style='width: 100%; height: 18vw;'></view>
+    <!-- <view style='width: 100%; height: 20vh;'></view> -->
   </scroll-view>
 
   <view class='inputRoom'>
-    <textarea bindinput='userMessageInput' value='{{inputMessage}}' cursor-spacing='10'></textarea>
+    <textarea bindinput='userMessageInput' value='{{inputMessage}}' 
+    cursor-spacing='40rpx' auto-height show-confirm-bar='{{false}}' ></textarea>
     <button class='sendButton' bindtap='sendMessage'>发送</button>
   </view>
 </view>

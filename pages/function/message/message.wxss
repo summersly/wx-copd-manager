@@ -4,12 +4,13 @@ page {
 }
 
 .scroll{
-  height:100vh;
+  height:88vh;
 }
 
 .leftView{
   display: flex; 
   padding: 8rpx 0 30rpx 30rpx;
+  align-items: flex-end;
 }
 
 .rightView{
@@ -43,70 +44,95 @@ page {
 
 .inputRoom {
   width: 100vw;
-  height: 16vw;
+  /* height: auto; */
   border-top: 1px solid #cdcdcd;
   background-color: #f1f1f1;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20rpx;
   z-index: 20;
 }
 
 .sendButton{
-  width: 20vw;
-  height: 10vw;
-  font-size: 36rpx;
-  text-align: center;
+  width:15%;
+  height:80rpx;
+  font-size:28rpx;
+  text-align:center;
   vertical-align:middle;
-  line-height: 10vw;
-  border-radius: 10rpx;
-  background-color: #96EB6A;
+  line-height:80rpx;
+  border-radius:10rpx;
+  background-color:#96EB6A;
+  
 }
 
 textarea {
-  width: 70vw;
-  height: 10vw;
-  background-color: #fff;
-  border-radius: 40rpx;
-  margin-left: 2vw;
-  padding: 0 3vw;
-  font-size: 40rpx;
-  line-height: 10vw;
-  color: #444;
+  width:70%;
+  height: auto;
+  background-color:#fff;
+  border-radius:10rpx;
+  padding:6rpx 20rpx;
+  font-size:36rpx;
+  line-height:60rpx;
+  color:#444;
+  min-height:60rpx;
+  max-height: 130rpx;
+  padding-top: 10rpx;
 }
 
 .leftMsg {
   max-width: 70%;
-  font-size: 40rpx;
+  font-size: 36rpx;
   color: #444;
   line-height: 60rpx;
-  padding: 18rpx;
+  padding: 16rpx 16rpx 16rpx 10rpx;
   background-color: #fff;
   border-radius: 10rpx;
   z-index: 10;
 }
 
+.leftMsg::before{
+  position: relative;
+  top: 0px;
+  left: -20rpx;
+  background-color: #fff;
+  display: inline-block;
+  width: 18rpx;
+  height: 14rpx;
+  content: "\00a0";
+  transform: rotate(29deg) skew(-35deg);
+}
+.readtext{
+  color:#aaa;
+  font-size:24rpx;
+  padding-left:20rpx;
+  text-align:center;
+  height:30rpx;
+}
+.unread{
+  color: #E67E22; 
+}
 .rightMsg {
   max-width: 70%;
-  font-size: 40rpx;
+  font-size: 36rpx;
   color: #444;
   line-height: 60rpx;
-  padding: 18rpx;
+  padding: 16rpx 10rpx 16rpx 16rpx;
   background-color: #96EB6A;
   border-radius: 10rpx;
   z-index: 10;
 }
-/* 
-.rightMsg::before{
-  position: absolute;
-  top: 19px;
-  right: -3px;
+
+.rightMsg::after{
+  position: relative;
+  top: 0px;
+  left: 20rpx;
   background-color: #96EB6A;
-  display: block;
-  width: 8px;
-  height: 6px;
-  content: '\00a0';
+  display: inline-block;
+  width: 18rpx;
+  height: 14rpx;
+  content: "\00a0";
   transform: rotate(29deg) skew(-35deg);
-} */
+}

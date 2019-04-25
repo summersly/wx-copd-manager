@@ -57,7 +57,7 @@ page {
 }
 
 .sendButton{
-  width:15%;
+  width:16%;
   height:80rpx;
   font-size:28rpx;
   text-align:center;

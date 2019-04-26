@@ -118,7 +118,7 @@ Page({
       range: []
     },
     doctor: {
-      name: '管理',
+      name: '管理师',
       mode: 'selector',
       value: '',
       range: []

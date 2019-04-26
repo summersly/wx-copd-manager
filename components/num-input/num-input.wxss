@@ -1,6 +1,6 @@
 /* components/num-input/num-input.wxss */
 .number-input {
-  width: 650rpx;
+  width: 700rpx;
   height: 60px;
   background-color: white;
   display: flex;
@@ -8,11 +8,11 @@
   border-bottom: 1px solid #ddd;
 }
 .input-name{
-  width: 30%;
+  width: 200rpx;
 }
 .input-name > label {
   width: auto;
-  font-size: 20px;
+  font-size: 40rpx;
   font-family: "PingFangSC-Regular", "PingFang SC";
   font-weight: 500;
   font-style: normal;
@@ -28,14 +28,14 @@
   border-radius: 5px;
 }
 .input-item {
-  padding-left: 10px;
-  width: 60%;
+  padding-left: 20rpx;
+  width: auto;
   margin-left: 15rpx;
   /* border: 1px solid gainsboro; */
 }
 
 .input-unit {
   color: #797979;
-  width: 20%;
-  margin-left: 2%;  
+  width: 80rpx;
+  margin-left: 15rpx;  
 }

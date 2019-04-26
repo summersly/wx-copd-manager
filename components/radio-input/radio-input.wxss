@@ -1,6 +1,6 @@
 /* components/radio-input/radio-input.wxss */
 .radio-input {
-  width: 650rpx;
+  width: 700rpx;
   height: 60px;
   background-color: white;
   display: flex;
@@ -9,11 +9,11 @@
 
 }
 .input-name{
-  width: 30%;
+  width: 200rpx;
 }
 .input-name > label {
   width: auto;
-  font-size: 20px;
+  font-size: 40rpx;
   font-family: "PingFangSC-Regular", "PingFang SC";
   font-weight: 500;
   font-style: normal;
@@ -33,5 +33,5 @@ radio:first-child{
   width: 50%;
 }
 .radio-input-item{
-  width: 40%;
+  width: 400rpx;
 }

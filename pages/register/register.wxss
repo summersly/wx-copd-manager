@@ -64,12 +64,12 @@
 }
 
 .input-name {
-    width: 30%;
+    width: 200rpx;
 }
 
 .input-name>label {
     width: auto;
-    font-size: 20px;
+    font-size: 40rpx;
     font-family: "PingFangSC-Regular", "PingFang SC";
     font-weight: 500;
     font-style: normal;
@@ -87,8 +87,8 @@
 }
 
 .input-item {
-    width: 60%;
-    /* margin-left: 15rpx; */
+    width: auto;
+    padding-left: 0;
     display: flex;
     flex-direction: column;
 }
@@ -132,9 +132,9 @@
     color: white;
 }
 .validate-info{
-    width: 90%;
+    width: 96%;
     height: 80rpx;
-    margin-left: 5%;
+    margin-left: 2%;
     line-height: 60rpx;
     color: #33ccff;
     display: flex;
@@ -143,6 +143,7 @@
     border-bottom: #33ccff 1px dotted;
 }
 .validate-info text{
-    width: 50%;
+    /* width: 50%; */
     text-align: center;
+    padding: 0 20rpx 0 10rpx;
 }

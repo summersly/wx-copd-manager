@@ -1,0 +1,20 @@
+<!-- pages/function/drug/drug-index.wxml -->
+<view class="drug-list">
+    
+    <view class="drug-navi" bindtap="addNew">
+        <image src="{{drugAddImg}}" />
+        <view class="context">
+            <text>添加新纪录</text>
+        </view>
+    </view>
+    <scroll-view  scroll-y style="height:70vh;width:650rpx">
+        <drug-his-list drugHisData="{{drugHisData}}" />
+    </scroll-view>
+    <view class="drug-navi fix" bindtap="reviewHistory">
+        <view></view>
+        <view class="context">
+            <text>更多历史记录</text>
+        </view>
+    </view>
+    <view class="left"></view>
+</view>

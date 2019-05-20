@@ -1,0 +1,15 @@
+<!-- pages/function/scale/scale-cat/scale-cat.wxml -->
+<view class='main-container'>
+    <!-- 提示 -->    <!-- 页脚 -->
+    <scale-card-tip qnum="8" 
+    currentIndex="{{currentIndex}}" 
+    bindlastque="toLastQue" 
+    bindnextque="toNextQue" 
+    bindsubmitanswer="submitAnswer"/>
+    <!-- 问题 -->
+    <swiper style="width:100vw;height: 82vh" indicator-dots indicator-color="#33ccff" current="{{currentIndex}}" bindchange="swiperChange">
+        <swiper-item wx:for="{{questionData}}" wx:key="index">
+            <scale-card-select selectOptionData="{{item}}" bindselectChange="qselectChange" data-index="{{index}}"></scale-card-select>
+        </swiper-item>
+    </swiper>
+</view>

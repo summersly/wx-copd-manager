@@ -1,0 +1,61 @@
+<!-- pages/function/walk-test/walk-test.wxml -->
+<view class="container">
+    <view class="block_1" wx:if="{{showIndex == 0}}">
+        <view>
+            <icon type="info" color="#33ccff" style="margin-right:3%;margin-left:3%" />
+            <text>测试前请先阅读说明</text>
+        </view>
+        <view class="tip">
+            <view class="tip-item" wx:for="{{tips}}" wx:key="index">{{index+1}}.{{item}}</view>
+        </view>
+        <text>6分钟步行测试每天至少测试一次</text>
+        <text>医生才能准确评估您的整体功能状态</text>
+        <button bindtap="skipAudio">跳过语音说明，开始测试</button>
+    </view>
+    <view class="block_2" wx:if="{{showIndex == 1}}">
+        <view class="progress-circle">
+            <canvas canvas-id="canvasCircle"></canvas>
+            <canvas canvas-id="canvasArcCir"></canvas>
+            <view>
+                <image src="{{walkImg}}" style="width:30px;height:30px" />
+            </view>
+        </view>
+        <text>当前已走的距离为</text>
+        <view class="distance">{{distance1}}米</view>
+        <button type="warn" bindtap="onStopTest">终止测试</button>
+        <!-- <view class="">{{date1}}</view>
+        <view class="">{{value}}</view>
+        <view wx:for="{{positonData}}" wx:key="index">
+            <view>{{item.latitude}}</view>
+            <view>{{item.longitude}}</view>
+        </view> -->
+    </view>
+    <!-- 测试前问卷 -->
+    <view class="block_3" wx:if="{{showIndex == 2}}">
+        <!-- 提示 -->
+        <view class='basic-card'>
+            <icon type="info" size="23" color="#33ccff" />
+            <text>开始测试前，请患者本人回答</text>
+        </view>
+        <!-- 问题 -->
+        <swiper style="width:100vw;height: 82vh;" indicator-dots indicator-color="#33ccff" current="{{currentIndex}}" bindchange="swiperChange">
+            <swiper-item wx:for="{{questionData}}" wx:key="index">
+                <scale-card-select selectOptionData="{{item}}" bindselectChange="qselectChangeBefore" data-index="{{index}}" myWidth="40"></scale-card-select>
+            </swiper-item>
+        </swiper>
+    </view>
+    <!-- 测试后问卷 -->
+    <view class="block_3" wx:if="{{showIndex == 3}}">
+        <!-- 提示 -->
+        <view class='basic-card'>
+            <icon type="info" size="23" color="#33ccff" />
+            <text>测试完成后，请患者本人回答</text>
+        </view>
+        <!-- 问题 -->
+        <swiper style="width:100vw;height: 82vh;" indicator-dots indicator-color="#33ccff" current="{{currentIndex}}" bindchange="swiperChange">
+            <swiper-item wx:for="{{questionData}}" wx:key="index">
+                <scale-card-select selectOptionData="{{item}}" bindselectChange="qselectChangeAfter" data-index="{{index}}" myWidth="40"></scale-card-select>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

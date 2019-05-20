@@ -1,0 +1,20 @@
+<!-- components/scale-card-tip/scale-card-tip.wxml -->
+<view class='basic-card'>
+    <icon type="info" size="23" color="#33ccff" />
+    <text>本测试共{{qnum}}个问题，请患者本人回答</text>
+</view>
+<view class="scale-footer">
+    <view class="footer-left {{currentIndex == 0?'hidden':''}}" bindtap="toLastQ">
+        <image src="../../image/arrowblue.png" style="transform:rotate(180deg)" />
+        <label>上一题</label>
+    </view>
+    <view class="footer-right" wx:if="{{currentIndex != (qnum-1)}}" bindtap="toNextQ">
+        <label>下一题</label>
+        <image src="../../image/arrowblue.png" />
+    </view>
+    <view class="footer-right" wx:else>
+        <button bindtap="submitAnswer">
+            <text>提交</text>
+        </button>
+    </view>
+</view>

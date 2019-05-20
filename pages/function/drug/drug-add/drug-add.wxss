@@ -1,0 +1,45 @@
+/* pages/function/drug/drug-add/drug-add.wxss */
+.drug-add-title{
+    width: 700rpx;
+    height: 120rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: #ccc 1px solid;
+}
+.title{
+    margin-left: 16rpx;
+}
+.drug-add-list{
+    width: 700rpx;
+    height: 160rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+image{
+    width: 110rpx;
+    height: 110rpx;
+}
+button{
+    width: 20%;
+    height: 50%;
+    margin-left: 35rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #33ccff;
+    color: white;
+    font-size: 35rpx;
+}
+.content{
+    width: 57%;
+    height: 120rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 16rpx;
+}
+.content > text:last-child{
+    font-size: 13px;
+    
+}

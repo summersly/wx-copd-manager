@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "用药历史记录",
+    "usingComponents": {
+        "calendar": "plugin://calendar/calendar",
+        "drug-his-list": "../../../../components/drug-his-list/drug-his-list"
+      }
+}

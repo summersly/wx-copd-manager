@@ -1,0 +1,11 @@
+<!-- components/picker-input/picker-input.wxml -->
+<view class='picker-input'>
+    <view class="input-name">
+        <label>{{model.name}}</label>
+    </view>
+    <view class="input-item">
+        <picker mode="{{model.mode}}" value='{{model.value}}' range='{{model.range}}' bindchange='changeValue' start='1900-01-01' end='2018-08-01'>
+            <view class="value">{{model.value}}</view>
+        </picker>
+    </view>
+</view>

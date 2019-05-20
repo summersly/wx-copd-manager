@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "home-card-navi":"../../components/home-card-navi/home-card-navi"
+  }
+}

@@ -1,0 +1,49 @@
+/* pages/login/login.wxss */
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.login-info{
+    width: 80%;
+    height: 120rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+.login-info > image{
+    width: 55rpx;
+    height: 50rpx;
+}
+.login-info >input{
+    width: 80%;
+    height: 100%;
+    margin-left: 45rpx;
+    color:gray;
+    font-size: 34rpx;
+}
+.login-btn{
+    width: 80%;
+    margin-top:80rpx;
+    display: flex;
+    flex-direction: column; 
+}
+.login-btn > button{
+    width: 100%;
+    margin-bottom: 50rpx;
+    background-color: #33ccff;
+    color: white;
+    border-radius: 50rpx;
+}
+.login-btn > view{
+    width: 100%;
+    text-align: center;
+    font-size: 30rpx;
+    color: #33ccff;
+}
+.placeholder{
+    color: #ccc;
+}

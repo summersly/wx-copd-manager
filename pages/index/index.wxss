@@ -1,0 +1,146 @@
+
+/**index.wxss**/
+.evaluation-card{
+    width: 91vw;
+    height: 320rpx;
+    margin-top: 20rpx;
+    padding-left: 5px;
+    font-family: "PingFangSC-Regular", "PingFang SC";
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 1px #ccc ;  
+} 
+.evaluation-card-circle {
+    width: 40%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.evaluation-card-circle > canvas {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+.evaluation-card-circle > view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.evaluation-score{
+    font-size: 32px;
+    font-weight: bolder;
+    line-height: 34px;
+}
+.evaluation-state{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+}
+.evaluation-card-text {
+    width: 60%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.evaluation-card-text > text:first-child{
+    font-weight: bolder;
+    font-size: 22px;
+    margin-bottom: 15rpx;
+}
+.scale-card-navi{
+    width: 70vw;
+    height: 200rpx;
+    margin-top: 24rpx;
+    padding-left: 5px;
+    background-color: #33CCFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 1px #ccc ;  
+}
+.scale-card-navi > view:first-child {
+    width:76%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0 0 25rpx 5px;
+}
+.scale-card-navi > view:last-child {
+    width:24%;
+    align-self: flex-end;
+}
+.scale-icon{
+    width: 40px;
+    height: 40px;
+    margin-left: 14px;
+    margin-bottom: 8px;
+    transform:rotate(340deg);
+}
+.scale-card-text{
+    height: 50%;
+    padding: 15px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+.scale-card-text > text{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.scale-message-navi{
+  display: flex;
+  justify-content: center;
+}
+.message-card {
+  width: 17vw;
+  height: 200rpx;
+  margin-left: 3vw;
+  margin-top: 24rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 1px #ccc;
+}
+.disable{
+  background-color: #ddd;
+  box-shadow:none;
+}
+.message-name{
+  font-size: 20px;
+  font-family: "PingFangSC-Regular", "PingFang SC";
+  font-weight: bold;
+  writing-mode:vertical-lr;
+  text-align: center;
+}
+.message-prompt{
+  width: 5vw;
+  height: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: 370rpx;
+  right: 30rpx;
+}
+.messageNum{
+  color: white;
+  font-weight: bold;
+}

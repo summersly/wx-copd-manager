@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/class/class",
+    "pages/mine/mine",
+    "pages/function/uncomfort/uncomfort",
+    "pages/function/scale/scale-index",
+    "pages/function/scale/scale-cat/scale-cat",
+    "pages/function/scale/scale-gad/scale-gad",
+    "pages/function/scale/scale-phq/scale-phq",
+    "pages/function/pef/pef-index",
+    "pages/function/drug/drug-index",
+    "pages/function/drug/drug-add/drug-add",
+    "pages/function/drug/drug-history/drug-history",
+    "pages/register/register",
+    "pages/mine/mine-info/mine-info",
+    "pages/function/tips/uncomfort-tip",
+    "pages/function/tips/cat-tip",
+    "pages/class/video/video",
+    "pages/class/message/message",
+    "pages/mine/mine-collection/collection",
+    "pages/function/pef/pef-charts/pef-charts",
+    "pages/function/walk-test/walk-test",
+    "pages/function/walk-test/to-app",
+    "pages/class/message/messageurl",
+    "pages/function/message/message"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "COPD管家",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "image/homepage.png",
+        "selectedIconPath": "image/homepage_pressed.png"
+      },
+      {
+        "pagePath": "pages/class/class",
+        "text": "课堂",
+        "iconPath": "image/class.png",
+        "selectedIconPath": "image/class_pressed.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "image/mine.png",
+        "selectedIconPath": "image/mine_pressed.png"
+      }
+    ]
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

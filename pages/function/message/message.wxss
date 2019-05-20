@@ -1,0 +1,138 @@
+/* pages/function/message/message.wxss */
+page {
+  background-color: #f1f1f1;
+}
+
+.scroll{
+  height:86vh;
+}
+
+.leftView{
+  display: flex; 
+  padding: 8rpx 0 30rpx 30rpx;
+  align-items: flex-end;
+}
+
+.rightView{
+  display: flex; 
+  justify-content: flex-end; 
+  padding: 8rpx 30rpx 30rpx 0;
+}
+
+.leftInfo{
+  display: flex;
+  padding-left: 30rpx;
+}
+
+.leftInfo > view{
+  font-size: 28rpx;
+}
+
+.rightInfo{
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30rpx;
+}
+
+.rightInfo > view{
+  font-size: 28rpx;
+}
+
+.timeMsg{
+  margin-left:20rpx; 
+}
+
+.inputRoom {
+  width: 100vw;
+  /* height: auto; */
+  border-top: 1px solid #cdcdcd;
+  background-color: #f1f1f1;
+  /* position: fixed; */
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx;
+  z-index: 20;
+}
+
+.sendButton{
+  width:16%;
+  height:80rpx;
+  font-size:28rpx;
+  text-align:center;
+  vertical-align:middle;
+  line-height:80rpx;
+  border-radius:10rpx;
+  background-color:#96EB6A;
+  
+}
+
+textarea {
+  width:70%;
+  height: auto;
+  background-color:#fff;
+  border-radius:10rpx;
+  padding:6rpx 20rpx;
+  font-size:36rpx;
+  line-height:60rpx;
+  color:#444;
+  min-height:60rpx;
+  max-height: 130rpx;
+  padding-top: 10rpx;
+}
+
+.leftMsg {
+  max-width: 70%;
+  font-size: 36rpx;
+  color: #444;
+  line-height: 60rpx;
+  padding: 16rpx 16rpx 16rpx 10rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  z-index: 10;
+}
+
+.leftMsg::before{
+  position: relative;
+  top: 0px;
+  left: -20rpx;
+  background-color: #fff;
+  display: inline-block;
+  width: 18rpx;
+  height: 14rpx;
+  content: "\00a0";
+  transform: rotate(29deg) skew(-35deg);
+}
+.readtext{
+  color:#aaa;
+  font-size:24rpx;
+  padding-left:20rpx;
+  text-align:center;
+  height:30rpx;
+}
+.unread{
+  color: #E67E22; 
+}
+.rightMsg {
+  max-width: 70%;
+  font-size: 36rpx;
+  color: #444;
+  line-height: 60rpx;
+  padding: 16rpx 10rpx 16rpx 16rpx;
+  background-color: #96EB6A;
+  border-radius: 10rpx;
+  z-index: 10;
+}
+
+.rightMsg::after{
+  position: relative;
+  top: 0px;
+  left: 20rpx;
+  background-color: #96EB6A;
+  display: inline-block;
+  width: 18rpx;
+  height: 14rpx;
+  content: "\00a0";
+  transform: rotate(29deg) skew(-35deg);
+}

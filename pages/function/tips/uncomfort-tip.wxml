@@ -1,0 +1,11 @@
+<!-- pages/function/tips/uncomfort-tip.wxml -->
+<view class="container">
+    <view class="header">
+        <icon type="info" size="23" color="#33ccff" />
+        <text>特殊情况请及时咨询医生哦</text>
+    </view>
+    <view class="tip-card" wx:for="{{nameList}}" wx:key="index">
+        <label>{{item}}</label>
+        <view class="tip-content">{{tipList[index]}}</view>
+    </view>
+</view>

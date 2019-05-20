@@ -1,0 +1,149 @@
+/* pages/register/register.wxss */
+@import '../../components/picker-input/picker-input.wxss';
+.container {
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-group {
+    width: 750rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.progress {
+    width: 80%;
+    height: 30px;
+    margin-left: 10%;
+    flex-shrink: 0;
+}
+
+.progress-label {
+    width: 139rpx;
+    height: 50px;
+    flex-shrink: 0;
+    position: relative;
+    top: -30px;
+    margin: 0 54rpx 0 5rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-label:last-child {
+    margin-right: 5rpx;
+}
+
+.progress-label>view {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    margin: 6rpx 0 10rpx 0;
+    border-radius: 30px;
+    border: #ddd solid 4px;
+}
+
+.finished {
+    border-color: #33ccff;
+}
+
+.progress-label>label {
+    font-size: 14px;
+    color: #33ccff;
+}
+
+.address-input {
+    width: 650rpx;
+    height: 140px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.input-name {
+    width: 200rpx;
+}
+
+.input-name>label {
+    width: auto;
+    font-size: 40rpx;
+    font-family: "PingFangSC-Regular", "PingFang SC";
+    font-weight: 500;
+    font-style: normal;
+    text-align: left;
+    color: black;
+    padding: 0px 5px;
+}
+
+.input-item>picker {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.input-item {
+    width: auto;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.address-input .value {
+    width: 400rpx;
+    height: 70px;
+    line-height: 35px;
+    margin-top: 10rpx;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10rpx;
+}
+
+.picker-tip {
+    width: 300rpx;
+    height: 30px;
+    line-height: 30px;
+    color: #33ccff;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #33ccff;
+    border-radius: 5px;
+}
+
+.validate-group > button{
+    margin-top: 50rpx;
+    background-color: #33ccff;
+    color: white;
+}
+.btn{
+    width: 650rpx;
+    display: flex;
+    
+}
+.btn > button{
+    width: 40%;
+    margin-top: 50rpx;
+    margin-bottom: 50rpx;
+    background-color: #33ccff;
+    color: white;
+}
+.validate-info{
+    width: 96%;
+    height: 80rpx;
+    margin-left: 2%;
+    line-height: 60rpx;
+    color: #33ccff;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    border-bottom: #33ccff 1px dotted;
+}
+.validate-info text{
+    /* width: 50%; */
+    text-align: center;
+    padding: 0 20rpx 0 10rpx;
+}

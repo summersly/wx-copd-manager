@@ -1,0 +1,8 @@
+<!-- components/drug-his-list/drug-his-list.wxml -->
+<view wx:for="{{drugHisData}}" wx:key="index" class="drug-his-item">
+    <view></view>
+    <view class="context">
+        <text>{{item.time}}</text>
+        <text>{{item.name}}</text>
+    </view>
+</view>

@@ -1,0 +1,12 @@
+<!-- pages/function/walk-test/to-app.wxml -->
+<view class="text-flex" >
+    <text>小程序端六分钟步行测试尚未开放</text>
+    <text>请前往APP端进行测试</text>
+</view>
+<image src="{{icImg}}" />
+<view class="text-flex download">
+    <button bindtap="copyToBlipb" style="margin-bottom:30rpx;">复制链接</button>
+    <text>若尚未安装APP，点击按钮复制以下网址</text>
+    <text>在浏览器打开</text>
+    <text>{{url}}</text>
+</view>

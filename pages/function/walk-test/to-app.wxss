@@ -1,0 +1,22 @@
+/* pages/function/walk-test/to-app.wxss */
+.text-flex{
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 22px;
+    align-items: center;
+    margin: 90rpx 0;
+}
+
+image{
+    width: 200rpx;
+    height: 200rpx;
+    margin-left:275rpx; 
+    margin-bottom: 250rpx;
+}
+
+.download{
+    color: gray;
+    font-weight: 400;
+    font-size: 18px;
+}

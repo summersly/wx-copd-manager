@@ -1,0 +1,20 @@
+/* pages/function/pef/pef-charts/pef-charts.wxss */
+
+.chart {
+    width: 98vw;
+    height: 98vh;
+    display: block;
+    margin-top: 25rpx;
+    margin-left: 3vw;
+    /* transform-origin: top left;
+    transform: rotate(90deg) translateY(-95vw); */
+    /* border: 1px solid */
+}
+.none{
+    color: '#188df0';
+    font-weight: 'bold';
+    font-size: 22px;
+    text-align: center;
+    margin-top: 30rpx;
+}
+

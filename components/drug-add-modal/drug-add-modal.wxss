@@ -67,8 +67,8 @@
 input{
     width: 100%;
     height: 90rpx;
-    font-size: 35rpx;
-    line-height: 35rpx;
+    font-size: 40rpx;
+    line-height: 40rpx;
     padding: 0 20rpx;
     text-align: end;
     box-sizing: border-box;
@@ -83,7 +83,7 @@ picker{
     display: flex;
     align-items: center;
     justify-content:flex-end;
-    color:#33ccff
+    color:#33ccff;
 }
 .modal-footer {
     display: flex;

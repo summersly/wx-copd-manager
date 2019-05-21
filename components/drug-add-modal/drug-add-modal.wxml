@@ -7,7 +7,7 @@
             <image src="{{drugBlueImg}}" />
             <label>药物名称</label>
             <view class="modal-input {{defaultName.length?'none-border':''}}">
-                <input type="text" bindinput="bindNameInput" bindfocus='bindNameFocus' bindblur='bindNameBlur' value="{{name || defaultName}}" disabled="{{defaultName.length}}"></input>
+                <input cursor-spacing="250rpx" type="text" bindinput="bindNameInput" bindfocus='bindNameFocus' bindblur='bindNameBlur' value="{{name || defaultName}}" disabled="{{defaultName.length}}"></input>
             </view>
         </view>
         <view class="item"> 
@@ -21,8 +21,8 @@
         </view>
     </view>
     <view class="modal-footer">
-        <view  bindtap="hideModal" data-status="cancel">取消</view>
-        <view  bindtap="onConfirm" data-status="confirm">确定</view>
+        <view bindtap="hideModal" data-status="cancel">取消</view>
+        <view bindtap="onConfirm" data-status="confirm">确定</view>
     </view>
 
     <view class="drug-select-box" wx:if="{{select}}">
